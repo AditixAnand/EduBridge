@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI & Machine Learning - EduBridge</title>
+    <!-- CSS Dependencies -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
+    <link rel="stylesheet" href="Styles/main.css">
+    <link rel="stylesheet" href="Styles/chat.css">
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/main.js"></script>
+</head>
+<body>
+    <!-- Chatbot -->
+    <div class="chatbot-container" id="chatbotContainer">
+        <div class="chatbot-header">
+            <div class="header-content">
+                <i class="fas fa-robot"></i>
+                <span>EduBridge Assistant</span>
+            </div>
+            <button id="closeChatbot" class="close-btn" title="Close Chat">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="message bot-message">
+                Hello! I'm your EduBridge Assistant. How can I help you today? I can assist you with:
+                <ul>
+                    <li>Web Development questions</li>
+                    <li>AI & Machine Learning concepts</li>
+                    <li>Career guidance</li>
+                    <li>General educational queries</li>
+                </ul>
+            </div>
+        </div>
+        <div class="chatbot-input-container">
+            <input type="text" id="chatbotInput" class="chatbot-input" placeholder="Type your message here..." />
+            <button id="sendBtn" class="chatbot-send">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Chatbot Toggle Button -->
+    <button class="chatbot-button" id="chatbotButton" title="Chat with Assistant">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">EduBridge</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="webdev.html">Web Development</a></li>
+                <li><a href="ai.html">AI & ML</a></li>
+                <li><a href="career.html">Career</a></li>
+                <li>
+                    <div class="theme-selector" id="themeSelector">
+                        <button class="theme-selector-btn" id="themeButton">
+                            <i class="fas fa-palette"></i>
+                            Theme
+                        </button>
+                        <div class="theme-selector-dropdown">
+                            <div class="theme-option" data-theme="light">
+                                <i class="fas fa-sun"></i>
+                                Light Mode
+                            </div>
+                            <div class="theme-option" data-theme="dark">
+                                <i class="fas fa-moon"></i>
+                                Dark Mode
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="auth-buttons" id="authButtons">
+                    <a href="login.html" class="btn btn-outline">Login</a>
+                    <a href="register.html" class="btn">Register</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>AI & Machine Learning</h1>
+            <p>Dive into the world of artificial intelligence and machine learning, from fundamental concepts to advanced applications.</p>
+        </section>
+
+        <!-- Course Overview -->
+        <section class="section">
+            <h2>What You'll Learn</h2>
+            <div class="course-cards">
+                <div class="card">
+                    <div class="card-content">
+                        <h3><i class="fas fa-brain"></i> Machine Learning</h3>
+                        <ul>
+                            <li>Supervised Learning</li>
+                            <li>Unsupervised Learning</li>
+                            <li>Neural Networks</li>
+                            <li>Model Evaluation</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3><i class="fas fa-robot"></i> Deep Learning</h3>
+                        <ul>
+                            <li>Neural Networks</li>
+                            <li>Computer Vision</li>
+                            <li>Natural Language Processing</li>
+                            <li>Reinforcement Learning</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3><i class="fas fa-project-diagram"></i> AI Applications</h3>
+                        <ul>
+                            <li>Image Recognition</li>
+                            <li>Speech Processing</li>
+                            <li>Predictive Analytics</li>
+                            <li>AI Ethics</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resources Section -->
+        <section class="section">
+            <h2>Learning Resources</h2>
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <div class="card-content">
+                        <h3><i class="fas fa-book-open"></i> Documentation & Guides</h3>
+                        <div class="notes-content">
+                            <h4>TensorFlow Documentation</h4>
+                            <p>Official documentation for TensorFlow, covering everything from basic concepts to advanced deep learning techniques.</p>
+                            
+                            <h4>PyTorch Tutorials</h4>
+                            <p>Comprehensive tutorials for PyTorch, including neural networks, computer vision, and natural language processing.</p>
+                            
+                            <h4>Scikit-learn Guide</h4>
+                            <p>Detailed guide for machine learning with scikit-learn, including data preprocessing, model selection, and evaluation.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="card-content">
+                        <h3><i class="fas fa-tasks"></i> Practice Projects</h3>
+                        <div class="notes-content">
+                            <h4>Image Classification</h4>
+                            <p>Build a CNN model to classify images using TensorFlow or PyTorch. Learn about data augmentation and transfer learning.</p>
+                            
+                            <h4>Sentiment Analysis</h4>
+                            <p>Create an NLP model to analyze text sentiment. Practice text preprocessing and model training with real-world data.</p>
+                            
+                            <h4>Time Series Prediction</h4>
+                            <p>Develop a model to predict future values in time series data. Learn about LSTM networks and sequence modeling.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="card-content">
+                        <h3><i class="fas fa-users"></i> Community & Support</h3>
+                        <div class="notes-content">
+                            <h4>Kaggle</h4>
+                            <p>Join competitions, share code, and learn from other data scientists. Access datasets and notebooks for practice.</p>
+                            
+                            <h4>AI Stack Exchange</h4>
+                            <p>Get help with AI and ML questions. Connect with experts and find solutions to common problems.</p>
+                            
+                            <h4>AI Community</h4>
+                            <p>Join discussions about AI research and applications. Stay updated with the latest developments in the field.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Videos Section -->
+        <section class="section">
+            <h2>AI & ML Videos</h2>
+            <div class="course-cards">
+                <div class="card">
+                    <div class="card-content">
+                        <h3><i class="fas fa-brain"></i> Machine Learning</h3>
+                        <div class="video-list">
+                            <div class="video-item" onclick="openVideo('KNAWp2S3w94')">
+                                <a href="#" class="video-link">
+                                    <i class="fas fa-play-circle"></i>
+                                    ML Fundamentals
+                                </a>
+                            </div>
+                            <div class="video-item" onclick="openVideo('aircAruvnKk')">
+                                <a href="#" class="video-link">
+                                    <i class="fas fa-play-circle"></i>
+                                    Neural Networks
+                                </a>
+                            </div>
+                            <div class="video-item" onclick="openVideo('JcI5Vnw0b2c')">
+                                <a href="#" class="video-link">
+                                    <i class="fas fa-play-circle"></i>
+                                    Feature Engineering
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3><i class="fas fa-robot"></i> Deep Learning</h3>
+                        <div class="video-list">
+                            <div class="video-item" onclick="openVideo('aircAruvnKk')">
+                                <a href="#" class="video-link">
+                                    <i class="fas fa-play-circle"></i>
+                                    CNN Basics
+                                </a>
+                            </div>
+                            <div class="video-item" onclick="openVideo('UNmqTiOnRfg')">
+                                <a href="#" class="video-link">
+                                    <i class="fas fa-play-circle"></i>
+                                    RNN and LSTM
+                                </a>
+                            </div>
+                            <div class="video-item" onclick="openVideo('Y_hzMnRXjhI')">
+                                <a href="#" class="video-link">
+                                    <i class="fas fa-play-circle"></i>
+                                    Transfer Learning
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3><i class="fas fa-cogs"></i> AI Applications</h3>
+                        <div class="video-list">
+                            <div class="video-item" onclick="openVideo('wypVcNIH6EC')">
+                                <a href="#" class="video-link">
+                                    <i class="fas fa-play-circle"></i>
+                                    NLP Projects
+                                </a>
+                            </div>
+                            <div class="video-item" onclick="openVideo('2FmcHiLCwTU')">
+                                <a href="#" class="video-link">
+                                    <i class="fas fa-play-circle"></i>
+                                    Computer Vision
+                                </a>
+                            </div>
+                            <div class="video-item" onclick="openVideo('JgvyzIkgxF0')">
+                                <a href="#" class="video-link">
+                                    <i class="fas fa-play-circle"></i>
+                                    Reinforcement Learning
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Modal -->
+        <div id="videoModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal" onclick="closeVideo()">&times;</span>
+                <div class="video-container">
+                    <iframe id="videoFrame" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Section -->
+        <section class="section">
+            <div class="course-cards">
+                <div class="card">
+                    <div class="card-content">
+                        <h3><i class="fas fa-question-circle"></i> AI & ML Quiz</h3>
+                        <div class="quiz-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-clock"></i>
+                                <span>30 Minutes</span>
+                                <p>Duration</p>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-list-ol"></i>
+                                <span>20 Questions</span>
+                                <p>Total Questions</p>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-trophy"></i>
+                                <span>70%</span>
+                                <p>Passing Score</p>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="quiz.html" class="btn">Start Quiz</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="webdev.html">Web Development</a></li>
+                    <li><a href="ai.html">AI & ML</a></li>
+                    <li><a href="career.html">Career</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="https://x.com/shivam98997467" target="_blank" class="social-button" title="Follow us on Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="scripts/theme.js"></script>
+    <script>
+        // Theme Selection
+        const themeSelector = document.getElementById('themeSelector');
+        const themeButton = document.getElementById('themeButton');
+        const themeOptions = document.querySelectorAll('.theme-option');
+        const currentTheme = localStorage.getItem('theme') || 'light';
+
+        // Set initial theme
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        updateActiveThemeOption(currentTheme);
+
+        // Toggle dropdown on button click
+        themeButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            themeSelector.classList.toggle('active');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!themeSelector.contains(e.target)) {
+                themeSelector.classList.remove('active');
+            }
+        });
+
+        // Handle theme selection
+        themeOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                const theme = option.getAttribute('data-theme');
+                document.documentElement.setAttribute('data-theme', theme);
+                localStorage.setItem('theme', theme);
+                updateActiveThemeOption(theme);
+                themeSelector.classList.remove('active');
+            });
+        });
+
+        function updateActiveThemeOption(theme) {
+            themeOptions.forEach(option => {
+                if (option.getAttribute('data-theme') === theme) {
+                    option.classList.add('active');
+                } else {
+                    option.classList.remove('active');
+                }
+            });
+        }
+
+        // Handle user authentication state
+        document.addEventListener('DOMContentLoaded', () => {
+            const auth = new Auth();
+            const currentUser = auth.getCurrentUser();
+            const authButtons = document.getElementById('authButtons');
+
+            if (currentUser) {
+                // User is logged in
+                authButtons.style.display = 'none';
+            } else {
+                // User is not logged in
+                authButtons.style.display = 'block';
+            }
+        });
+
+        // Chatbot functionality
+        const chatbotContainer = document.getElementById('chatbotContainer');
+        const chatbotButton = document.getElementById('chatbotButton');
+        const closeChatbot = document.getElementById('closeChatbot');
+        const chatbotMessages = document.getElementById('chatbotMessages');
+        const chatbotInput = document.getElementById('chatbotInput');
+        const sendBtn = document.getElementById('sendBtn');
+
+        // Toggle chatbot visibility
+        chatbotButton.addEventListener('click', () => {
+            chatbotContainer.style.display = 'flex';
+        });
+
+        closeChatbot.addEventListener('click', () => {
+            chatbotContainer.style.display = 'none';
+        });
+
+        // Handle sending messages
+        function sendMessage() {
+            const message = chatbotInput.value.trim();
+            if (message) {
+                // Add user message
+                addMessage(message, 'user');
+                chatbotInput.value = '';
+
+                // Simulate bot response (replace with actual API call)
+                setTimeout(() => {
+                    addMessage('I am a simple chatbot. For full functionality, please implement the chatbot API.', 'bot');
+                }, 1000);
+            }
+        }
+
+        // Add message to chat
+        function addMessage(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}-message`;
+            messageDiv.textContent = text;
+            chatbotMessages.appendChild(messageDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+
+        // Event listeners for sending messages
+        sendBtn.addEventListener('click', sendMessage);
+        chatbotInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Video Modal Functions
+        function openVideo(videoId) {
+            const modal = document.getElementById('videoModal');
+            const videoFrame = document.getElementById('videoFrame');
+            videoFrame.src = `https://www.youtube.com/embed/${videoId}`;
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeVideo() {
+            const modal = document.getElementById('videoModal');
+            const videoFrame = document.getElementById('videoFrame');
+            modal.style.display = 'none';
+            videoFrame.src = '';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('videoModal');
+            if (event.target == modal) {
+                closeVideo();
+            }
+        }
+    </script>
+</body>
+</html> 

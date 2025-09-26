@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EduBridge - Learn Tech Skills</title>
+  <!-- CSS Dependencies -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
+  <link rel="stylesheet" href="Styles/main.css"/>
+  <link rel="stylesheet" href="Styles/chat.css"/>
+  <script src="scripts/main.js"></script>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav class="navbar">
+      <a href="index.html" class="logo">EduBridge</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="webdev.html">Web Development</a></li>
+        <li><a href="ai.html">AI & ML</a></li>
+        <li><a href="career.html">Career</a></li>
+        <li>
+          <div class="theme-selector" id="themeSelector">
+            <button class="theme-selector-btn" id="themeButton">
+              <i class="fas fa-palette"></i>
+              Theme
+            </button>
+            <div class="theme-selector-dropdown">
+              <div class="theme-option" data-theme="light">
+                <i class="fas fa-sun"></i>
+                Light Mode
+              </div>
+              <div class="theme-option" data-theme="dark">
+                <i class="fas fa-moon"></i>
+                Dark Mode
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="auth-buttons" id="authButtons">
+          <a href="login.html" class="btn btn-outline">Login</a>
+          <a href="register.html" class="btn">Register</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>Welcome to EduBridge</h1>
+      <p>Your gateway to mastering in-demand tech skills and launching a successful career in technology.</p>
+      <a href="#courses" class="btn">Explore Courses</a>
+    </section>
+
+    <!-- Featured Courses -->
+    <section id="courses" class="section">
+      <h2>Featured Courses</h2>
+      <div class="course-cards">
+        <!-- Web Development Card -->
+        <div class="card">
+          <div class="card-image">
+            <img src="images/webdev.jpg" alt="Web Development Course" onerror="this.src='https://via.placeholder.com/400x250/2c3e50/ffffff?text=Web+Development'">
+          </div>
+          <div class="card-content">
+            <h3>Web Development</h3>
+            <p>Master frontend and backend technologies to build modern web applications.</p>
+            <a href="webdev.html" class="btn btn-outline">Learn More</a>
+          </div>
+        </div>
+
+        <!-- AI & ML Card -->
+        <div class="card">
+          <div class="card-image">
+            <img src="images/ai.jpg" alt="AI & Machine Learning Course" onerror="this.src='https://via.placeholder.com/400x250/3498db/ffffff?text=AI+%26+ML'">
+          </div>
+          <div class="card-content">
+            <h3>AI & Machine Learning</h3>
+            <p>Dive into artificial intelligence, machine learning, and data science.</p>
+            <a href="ai.html" class="btn btn-outline">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Career Guidance Card -->
+        <div class="card">
+          <div class="card-image">
+            <img src="images/career.jpg" alt="Career Guidance Course" onerror="this.src='https://via.placeholder.com/400x250/e74c3c/ffffff?text=Career+Guidance'">
+          </div>
+          <div class="card-content">
+            <h3>Career Guidance</h3>
+            <p>Get expert advice on building a successful career in technology.</p>
+            <a href="career.html" class="btn btn-outline">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose EduBridge -->
+    <section class="section">
+      <h2>Why Choose EduBridge</h2>
+      <div class="course-cards">
+        <div class="card">
+          <div class="card-content">
+            <h3><i class="fas fa-graduation-cap"></i> Expert-Led Learning</h3>
+            <p>Learn from industry professionals with years of experience in their respective fields. Our instructors are dedicated to your success.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-content">
+            <h3><i class="fas fa-laptop-code"></i> Hands-on Projects</h3>
+            <p>Gain practical experience through real-world projects. Build your portfolio while learning industry-relevant skills.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-content">
+            <h3><i class="fas fa-users"></i> Community Support</h3>
+            <p>Join a vibrant community of learners. Get help, share knowledge, and network with peers and professionals.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-content">
+            <h3><i class="fas fa-certificate"></i> Career Ready</h3>
+            <p>Our courses are designed to make you job-ready. Learn the skills employers are looking for in today's market.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+ <footer>
+  <div class="footer-content">
+    <!-- Quick Links Section -->
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="webdev.html">Web Development</a></li>
+        <li><a href="ai.html">AI & ML</a></li>
+        <li><a href="career.html">Career</a></li>
+      </ul>
+    </div>
+
+    <!-- Social Section -->
+    <div class="footer-section">
+      <h3>Follow Us</h3>
+      <a href="https://www.instagram.com/wtf_adiiiii_" target="_blank" class="social-button" title="Follow us on Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/aditi-anand-745458318/" target="_blank" class="social-button" title="Connect on LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="mailto:aditianand09tkp@gmail.com" class="social-button" title="Send us an Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- Footer Bottom -->
+  <div class="footer-bottom">
+    <p>&copy; 2025 EduBridge. All rights reserved.</p>
+  </div>
+</footer>
+  <!-- Chatbot Template -->
+  <div id="chatbotTemplate"></div>
+
+  <!-- JavaScript Dependencies -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="scripts/chatbot.js"></script>
+  <script src="scripts/auth.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init();
+
+    // Theme Selection
+    const themeSelector = document.getElementById('themeSelector');
+    const themeButton = document.getElementById('themeButton');
+    const themeOptions = document.querySelectorAll('.theme-option');
+    const currentTheme = localStorage.getItem('theme') || 'light';
+
+    // Set initial theme
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    updateActiveThemeOption(currentTheme);
+
+    // Toggle dropdown on button click
+    themeButton.addEventListener('click', (e) => {
+      e.stopPropagation();
+      themeSelector.classList.toggle('active');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!themeSelector.contains(e.target)) {
+        themeSelector.classList.remove('active');
+      }
+    });
+
+    // Handle theme selection
+    themeOptions.forEach(option => {
+      option.addEventListener('click', () => {
+        const theme = option.getAttribute('data-theme');
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        updateActiveThemeOption(theme);
+        themeSelector.classList.remove('active');
+      });
+    });
+
+    function updateActiveThemeOption(theme) {
+      themeOptions.forEach(option => {
+        if (option.getAttribute('data-theme') === theme) {
+          option.classList.add('active');
+        } else {
+          option.classList.remove('active');
+        }
+      });
+    }
+
+    // Load and initialize chatbot
+    function loadChatbot() {
+      fetch('templates/chatbot.html')
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('chatbotTemplate').innerHTML = html;
+          // Initialize chatbot after template is loaded
+          if (typeof initializeChatbot === 'function') {
+            initializeChatbot();
+          } else {
+            console.error('Chatbot initialization function not found');
+          }
+        })
+        .catch(error => {
+          console.error('Error loading chatbot template:', error);
+        });
+    }
+
+    // Load chatbot when the page is ready
+    document.addEventListener('DOMContentLoaded', loadChatbot);
+  </script>
+</body>
+</html>
+

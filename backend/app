@@ -1,0 +1,28 @@
+from flask import Flask, request, jsonify
+import openai
+
+# Set up your OpenAI API key
+openai.api_key = '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'
+
+app = Flask(__name__)
+
+@app.route('/chat', methods=['POST'])
+def chat():
+    user_message = request.json.get('message')
+    
+    # Send the message to OpenAI's GPT model and get a response
+    try:
+        response = openai.Completion.create(
+            engine="text-davinci-003",  # or use "gpt-4" for better responses
+            prompt=user_message,
+            max_tokens=150,
+            temperature=0.7
+        )
+        
+        ai_response = response.choices[0].text.strip()
+        return jsonify({"response": ai_response})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+if __name__ == "__main__":
+    app.run(debug=True)

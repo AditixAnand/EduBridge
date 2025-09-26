@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduBridge | Web Development</title>
+  <link rel="stylesheet" href="../Styles/styles.css" />
+  <link rel="stylesheet" href="../Styles/chat.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    /* Smooth Scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Scroll Animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.8s forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in-viewport {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInViewport 1s forwards;
+    }
+
+    @keyframes fadeInViewport {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Apply animation when in viewport */
+    .animate {
+      animation: fadeInViewport 1s ease-in-out;
+    }
+
+    /* Video Modal */
+    .video-modal {
+      display: none;
+      position: fixed;
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      inline-size: 100%;
+      block-size: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .video-modal-content {
+      position: relative;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      inline-size: 80%;
+      max-inline-size: 800px;
+    }
+
+    .close-btn {
+      position: absolute;
+      inset-block-start: 10px;
+      inset-inline-end: 10px;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-wrapper">
+    <!-- Header Section -->
+    <header>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="webdev.html">WebDev</a></li>
+          <li><a href="ai.html">AI</a></li>
+          <li><a href="career.html">Career</a></li>
+        </ul>
+        <div class="dark-mode-toggle">
+          <input type="checkbox" id="darkModeToggle">
+          <label for="darkModeToggle" title="Toggle Dark Mode">🌙</label>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+      <div class="container">
+        <h1 class="fade-in">Web Development Resources</h1>
+        <p class="fade-in">
+          Web development is a vital skill in today's digital world. It involves building and maintaining websites, making them interactive, dynamic, and user-friendly. Learning web development empowers you to create websites from scratch and manage content, layout, and functionality.
+        </p>
+        <p class="fade-in">
+          **Advantages of Learning Web Development:**
+        </p>
+        <ul class="fade-in">
+          <li><strong>Career Opportunities:</strong> With the increasing demand for websites, web development opens numerous job opportunities in various industries.</li>
+          <li><strong>Creative Expression:</strong> Building websites allows you to express creativity through design and interactive elements.</li>
+          <li><strong>Freelancing Potential:</strong> Skilled web developers can work as freelancers, offering services to clients globally.</li>
+          <li><strong>High Demand:</strong> Companies need websites to expand their online presence, ensuring high demand for web developers.</li>
+          <li><strong>Growth Potential:</strong> The web development field is constantly evolving, allowing for continuous learning and skill improvement.</li>
+        </ul>
+
+        <!-- Resource Cards Section -->
+        <div class="resource-cards">
+          <div class="card fade-in">
+            <i class="fas fa-laptop-code fa-3x"></i>
+            <h3>Web Development Notes</h3>
+            <p>Download PDF notes to help you with the fundamentals of web development, including HTML, CSS, and JS. These notes will guide you through building simple websites to more complex ones.</p>
+            <a href="webdev_notes.pdf" download>Download Notes</a>
+          </div>
+          <div class="card fade-in">
+            <i class="fas fa-code fa-3x"></i>
+            <h3>HTML Basics</h3>
+            <p>Learn the basic structure of HTML and how to build web pages with it. HTML is the foundation of web development and is essential for structuring content.</p>
+            <a href="html_notes.pdf" download>Download Notes</a>
+          </div>
+          <div class="card fade-in">
+            <i class="fas fa-paint-brush fa-3x"></i>
+            <h3>CSS Styling</h3>
+            <p>Understand how to style your websites using CSS, creating responsive and visually appealing pages. CSS adds color, layout, and design to your web pages.</p>
+            <a href="css_notes.pdf" download>Download Notes</a>
+          </div>
+          <div class="card fade-in">
+            <i class="fas fa-cogs fa-3x"></i>
+            <h3>JavaScript Essentials</h3>
+            <p>Get a grasp on JavaScript programming language to make your websites dynamic. JavaScript is essential for adding interactivity and dynamic content to your websites.</p>
+            <a href="javascript_notes.pdf" download>Download Notes</a>
+          </div>
+        </div>
+
+        <!-- 📺 Video Section -->
+        <div class="video-section fade-in">
+          <h2>Watch and Learn</h2>
+          <p>Videos are an excellent way to understand complex topics in web development. Here are some tutorial videos to help you grasp key concepts.</p>
+          <div class="video-wrapper">
+            <div class="video-thumbnail" data-video-url="https://www.youtube.com/embed/UB1O30fR-EE">
+              <img src="https://img.youtube.com/vi/UB1O30fR-EE/0.jpg" alt="HTML Tutorial" />
+            </div>
+            <div class="video-thumbnail" data-video-url="https://www.youtube.com/embed/yfoY53QXEnI">
+              <img src="https://img.youtube.com/vi/yfoY53QXEnI/0.jpg" alt="CSS Tutorial" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Video Modal -->
+        <div class="video-modal" id="videoModal">
+          <div class="video-modal-content">
+            <span class="close-btn" id="closeModal">&times;</span>
+            <iframe id="modalVideo" src="" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <!-- Back to Home Link -->
+        <div class="back-link fade-in">
+          <a href="../index.html">Back to Home</a>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+      <p>&copy; 2025 EduBridge | All Rights Reserved</p>
+      <p>Follow us on <a href="https://x.com/shivam98997467" target="_blank">Twitter</a></p>
+    </footer>
+  </div>
+
+  <!-- Chatbot Template -->
+  <div id="chatbot-template"></div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    // Video Modal
+    const thumbnails = document.querySelectorAll('.video-thumbnail');
+    const modal = document.getElementById('videoModal');
+    const modalVideo = document.getElementById('modalVideo');
+    const closeBtn = document.getElementById('closeModal');
+
+    thumbnails.forEach(thumbnail => {
+      thumbnail.addEventListener('click', () => {
+        const videoUrl = thumbnail.getAttribute('data-video-url');
+        modal.style.display = 'flex';
+        modalVideo.src = videoUrl + "?autoplay=1";
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      modal.style.display = 'none';
+      modalVideo.src = '';
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+        modalVideo.src = '';
+      }
+    });
+
+    // Dark Mode Toggle
+    const toggle = document.getElementById('darkModeToggle');
+    const isDark = localStorage.getItem('dark-mode') === 'enabled';
+
+    if (isDark) {
+      document.body.classList.add('dark');
+      toggle.checked = true;
+    }
+
+    toggle.addEventListener('change', () => {
+      if (toggle.checked) {
+        document.body.classList.add('dark');
+        localStorage.setItem('dark-mode', 'enabled');
+      } else {
+        document.body.classList.remove('dark');
+        localStorage.setItem('dark-mode', 'disabled');
+      }
+    });
+
+    // Load chatbot template
+    fetch('../templates/chatbot.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('chatbot-template').innerHTML = html;
+        // Initialize chatbot after template is loaded
+        const script = document.createElement('script');
+        script.src = '../scripts/chatbot.js';
+        document.body.appendChild(script);
+      })
+      .catch(error => console.error('Error loading chatbot template:', error));
+  </script>
+</body>
+
+</html>

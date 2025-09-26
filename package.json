@@ -1,0 +1,11 @@
+{
+  "name": "edubridge",
+  "version": "1.0.0",
+  "description": "Educational platform with context-aware chatbot",
+  "main": "scripts/chatbot.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {}
+}

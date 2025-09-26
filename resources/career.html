@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EduBridge | Career</title>
+  <link rel="stylesheet" href="../Styles/styles.css" />
+  <link rel="stylesheet" href="../Styles/chat.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.8s forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .video-modal {
+      display: none;
+      position: fixed;
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      inline-size: 100%;
+      block-size: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .video-modal-content {
+      position: relative;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      inline-size: 80%;
+      max-inline-size: 800px;
+    }
+
+    .close-btn {
+      position: absolute;
+      inset-block-start: 10px;
+      inset-inline-end: 10px;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <header>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="webdev.html">WebDev</a></li>
+          <li><a href="ai.html">AI</a></li>
+          <li><a href="career.html">Career</a></li>
+        </ul>
+        <div class="dark-mode-toggle">
+          <input type="checkbox" id="darkModeToggle">
+          <label for="darkModeToggle" title="Toggle Dark Mode">🌙</label>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        <h1 class="fade-in">Career Development Resources</h1>
+        <p class="fade-in">Explore the resources to help you with career planning, job search, and career development. Learning how to improve your career prospects and preparing for a professional journey are essential in today's competitive job market.</p>
+        
+        <p class="fade-in">
+          **Advantages of Career Development:**
+        </p>
+        <ul class="fade-in">
+          <li><strong>Increased Job Opportunities:</strong> With well-structured career planning, you gain more access to job opportunities and advance in your field.</li>
+          <li><strong>Personal Growth:</strong> Career development equips you with the skills and knowledge necessary to take on new challenges and grow personally and professionally.</li>
+          <li><strong>Better Job Satisfaction:</strong> Engaging with resources for interview preparation and resume building helps boost your confidence and satisfaction in the workplace.</li>
+          <li><strong>Networking Opportunities:</strong> Developing a strong career network is crucial for career growth and opens doors to collaborations and better job prospects.</li>
+          <li><strong>Continuous Learning:</strong> Career development encourages ongoing learning and development, which is essential to remain competitive in any industry.</li>
+        </ul>
+
+        <div class="resource-cards">
+          <div class="card fade-in">
+            <i class="fas fa-briefcase fa-3x"></i>
+            <h3>Resume Building</h3>
+            <p>Learn how to build an effective resume for your career growth.</p>
+            <a href="resume_building.pdf" download>Download Resume Guide</a>
+          </div>
+          <div class="card fade-in">
+            <i class="fas fa-search fa-3x"></i>
+            <h3>Job Search Tips</h3>
+            <p>Get tips on how to search and apply for jobs effectively.</p>
+            <a href="job_search_tips.pdf" download>Download Job Search Guide</a>
+          </div>
+          <div class="card fade-in">
+            <i class="fas fa-users fa-3x"></i>
+            <h3>Interview Preparation</h3>
+            <p>Prepare for interviews with these helpful resources.</p>
+            <a href="interview_preparation.pdf" download>Download Interview Tips</a>
+          </div>
+        </div>
+
+        <div class="video-section fade-in">
+          <h2>Career Development Videos</h2>
+          <div class="video-wrapper">
+            <div class="video-thumbnail" data-video-url="https://www.youtube.com/embed/Zpg9Ip0P4vc">
+              <img src="https://img.youtube.com/vi/Zpg9Ip0P4vc/0.jpg" alt="Video Thumbnail 1" />
+            </div>
+            <div class="video-thumbnail" data-video-url="https://www.youtube.com/embed/fr-mwiyhZAo">
+              <img src="https://img.youtube.com/vi/fr-mwiyhZAo/0.jpg" alt="Video Thumbnail 2" />
+            </div>
+          </div>
+        </div>
+
+        <div class="video-modal" id="videoModal">
+          <div class="video-modal-content">
+            <span class="close-btn" id="closeModal">&times;</span>
+            <iframe id="modalVideo" src="" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <div class="back-link fade-in">
+          <a href="../index.html">Back to Home</a>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 EduBridge | All Rights Reserved</p>
+      <p>Follow us on <a href="https://x.com/shivam98997467" target="_blank">Twitter</a></p>
+    </footer>
+  </div>
+
+  <!-- Chatbot Template -->
+  <div id="chatbot-template"></div>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    const toggle = document.getElementById('darkModeToggle');
+    const modal = document.getElementById("videoModal");
+    const modalVideo = document.getElementById("modalVideo");
+    const closeBtn = document.getElementById("closeModal");
+
+    if (toggle) {
+      toggle.addEventListener('change', () => {
+        document.body.classList.toggle('dark');
+        localStorage.setItem('dark-mode', document.body.classList.contains('dark') ? 'enabled' : 'disabled');
+      });
+
+      if (localStorage.getItem('dark-mode') === 'enabled') {
+        document.body.classList.add('dark');
+        toggle.checked = true;
+      }
+    }
+
+    document.querySelectorAll(".video-thumbnail").forEach((thumb) => {
+      thumb.addEventListener("click", () => {
+        const videoUrl = thumb.getAttribute("data-video-url");
+        modal.style.display = "flex";
+        modalVideo.src = `${videoUrl}?autoplay=1`;
+      });
+    });
+
+    closeBtn.addEventListener("click", () => {
+      modal.style.display = "none";
+      modalVideo.src = "";
+    });
+
+    window.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.style.display = "none";
+        modalVideo.src = "";
+      }
+    });
+
+    // Load chatbot template
+    fetch('../templates/chatbot.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('chatbot-template').innerHTML = html;
+        // Initialize chatbot after template is loaded
+        const script = document.createElement('script');
+        script.src = '../scripts/chatbot.js';
+        document.body.appendChild(script);
+      })
+      .catch(error => console.error('Error loading chatbot template:', error));
+  </script>
+</body>
+</html>

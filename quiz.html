@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduBridge - Course Quizzes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
+    <link rel="stylesheet" href="Styles/main.css"/>
+    <link rel="stylesheet" href="Styles/quiz.css"/>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/main.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">EduBridge</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="webdev.html">Web Development</a></li>
+                <li><a href="ai.html">AI & ML</a></li>
+                <li><a href="career.html">Career</a></li>
+                <li>
+                    <div class="theme-selector" id="themeSelector">
+                        <button class="theme-selector-btn" id="themeButton">
+                            <i class="fas fa-palette"></i>
+                            Theme
+                        </button>
+                        <div class="theme-selector-dropdown">
+                            <div class="theme-option" data-theme="light">
+                                <i class="fas fa-sun"></i>
+                                Light Mode
+                            </div>
+                            <div class="theme-option" data-theme="dark">
+                                <i class="fas fa-moon"></i>
+                                Dark Mode
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="auth-buttons" id="authButtons">
+                    <a href="login.html" class="btn btn-outline">Login</a>
+                    <a href="register.html" class="btn">Register</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Course Selection -->
+        <section id="courseSelection" class="section">
+            <h2>Choose Your Course Quiz</h2>
+            <div class="course-cards">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="images/webdev.jpg" alt="Web Development Course" onerror="this.src='https://via.placeholder.com/400x250/2c3e50/ffffff?text=Web+Development'">
+                    </div>
+                    <div class="card-content">
+                        <h3>Web Development Quiz</h3>
+                        <p>Test your knowledge of HTML, CSS, and JavaScript.</p>
+                        <button class="btn start-quiz" data-course="webdev">Start Quiz</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-image">
+                        <img src="images/ai.jpg" alt="AI & Machine Learning Course" onerror="this.src='https://via.placeholder.com/400x250/3498db/ffffff?text=AI+%26+ML'">
+                    </div>
+                    <div class="card-content">
+                        <h3>AI & ML Quiz</h3>
+                        <p>Challenge yourself with AI and Machine Learning concepts.</p>
+                        <button class="btn start-quiz" data-course="ai">Start Quiz</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-image">
+                        <img src="images/career.jpg" alt="Career Guidance Course" onerror="this.src='https://via.placeholder.com/400x250/e74c3c/ffffff?text=Career+Guidance'">
+                    </div>
+                    <div class="card-content">
+                        <h3>Career Quiz</h3>
+                        <p>Assess your career planning and job search skills.</p>
+                        <button class="btn start-quiz" data-course="career">Start Quiz</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz Section -->
+        <section id="quizContainer" class="section" style="display: none;">
+            <div class="quiz-container">
+                <div class="quiz-header">
+                    <h2 id="quizTitle">Course Quiz</h2>
+                    <div class="quiz-info">
+                        <span id="timer">Time: 10:00</span>
+                        <span id="score">Score: 0</span>
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+                <div class="question-container">
+                    <h3 id="questionText">Question goes here</h3>
+                    <div class="options" id="options">
+                        <!-- Options will be dynamically added here -->
+                    </div>
+                </div>
+                <div class="quiz-controls">
+                    <button id="prevBtn" class="btn btn-outline">Previous</button>
+                    <button id="nextBtn" class="btn">Next</button>
+                    <button id="submitBtn" class="btn" style="display: none;">Submit Quiz</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section id="resultsContainer" class="section" style="display: none;">
+            <div class="results-container">
+                <h2>Quiz Results</h2>
+                <div class="results-content">
+                    <div class="result-item">
+                        <span class="result-label">Final Score:</span>
+                        <span id="finalScore" class="result-value">0/10</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Time Taken:</span>
+                        <span id="timeTaken" class="result-value">00:00</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Correct Answers:</span>
+                        <span id="correctAnswers" class="result-value">0</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Incorrect Answers:</span>
+                        <span id="incorrectAnswers" class="result-value">0</span>
+                    </div>
+                </div>
+                <div class="results-actions">
+                    <button id="retryBtn" class="btn btn-outline">Try Again</button>
+                    <button id="backToCoursesBtn" class="btn">Back to Courses</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="webdev.html">Web Development</a></li>
+                    <li><a href="ai.html">AI & ML</a></li>
+                    <li><a href="career.html">Career</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <a href="https://x.com/shivam98997467" target="_blank" class="social-button" title="Follow us on Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="scripts/quiz.js"></script>
+    <script>
+        // Initialize quiz when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize theme
+            const themeSelector = document.getElementById('themeSelector');
+            const themeButton = document.getElementById('themeButton');
+            const themeOptions = document.querySelectorAll('.theme-option');
+            const currentTheme = localStorage.getItem('theme') || 'light';
+
+            // Set initial theme
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            updateActiveThemeOption(currentTheme);
+
+            // Toggle dropdown on button click
+            themeButton.addEventListener('click', (e) => {
+                e.stopPropagation();
+                themeSelector.classList.toggle('active');
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!themeSelector.contains(e.target)) {
+                    themeSelector.classList.remove('active');
+                }
+            });
+
+            // Handle theme selection
+            themeOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    const theme = option.getAttribute('data-theme');
+                    document.documentElement.setAttribute('data-theme', theme);
+                    localStorage.setItem('theme', theme);
+                    updateActiveThemeOption(theme);
+                    themeSelector.classList.remove('active');
+                });
+            });
+
+            function updateActiveThemeOption(theme) {
+                themeOptions.forEach(option => {
+                    if (option.getAttribute('data-theme') === theme) {
+                        option.classList.add('active');
+                    } else {
+                        option.classList.remove('active');
+                    }
+                });
+            }
+
+            // Handle user authentication state
+            const auth = new Auth();
+            const currentUser = auth.getCurrentUser();
+            const authButtons = document.getElementById('authButtons');
+
+            if (currentUser) {
+                authButtons.style.display = 'none';
+            } else {
+                authButtons.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html> 
