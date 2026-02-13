@@ -60,13 +60,13 @@ function initializeChatbot() {
     // Get response based on user input
     function getResponse(userInput, page) {
         const lowerInput = userInput.toLowerCase();
-        
+
         // Course-related Responses
-        if (lowerInput.includes('course') || lowerInput.includes('learn') || lowerInput.includes('study') || 
+        if (lowerInput.includes('course') || lowerInput.includes('learn') || lowerInput.includes('study') ||
             lowerInput.includes('program') || lowerInput.includes('training') || lowerInput.includes('education')) {
-            
+
             // Web Development Courses
-            if (lowerInput.includes('web') || lowerInput.includes('frontend') || lowerInput.includes('backend') || 
+            if (lowerInput.includes('web') || lowerInput.includes('frontend') || lowerInput.includes('backend') ||
                 lowerInput.includes('full stack')) {
                 if (lowerInput.includes('frontend')) return "Our Frontend Development course covers HTML, CSS, JavaScript, React, and modern web development practices. Duration: 3 months. Prerequisites: Basic computer knowledge.";
                 if (lowerInput.includes('backend')) return "Our Backend Development course teaches Node.js, Express, MongoDB, and server-side programming. Duration: 3 months. Prerequisites: Basic programming knowledge.";
@@ -75,7 +75,7 @@ function initializeChatbot() {
             }
 
             // AI & ML Courses
-            if (lowerInput.includes('ai') || lowerInput.includes('machine learning') || lowerInput.includes('ml') || 
+            if (lowerInput.includes('ai') || lowerInput.includes('machine learning') || lowerInput.includes('ml') ||
                 lowerInput.includes('deep learning') || lowerInput.includes('data science')) {
                 if (lowerInput.includes('machine learning')) return "Our Machine Learning course covers Python, data analysis, ML algorithms, and model deployment. Duration: 4 months. Prerequisites: Basic Python and mathematics.";
                 if (lowerInput.includes('deep learning')) return "Our Deep Learning program focuses on neural networks, TensorFlow, PyTorch, and advanced AI concepts. Duration: 4 months. Prerequisites: Machine Learning fundamentals.";
@@ -84,7 +84,7 @@ function initializeChatbot() {
             }
 
             // Cloud Computing Courses
-            if (lowerInput.includes('cloud') || lowerInput.includes('aws') || lowerInput.includes('azure') || 
+            if (lowerInput.includes('cloud') || lowerInput.includes('aws') || lowerInput.includes('azure') ||
                 lowerInput.includes('google cloud') || lowerInput.includes('devops')) {
                 if (lowerInput.includes('aws')) return "Our AWS Certification course covers cloud computing fundamentals, services, and architecture. Duration: 3 months. Includes AWS certification preparation.";
                 if (lowerInput.includes('azure')) return "Our Microsoft Azure program teaches cloud services, deployment, and management. Duration: 3 months. Includes Azure certification preparation.";
@@ -93,7 +93,7 @@ function initializeChatbot() {
             }
 
             // Mobile Development Courses
-            if (lowerInput.includes('mobile') || lowerInput.includes('android') || lowerInput.includes('ios') || 
+            if (lowerInput.includes('mobile') || lowerInput.includes('android') || lowerInput.includes('ios') ||
                 lowerInput.includes('flutter') || lowerInput.includes('react native')) {
                 if (lowerInput.includes('android')) return "Our Android Development course teaches Java/Kotlin, Android Studio, and mobile app development. Duration: 3 months. Prerequisites: Basic programming knowledge.";
                 if (lowerInput.includes('ios')) return "Our iOS Development program covers Swift, Xcode, and Apple's development ecosystem. Duration: 3 months. Prerequisites: Basic programming knowledge.";
@@ -102,7 +102,7 @@ function initializeChatbot() {
             }
 
             // Cybersecurity Courses
-            if (lowerInput.includes('cyber') || lowerInput.includes('security') || lowerInput.includes('ethical hacking') || 
+            if (lowerInput.includes('cyber') || lowerInput.includes('security') || lowerInput.includes('ethical hacking') ||
                 lowerInput.includes('penetration testing') || lowerInput.includes('network security')) {
                 if (lowerInput.includes('ethical hacking')) return "Our Ethical Hacking course covers penetration testing, vulnerability assessment, and security tools. Duration: 4 months. Prerequisites: Basic networking knowledge.";
                 if (lowerInput.includes('network security')) return "Our Network Security program teaches security protocols, firewalls, and network defense strategies. Duration: 3 months. Prerequisites: Basic networking knowledge.";
@@ -127,8 +127,8 @@ function initializeChatbot() {
         }
 
         // Web Development Responses
-        if (lowerInput.includes('web') || lowerInput.includes('html') || lowerInput.includes('css') || 
-            lowerInput.includes('javascript') || lowerInput.includes('react') || lowerInput.includes('node') || 
+        if (lowerInput.includes('web') || lowerInput.includes('html') || lowerInput.includes('css') ||
+            lowerInput.includes('javascript') || lowerInput.includes('react') || lowerInput.includes('node') ||
             lowerInput.includes('mongodb') || lowerInput.includes('express') || lowerInput.includes('full stack')) {
             if (lowerInput.includes('html')) return "HTML (HyperText Markup Language) is the standard markup language for creating web pages. It defines the structure and content of a webpage.";
             if (lowerInput.includes('css')) return "CSS (Cascading Style Sheets) is a style sheet language used for describing the presentation of a document written in HTML.";
@@ -142,10 +142,10 @@ function initializeChatbot() {
         }
 
         // AI Responses
-        if (lowerInput.includes('ai') || lowerInput.includes('artificial intelligence') || 
-            lowerInput.includes('machine learning') || lowerInput.includes('deep learning') || 
-            lowerInput.includes('neural network') || lowerInput.includes('nlp') || 
-            lowerInput.includes('computer vision') || lowerInput.includes('reinforcement') || 
+        if (lowerInput.includes('ai') || lowerInput.includes('artificial intelligence') ||
+            lowerInput.includes('machine learning') || lowerInput.includes('deep learning') ||
+            lowerInput.includes('neural network') || lowerInput.includes('nlp') ||
+            lowerInput.includes('computer vision') || lowerInput.includes('reinforcement') ||
             lowerInput.includes('supervised') || lowerInput.includes('unsupervised')) {
             if (lowerInput.includes('machine learning')) return "Machine Learning is a subset of AI that enables systems to learn and improve from experience without being explicitly programmed.";
             if (lowerInput.includes('deep learning')) return "Deep Learning is a subset of machine learning that uses artificial neural networks to model and solve complex problems.";
@@ -159,7 +159,7 @@ function initializeChatbot() {
         }
 
         // Career Responses
-        if (lowerInput.includes('career') || lowerInput.includes('job') || lowerInput.includes('salary') || 
+        if (lowerInput.includes('career') || lowerInput.includes('job') || lowerInput.includes('salary') ||
             lowerInput.includes('skills') || lowerInput.includes('start') || lowerInput.includes('begin')) {
             if (lowerInput.includes('salary')) {
                 if (lowerInput.includes('web')) return "Web developer salaries vary by location and experience, but typically range from $50,000 to $120,000 per year.";
@@ -196,7 +196,7 @@ function initializeChatbot() {
         }
 
         // Default response based on page context
-        switch(page) {
+        switch (page) {
             case 'webdev':
                 return "I can help you with web development topics like HTML, CSS, JavaScript, React, Node.js, MongoDB, and Express. What would you like to know?";
             case 'ai':
@@ -235,21 +235,30 @@ function initializeChatbot() {
             // Show typing indicator
             const typingIndicator = showTypingIndicator();
 
-            // Simulate server response delay
-            setTimeout(() => {
-                try {
-                    const page = getCurrentPage();
-                    const response = getResponse(userInput, page);
-
+            // Send message to backend API
+            fetch('http://127.0.0.1:5000/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message: userInput })
+            })
+                .then(response => response.json())
+                .then(data => {
                     // Remove typing indicator
                     removeTypingIndicator(typingIndicator);
-                    addMessage(response, false);
-                } catch (error) {
+
+                    if (data.error) {
+                        addMessage("Error: " + data.error, false);
+                    } else {
+                        addMessage(data.response, false);
+                    }
+                })
+                .catch(error => {
                     console.error('Error:', error);
                     removeTypingIndicator(typingIndicator);
-                    addMessage("Sorry, I couldn't process your request. Please try again.", false);
-                }
-            }, 1000); // Simulate 1 second delay
+                    addMessage("Sorry, I couldn't reach the server. Please check your connection.", false);
+                });
         }
     });
 
@@ -262,8 +271,8 @@ function initializeChatbot() {
 
     // Close chatbot when clicking outside
     document.addEventListener('click', (e) => {
-        if (!chatbotContainer.contains(e.target) && 
-            !chatbotButton.contains(e.target) && 
+        if (!chatbotContainer.contains(e.target) &&
+            !chatbotButton.contains(e.target) &&
             chatbotContainer.classList.contains('active')) {
             chatbotContainer.classList.remove("active");
             setTimeout(() => {
