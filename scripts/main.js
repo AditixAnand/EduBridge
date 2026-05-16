@@ -1,3 +1,59 @@
+
+// Theme Initialization
+const currentTheme = localStorage.getItem('theme') || 'light';
+document.documentElement.setAttribute('data-theme', currentTheme);
+
+document.addEventListener('DOMContentLoaded', () => {
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', (e) => {
+        const button = e.currentTarget;
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        
+        const { top, left, width, height } = button.getBoundingClientRect();
+        const x = left + width / 2;
+        const y = top + height / 2;
+        const viewportWidth = window.visualViewport?.width ?? window.innerWidth;
+        const viewportHeight = window.visualViewport?.height ?? window.innerHeight;
+        const maxRadius = Math.hypot(
+          Math.max(x, viewportWidth - x),
+          Math.max(y, viewportHeight - y)
+        );
+
+        const applyTheme = () => {
+          const nextTheme = isDark ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', nextTheme);
+          localStorage.setItem('theme', nextTheme);
+        };
+
+        if (typeof document.startViewTransition !== 'function') {
+          applyTheme();
+          return;
+        }
+
+        const transition = document.startViewTransition(() => {
+          applyTheme();
+        });
+
+        transition.ready.then(() => {
+          document.documentElement.animate(
+            {
+              clipPath: [
+                `circle(0px at ${x}px ${y}px)`,
+                `circle(${maxRadius}px at ${x}px ${y}px)`,
+              ],
+            },
+            {
+              duration: 400,
+              easing: 'ease-in-out',
+              pseudoElement: '::view-transition-new(root)',
+            }
+          );
+        });
+      });
+    }
+});
+
 // Check if user is logged in
 function checkAuthState() {
     const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
@@ -117,13 +173,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const chatbotMessages = document.getElementById('chatbotMessages');
 
     // Toggle chatbot visibility
-    chatbotButton.addEventListener('click', () => {
-        chatbotContainer.classList.add('show');
-    });
+    if (chatbotButton && chatbotContainer) {
+        chatbotButton.addEventListener('click', () => {
+            chatbotContainer.classList.add('show');
+        });
+    }
 
-    closeChatbot.addEventListener('click', () => {
-        chatbotContainer.classList.remove('show');
-    });
+    if (closeChatbot && chatbotContainer) {
+        closeChatbot.addEventListener('click', () => {
+            chatbotContainer.classList.remove('show');
+        });
+    }
 
     // Send message
     function sendMessage() {
@@ -153,10 +213,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Send message on button click or Enter key
-    sendBtn.addEventListener('click', sendMessage);
-    chatbotInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            sendMessage();
-        }
-    });
+    if (sendBtn) {
+        sendBtn.addEventListener('click', sendMessage);
+    }
+    
+    if (chatbotInput) {
+        chatbotInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    }
 }); 
