@@ -33,6 +33,7 @@ let score = 0;
 let timer = null;
 let timeLeft = 60; // 60 seconds per quiz
 let selectedOption = null;
+let userAnswers = {}; // tracks { questionIndex: chosenOptionIndex }
 
 // DOM elements
 const courseSelection = document.getElementById('courseSelection');
@@ -79,6 +80,7 @@ function startQuiz(course) {
     score = 0;
     timeLeft = 60;
     selectedOption = null;
+    userAnswers = {};
 
     if (courseSelection) courseSelection.style.display = 'none';
     if (quizContainer) quizContainer.style.display = 'block';
@@ -120,7 +122,14 @@ function showQuestion() {
 
 // Select option
 function selectOption(index) {
+    // If the user clicks the already-selected option, do nothing
+    if (userAnswers[currentQuestionIndex] === index) return;
+
+    // Record the user's answer for this question
+    userAnswers[currentQuestionIndex] = index;
     selectedOption = index;
+
+    // Highlight the selected option
     document.querySelectorAll('.option').forEach(option => {
         option.classList.remove('selected');
     });
@@ -140,8 +149,7 @@ function selectOption(index) {
 function nextQuestion() {
     if (currentQuestionIndex < currentQuiz.questions.length - 1) {
         currentQuestionIndex++;
-        selectedOption = null;
-        showQuestion();
+        showQuestion(); // showQuestion restores selectedOption from userAnswers
     }
 }
 
@@ -149,8 +157,7 @@ function nextQuestion() {
 function previousQuestion() {
     if (currentQuestionIndex > 0) {
         currentQuestionIndex--;
-        selectedOption = null;
-        showQuestion();
+        showQuestion(); // showQuestion restores selectedOption from userAnswers
     }
 }
 
