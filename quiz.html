@@ -12,7 +12,6 @@
     <script src="scripts/main.js"></script>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <nav class="navbar">
             <a href="index.html" class="logo">EduBridge</a>
@@ -47,9 +46,7 @@
         </nav>
     </header>
 
-    <!-- Main Content -->
     <main>
-        <!-- Course Selection -->
         <section id="courseSelection" class="section">
             <h2>Choose Your Course Quiz</h2>
             <div class="course-cards">
@@ -88,7 +85,6 @@
             </div>
         </section>
 
-        <!-- Quiz Section -->
         <section id="quizContainer" class="section" style="display: none;">
             <div class="quiz-container">
                 <div class="quiz-header">
@@ -104,8 +100,7 @@
                 <div class="question-container">
                     <h3 id="questionText">Question goes here</h3>
                     <div class="options" id="options">
-                        <!-- Options will be dynamically added here -->
-                    </div>
+                        </div>
                 </div>
                 <div class="quiz-controls">
                     <button id="prevBtn" class="btn btn-outline">Previous</button>
@@ -115,7 +110,6 @@
             </div>
         </section>
 
-        <!-- Results Section -->
         <section id="resultsContainer" class="section" style="display: none;">
             <div class="results-container">
                 <h2>Quiz Results</h2>
@@ -145,7 +139,6 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-section">
@@ -166,36 +159,32 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
+    <script src="scripts/api_config.js"></script>
     <script src="scripts/quiz-data.js"></script>
     <script src="scripts/quiz.js"></script>
     <script>
         // Initialize quiz when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
-            // Initialize theme
+            // Theme Initialization
             const themeSelector = document.getElementById('themeSelector');
             const themeButton = document.getElementById('themeButton');
             const themeOptions = document.querySelectorAll('.theme-option');
             const currentTheme = localStorage.getItem('theme') || 'light';
 
-            // Set initial theme
             document.documentElement.setAttribute('data-theme', currentTheme);
             updateActiveThemeOption(currentTheme);
 
-            // Toggle dropdown on button click
             themeButton.addEventListener('click', (e) => {
                 e.stopPropagation();
                 themeSelector.classList.toggle('active');
             });
 
-            // Close dropdown when clicking outside
             document.addEventListener('click', (e) => {
                 if (!themeSelector.contains(e.target)) {
                     themeSelector.classList.remove('active');
                 }
             });
 
-            // Handle theme selection
             themeOptions.forEach(option => {
                 option.addEventListener('click', () => {
                     const theme = option.getAttribute('data-theme');
@@ -216,7 +205,7 @@
                 });
             }
 
-            // Handle user authentication state
+            // Authentication State
             const auth = new Auth();
             const currentUser = auth.getCurrentUser();
             const authButtons = document.getElementById('authButtons');
@@ -226,7 +215,34 @@
             } else {
                 authButtons.style.display = 'block';
             }
+
+            // Quiz Submission Architecture Fix
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.addEventListener('click', async () => {
+                // Logic to calculate score would be in quiz.js, 
+                // but here is how you send it to the backend using the config
+                const quizResults = {
+                    userId: currentUser ? currentUser.id : 'guest',
+                    score: document.getElementById('score').textContent,
+                    course: document.getElementById('quizTitle').textContent
+                };
+
+                try {
+                    // Standardized API call
+                    const response = await fetch(`${API_BASE_URL}/api/quiz/submit`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(quizResults)
+                    });
+                    
+                    if (response.ok) {
+                        console.log("Results synced with server.");
+                    }
+                } catch (error) {
+                    console.log("Running in local mode. Results not synced to server.");
+                }
+            });
         });
     </script>
 </body>
-</html> 
+</html>

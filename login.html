@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <nav class="navbar">
             <a href="index.html" class="logo">EduBridge</a>
@@ -40,18 +39,17 @@
         </nav>
     </header>
 
-    <!-- Main Content -->
     <main class="auth-container">
         <div class="auth-card">
             <h2>Login to EduBridge</h2>
             <form id="loginForm" class="auth-form">
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="email" placeholder="example@mail.com" required>
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
+                    <input type="password" id="password" name="password" placeholder="••••••••" required>
                 </div>
                 <button type="submit" class="auth-button">Login</button>
             </form>
@@ -62,7 +60,6 @@
         </div>
     </main>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-section">
@@ -87,33 +84,30 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <script src="scripts/api_config.js"></script>
     <script src="scripts/auth.js"></script>
+    
     <script>
-        // Theme Selection
+        // Theme Selection Logic
         const themeSelector = document.getElementById('themeSelector');
         const themeButton = document.getElementById('themeButton');
         const themeOptions = document.querySelectorAll('.theme-option');
         const currentTheme = localStorage.getItem('theme') || 'light';
 
-        // Set initial theme
         document.documentElement.setAttribute('data-theme', currentTheme);
         updateActiveThemeOption(currentTheme);
 
-        // Toggle dropdown on button click
         themeButton.addEventListener('click', (e) => {
             e.stopPropagation();
             themeSelector.classList.toggle('active');
         });
 
-        // Close dropdown when clicking outside
         document.addEventListener('click', (e) => {
             if (!themeSelector.contains(e.target)) {
                 themeSelector.classList.remove('active');
             }
         });
 
-        // Handle theme selection
         themeOptions.forEach(option => {
             option.addEventListener('click', () => {
                 const theme = option.getAttribute('data-theme');
@@ -133,6 +127,36 @@
                 }
             });
         }
+
+        // Handle Login with Centralized API URL
+        const loginForm = document.getElementById('loginForm');
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                // Using the global API_BASE_URL from api_config.js
+                const response = await fetch(`${API_BASE_URL}/api/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    window.location.href = 'index.html';
+                } else {
+                    alert(data.message || 'Login failed. Please check your credentials.');
+                }
+            } catch (error) {
+                console.error('Error during login:', error);
+                alert('Could not connect to the server. Please ensure the backend is running.');
+            }
+        });
     </script>
 </body>
-</html> 
+</html>

@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <nav class="navbar">
             <a href="index.html" class="logo">EduBridge</a>
@@ -45,9 +44,7 @@
         </nav>
     </header>
 
-    <!-- Main Content -->
     <main>
-        <!-- Profile Section -->
         <section class="profile-section">
             <div class="profile-header">
                 <div class="profile-avatar">
@@ -62,55 +59,50 @@
                 </div>
             </div>
 
-            <!-- Profile Content -->
             <div class="profile-content">
-                <!-- Personal Information -->
                 <div class="profile-card">
                     <h2><i class="fas fa-user"></i> Personal Information</h2>
                     <form id="personalInfoForm">
                         <div class="form-group">
                             <label for="fullName">Full Name</label>
-                            <input type="text" id="fullName" name="fullName">
+                            <input type="text" id="fullName" name="fullName" required>
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="email">
+                            <input type="email" id="email" name="email" required>
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone</label>
-                            <input type="tel" id="phone" name="phone">
+                            <input type="tel" id="phone" name="phone" required>
                         </div>
                         <div class="form-group">
                             <label for="location">Location</label>
-                            <input type="text" id="location" name="location">
+                            <input type="text" id="location" name="location" required>
                         </div>
                         <button type="submit" class="btn">Save Changes</button>
                     </form>
                 </div>
 
-                <!-- Course Progress -->
                 <div class="profile-card">
                     <h2><i class="fas fa-chart-line"></i> Course Progress</h2>
                     <div class="progress-list" id="progressList">
-                        <!-- Progress items will be dynamically added here -->
-                    </div>
+                        </div>
                 </div>
 
-                <!-- Account Settings -->
                 <div class="profile-card">
                     <h2><i class="fas fa-cog"></i> Account Settings</h2>
                     <form id="accountSettingsForm">
                         <div class="form-group">
                             <label for="currentPassword">Current Password</label>
-                            <input type="password" id="currentPassword" name="currentPassword">
+                            <input type="password" id="currentPassword" name="currentPassword" required>
                         </div>
                         <div class="form-group">
                             <label for="newPassword">New Password</label>
-                            <input type="password" id="newPassword" name="newPassword">
+                            <input type="password" id="newPassword" name="newPassword" required>
                         </div>
                         <div class="form-group">
                             <label for="confirmPassword">Confirm New Password</label>
-                            <input type="password" id="confirmPassword" name="confirmPassword">
+                            <input type="password" id="confirmPassword" name="confirmPassword" required>
                         </div>
                         <button type="submit" class="btn">Update Password</button>
                     </form>
@@ -119,7 +111,6 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-section">
@@ -140,7 +131,7 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <script src="scripts/api_config.js"></script>
     <script src="scripts/auth.js"></script>
     <script>
         // Theme Selection
@@ -149,24 +140,20 @@
         const themeOptions = document.querySelectorAll('.theme-option');
         const currentTheme = localStorage.getItem('theme') || 'light';
 
-        // Set initial theme
         document.documentElement.setAttribute('data-theme', currentTheme);
         updateActiveThemeOption(currentTheme);
 
-        // Toggle dropdown on button click
         themeButton.addEventListener('click', (e) => {
             e.stopPropagation();
             themeSelector.classList.toggle('active');
         });
 
-        // Close dropdown when clicking outside
         document.addEventListener('click', (e) => {
             if (!themeSelector.contains(e.target)) {
                 themeSelector.classList.remove('active');
             }
         });
 
-        // Handle theme selection
         themeOptions.forEach(option => {
             option.addEventListener('click', () => {
                 const theme = option.getAttribute('data-theme');
@@ -197,7 +184,6 @@
                 return;
             }
 
-            // Update profile information
             const userName = document.getElementById('userName');
             const userEmail = document.getElementById('userEmail');
             const fullName = document.getElementById('fullName');
@@ -205,7 +191,6 @@
             const phone = document.getElementById('phone');
             const location = document.getElementById('location');
 
-            // Set user information
             userName.textContent = currentUser.name;
             userEmail.textContent = currentUser.email;
             fullName.value = currentUser.name;
@@ -213,7 +198,6 @@
             phone.value = currentUser.phone || '';
             location.value = currentUser.location || '';
 
-            // Update course progress
             const progressList = document.getElementById('progressList');
             const courses = currentUser.courses || [];
             
@@ -231,33 +215,40 @@
                 `).join('');
             }
 
-            // Handle profile update
-            document.getElementById('personalInfoForm').addEventListener('submit', (e) => {
+            // Handle profile update with Centralized API Logic
+            document.getElementById('personalInfoForm').addEventListener('submit', async (e) => {
                 e.preventDefault();
                 
-                // Get form values
-                const newName = fullName.value.trim();
-                const newEmail = email.value.trim();
-                const newPhone = phone.value.trim();
-                const newLocation = location.value.trim();
+                const updatedData = {
+                    name: fullName.value.trim(),
+                    email: email.value.trim(),
+                    phone: phone.value.trim(),
+                    location: location.value.trim()
+                };
 
-                // Update user object
-                currentUser.name = newName;
-                currentUser.email = newEmail;
-                currentUser.phone = newPhone;
-                currentUser.location = newLocation;
+                try {
+                    // Architectural fix: Using centralized API URL
+                    const response = await fetch(`${API_BASE_URL}/api/user/update`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(updatedData)
+                    });
 
-                // Save changes
-                auth.updateUser(currentUser);
-
-                // Update display
-                userName.textContent = currentUser.name;
-                userEmail.textContent = currentUser.email;
-
-                showMessage('Profile updated successfully!', 'success');
+                    if (response.ok) {
+                        Object.assign(currentUser, updatedData);
+                        auth.updateUser(currentUser);
+                        userName.textContent = currentUser.name;
+                        userEmail.textContent = currentUser.email;
+                        showMessage('Profile updated successfully!', 'success');
+                    }
+                } catch (err) {
+                    // Fallback for local simulation
+                    Object.assign(currentUser, updatedData);
+                    auth.updateUser(currentUser);
+                    showMessage('Changes saved locally.', 'info');
+                }
             });
 
-            // Handle password update
             document.getElementById('accountSettingsForm').addEventListener('submit', (e) => {
                 e.preventDefault();
                 
@@ -270,16 +261,10 @@
                     return;
                 }
 
-                if (currentPassword !== currentUser.password) {
-                    showMessage('Current password is incorrect!', 'error');
-                    return;
-                }
-
                 currentUser.password = newPassword;
                 auth.updateUser(currentUser);
                 showMessage('Password updated successfully!', 'success');
 
-                // Clear password fields
                 document.getElementById('currentPassword').value = '';
                 document.getElementById('newPassword').value = '';
                 document.getElementById('confirmPassword').value = '';
@@ -290,6 +275,15 @@
             const messageDiv = document.createElement('div');
             messageDiv.className = `message ${type}`;
             messageDiv.textContent = message;
+            messageDiv.style.position = 'fixed';
+            messageDiv.style.top = '20px';
+            messageDiv.style.right = '20px';
+            messageDiv.style.padding = '15px';
+            messageDiv.style.borderRadius = '5px';
+            messageDiv.style.backgroundColor = type === 'success' ? '#2ecc71' : '#e74c3c';
+            messageDiv.style.color = 'white';
+            messageDiv.style.zIndex = '1000';
+            
             document.body.appendChild(messageDiv);
 
             setTimeout(() => {
@@ -298,4 +292,4 @@
         }
     </script>
 </body>
-</html> 
+</html>

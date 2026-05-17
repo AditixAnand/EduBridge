@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <nav class="navbar">
             <a href="index.html" class="logo">EduBridge</a>
@@ -40,26 +39,25 @@
         </nav>
     </header>
 
-    <!-- Main Content -->
     <main class="auth-container">
         <div class="auth-card">
             <h2>Create an Account</h2>
             <form id="registerForm" class="auth-form">
                 <div class="form-group">
                     <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" required>
+                    <input type="text" id="name" name="name" placeholder="John Doe" required>
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="email" placeholder="example@mail.com" required>
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
+                    <input type="password" id="password" name="password" placeholder="••••••••" required>
                 </div>
                 <div class="form-group">
                     <label for="confirmPassword">Confirm Password</label>
-                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="••••••••" required>
                 </div>
                 <div class="form-group">
                     <label for="interests">Areas of Interest</label>
@@ -77,7 +75,6 @@
         </div>
     </main>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-section">
@@ -102,8 +99,9 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <script src="scripts/api_config.js"></script>
     <script src="scripts/auth.js"></script>
+    
     <script>
         // Theme Selection
         const themeSelector = document.getElementById('themeSelector');
@@ -111,24 +109,20 @@
         const themeOptions = document.querySelectorAll('.theme-option');
         const currentTheme = localStorage.getItem('theme') || 'light';
 
-        // Set initial theme
         document.documentElement.setAttribute('data-theme', currentTheme);
         updateActiveThemeOption(currentTheme);
 
-        // Toggle dropdown on button click
         themeButton.addEventListener('click', (e) => {
             e.stopPropagation();
             themeSelector.classList.toggle('active');
         });
 
-        // Close dropdown when clicking outside
         document.addEventListener('click', (e) => {
             if (!themeSelector.contains(e.target)) {
                 themeSelector.classList.remove('active');
             }
         });
 
-        // Handle theme selection
         themeOptions.forEach(option => {
             option.addEventListener('click', () => {
                 const theme = option.getAttribute('data-theme');
@@ -148,6 +142,42 @@
                 }
             });
         }
+
+        // Handle Registration
+        const registerForm = document.getElementById('registerForm');
+        registerForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match!");
+                return;
+            }
+
+            try {
+                // Using global API_BASE_URL from api_config.js
+                const response = await fetch(`${API_BASE_URL}/api/register`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, password })
+                });
+
+                if (response.ok) {
+                    alert('Registration successful! Please login.');
+                    window.location.href = 'login.html';
+                } else {
+                    const data = await response.json();
+                    alert(data.message || 'Registration failed.');
+                }
+            } catch (error) {
+                console.error('Error during registration:', error);
+                alert('Connection error. Is the backend server running?');
+            }
+        });
     </script>
 </body>
-</html> 
+</html>
