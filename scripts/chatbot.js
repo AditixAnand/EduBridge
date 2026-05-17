@@ -230,7 +230,7 @@ function initializeChatbot() {
 
         try {
             // 3. Attempt to fetch from Python Backend
-            const response = await fetch('http://127.0.0.1:5000/chat', {
+            const response = await fetch('https://didactic-barnacle-q7gp966g95j924557-5000.app.github.dev/chat', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

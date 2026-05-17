@@ -27,3 +27,5 @@ Thumbs.db
 
 # Python cache
 *.pytest_cache/
+
+.env

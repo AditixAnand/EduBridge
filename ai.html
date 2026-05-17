@@ -419,19 +419,37 @@
         });
 
         // Handle sending messages
-        function sendMessage() {
-            const message = chatbotInput.value.trim();
-            if (message) {
-                // Add user message
-                addMessage(message, 'user');
-                chatbotInput.value = '';
+        async function sendMessage() {
+    const message = chatbotInput.value.trim();
 
-                // Simulate bot response (replace with actual API call)
-                setTimeout(() => {
-                    addMessage('I am a simple chatbot. For full functionality, please implement the chatbot API.', 'bot');
-                }, 1000);
+    if (message) {
+        addMessage(message, 'user');
+        chatbotInput.value = '';
+
+        try {
+            const response = await fetch("https://didactic-barnacle-q7gp966g95j9245575000.app.github.dev/chat", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    message: message
+                })
+            });
+
+            const data = await response.json();
+
+            if (data.response) {
+                addMessage(data.response, 'bot');
+            } else {
+                addMessage("Error: " + data.error, 'bot');
             }
+
+        } catch (error) {
+            addMessage("Server connection failed.", 'bot');
         }
+    }
+}
 
         // Add message to chat
         function addMessage(text, sender) {
