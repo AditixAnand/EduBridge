@@ -1145,3 +1145,26 @@ ul li i.fa-check {
         margin: 10% auto;
     }
 } 
+/* Stats Section */
+
+.stats-section {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding: 3rem 2rem;
+  background-color: var(--primary-color, #2c3e50);
+  text-align: center;
+}
+
+.stat-item h3 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.stat-item p {
+  font-size: 1rem;
+  color: #555;
+}
