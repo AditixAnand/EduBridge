@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduBridge Admin Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="stylesheet" href="Styles/main.css" />
+  <link rel="stylesheet" href="Styles/admin.css" />
+  <script src="scripts/auth.js"></script>
+  <script src="scripts/main.js"></script>
+</head>
+<body class="admin-body">
+  <header>
+    <nav class="navbar">
+      <a href="index.html" class="logo">EduBridge</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="webdev.html">Web Development</a></li>
+        <li><a href="ai.html">AI & ML</a></li>
+        <li><a href="career.html">Career</a></li>
+        <li>
+          <div class="theme-selector" id="themeSelector">
+            <button class="theme-selector-btn" id="themeButton">
+              <i class="fas fa-palette"></i>
+              Theme
+            </button>
+            <div class="theme-selector-dropdown">
+              <div class="theme-option" data-theme="light">
+                <i class="fas fa-sun"></i>
+                Light Mode
+              </div>
+              <div class="theme-option" data-theme="dark">
+                <i class="fas fa-moon"></i>
+                Dark Mode
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="auth-buttons" id="authButtons">
+          <a href="login.html" class="btn btn-outline">Login</a>
+          <a href="register.html" class="btn">Register</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="admin-page">
+    <section class="admin-hero">
+      <div class="hero-content">
+        <p class="hero-eyebrow">Project Admin</p>
+        <h1>Admin Command Center</h1>
+        <p class="hero-subtitle">Manage learning content, quizzes, and user data from a single control room.</p>
+        <div class="hero-actions">
+          <button class="btn btn-outline" id="refreshDashboard">Refresh Stats</button>
+          <button class="btn" id="seedDashboard">Restore Demo Data</button>
+        </div>
+      </div>
+      <div class="hero-badge">
+        <i class="fas fa-shield-alt"></i>
+        <div>
+          <span class="badge-title">Access Level</span>
+          <span class="badge-value" id="accessLevel">Admin Required</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="admin-summary" id="adminSummary">
+      <div class="summary-card">
+        <div>
+          <p class="summary-label">Learning Items</p>
+          <h3 id="contentCount">0</h3>
+        </div>
+        <span class="summary-icon"><i class="fas fa-layer-group"></i></span>
+      </div>
+      <div class="summary-card">
+        <div>
+          <p class="summary-label">Quiz Questions</p>
+          <h3 id="quizCount">0</h3>
+        </div>
+        <span class="summary-icon"><i class="fas fa-spell-check"></i></span>
+      </div>
+      <div class="summary-card">
+        <div>
+          <p class="summary-label">Registered Users</p>
+          <h3 id="userCount">0</h3>
+        </div>
+        <span class="summary-icon"><i class="fas fa-users"></i></span>
+      </div>
+      <div class="summary-card">
+        <div>
+          <p class="summary-label">Admin Accounts</p>
+          <h3 id="adminCount">0</h3>
+        </div>
+        <span class="summary-icon"><i class="fas fa-user-shield"></i></span>
+      </div>
+    </section>
+
+    <div class="admin-notice" id="adminNotice" hidden>
+      Admin access required. Please sign in with an authorized admin account or contact an administrator for access.
+    </div>
+
+    <section class="admin-grid">
+      <div class="admin-panel" id="contentPanel">
+        <div class="panel-header">
+          <div>
+            <h2>Learning Content</h2>
+            <p>Curate course modules, update descriptions, and manage links.</p>
+          </div>
+        </div>
+        <form id="contentForm" class="panel-form">
+          <input type="hidden" id="contentId" />
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contentTitle">Title</label>
+              <input type="text" id="contentTitle" required />
+            </div>
+            <div class="form-group">
+              <label for="contentCategory">Category</label>
+              <select id="contentCategory" required>
+                <option value="webdev">Web Development</option>
+                <option value="ai">AI & ML</option>
+                <option value="career">Career</option>
+                <option value="general">General</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="contentLevel">Level</label>
+              <select id="contentLevel" required>
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Advanced">Advanced</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contentDuration">Estimated Duration</label>
+              <input type="text" id="contentDuration" placeholder="e.g. 3 hours" required />
+            </div>
+            <div class="form-group">
+              <label for="contentLink">Resource Link</label>
+              <input type="url" id="contentLink" placeholder="https://" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="contentDescription">Description</label>
+            <textarea id="contentDescription" rows="3" required></textarea>
+          </div>
+          <div class="form-actions">
+            <button type="reset" class="btn btn-outline" id="contentReset">Clear</button>
+            <button type="submit" class="btn" id="contentSubmit">Save Content</button>
+          </div>
+        </form>
+        <div class="panel-list">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Level</th>
+                <th>Duration</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="contentTableBody"></tbody>
+          </table>
+          <p class="empty-state" id="contentEmpty">No learning content added yet.</p>
+        </div>
+      </div>
+
+      <div class="admin-panel" id="quizPanel">
+        <div class="panel-header">
+          <div>
+            <h2>Quiz Manager</h2>
+            <p>Create quiz questions and align assessments with each learning track.</p>
+          </div>
+        </div>
+        <form id="quizForm" class="panel-form">
+          <input type="hidden" id="quizQuestionIndex" />
+          <div class="form-row">
+            <div class="form-group">
+              <label for="quizCourse">Course</label>
+              <select id="quizCourse" required>
+                <option value="webdev">Web Development</option>
+                <option value="ai">AI & ML</option>
+                <option value="career">Career</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="quizTitle">Quiz Title</label>
+              <input type="text" id="quizTitle" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="quizQuestion">Question</label>
+            <textarea id="quizQuestion" rows="2" required></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="optionA">Option A</label>
+              <input type="text" id="optionA" required />
+            </div>
+            <div class="form-group">
+              <label for="optionB">Option B</label>
+              <input type="text" id="optionB" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="optionC">Option C</label>
+              <input type="text" id="optionC" required />
+            </div>
+            <div class="form-group">
+              <label for="optionD">Option D</label>
+              <input type="text" id="optionD" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="correctOption">Correct Option</label>
+              <select id="correctOption" required>
+                <option value="0">A</option>
+                <option value="1">B</option>
+                <option value="2">C</option>
+                <option value="3">D</option>
+              </select>
+            </div>
+            <div class="form-group form-inline-note">
+              <span class="helper-text">Quiz questions update the public quiz experience.</span>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button type="reset" class="btn btn-outline" id="quizReset">Clear</button>
+            <button type="submit" class="btn" id="quizSubmit">Save Question</button>
+          </div>
+        </form>
+        <div class="panel-list">
+          <div class="panel-toolbar">
+            <h3 id="quizPanelTitle">Web Development Questions</h3>
+          </div>
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Question</th>
+                <th>Correct</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="quizTableBody"></tbody>
+          </table>
+          <p class="empty-state" id="quizEmpty">No questions created yet.</p>
+        </div>
+      </div>
+
+      <div class="admin-panel" id="userPanel">
+        <div class="panel-header">
+          <div>
+            <h2>User Management</h2>
+            <p>Review registrations, assign admin access, and keep data clean.</p>
+          </div>
+        </div>
+        <div class="panel-form user-toolbar">
+          <div class="form-group">
+            <label for="userSearch">Search Users</label>
+            <input type="search" id="userSearch" placeholder="Search by name or email" />
+          </div>
+          <div class="form-group">
+            <label for="userFilter">Filter</label>
+            <select id="userFilter">
+              <option value="all">All Users</option>
+              <option value="admin">Admins Only</option>
+              <option value="member">Members Only</option>
+            </select>
+          </div>
+        </div>
+        <div class="panel-list">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="userTableBody"></tbody>
+          </table>
+          <p class="empty-state" id="userEmpty">No registered users yet.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="webdev.html">Web Development</a></li>
+          <li><a href="ai.html">AI & ML</a></li>
+          <li><a href="career.html">Career</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <a href="https://x.com/shivam98997467" target="_blank" class="social-button" title="Follow us on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="scripts/content-data.js"></script>
+  <script src="scripts/quiz-data.js"></script>
+  <script src="scripts/admin.js"></script>
+</body>
+</html>
