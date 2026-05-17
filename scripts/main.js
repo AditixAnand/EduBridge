@@ -270,4 +270,40 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+}); 
+
+// Count-up Animation
+document.addEventListener('DOMContentLoaded', () => {
+  function countUp(element, target, duration = 2000) {
+    let start = 0;
+    const increment = target / (duration / 16);
+
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= target) {
+        element.textContent = target + (element.dataset.suffix || '');
+        clearInterval(timer);
+      } else {
+        element.textContent = Math.floor(start) + (element.dataset.suffix || '');
+      }
+    }, 16);
+  }
+
+  const statsSection = document.querySelector('.stats-section');
+
+  if (statsSection) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          document.querySelectorAll('.stat-item h3').forEach(el => {
+            const target = parseInt(el.dataset.target);
+            countUp(el, target);
+          });
+          observer.disconnect(); // only animate once
+        }
+      });
+    });
+
+    observer.observe(statsSection);
+  }
 });
