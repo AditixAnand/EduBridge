@@ -37,6 +37,8 @@ EduBridge bridges the gap between learning and career guidance by combining stru
 
 ### 🤖 APIs
 - **OpenAI API:** AI-driven features
+note- 
+"The project now uses a centralized API configuration in scripts/api_config.js. Update the API_BASE_URL there if your backend port changes."
 
 ### 🔧 Tools
 - **Git:** Version control 
