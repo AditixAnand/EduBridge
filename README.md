@@ -81,7 +81,9 @@ EduBridge/
 ├── ai.html
 ├── webdev.html
 ├── career.html
-└── register.html
+├── register.html
+└── requirements.txt
+
 ```
 
 ---
@@ -96,7 +98,7 @@ EduBridge/
 2️⃣ Setup Python Backend
 ```bash
   cd backend
-  pip install flask python-dotenv openai
+  pip install -r requirements.txt
 ```
 💡 Recommended: Use a virtual environment:
 ```bash
@@ -164,7 +166,7 @@ cd EduBridge
 
 cd backend
 
-pip install flask python-dotenv openai
+pip install -r requirements.txt
 
 ### 3. Run the Backend
 
