@@ -40,22 +40,23 @@
     color: var(--text);
     font-weight: 500;
 }
-
 .form-group input,
 .form-group select {
-    padding: 0.75rem;
-    border: 1px solid var(--border);
-    border-radius: 5px;
-    background: var(--input-bg);
-    color: var(--text);
-    font-size: 1rem;
+  padding: 0.75rem;
+  border: 1.5px solid var(--border, #cbd5e1);
+  border-radius: 5px;
+  background: var(--input-bg, #fff);
+  color: var(--text, #1e293b);
+  font-size: 1rem;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .form-group input:focus,
 .form-group select:focus {
-    outline: none;
-    border-color: var(--accent);
-    box-shadow: 0 0 0 2px rgba(29, 161, 242, 0.2);
+  border-color: var(--border-focus, #4f46e5);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
 }
 
 /* Multiple Select */
@@ -65,15 +66,16 @@
 
 /* Authentication Button */
 .auth-button {
-    background: var(--accent);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 0.75rem;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    .auth-button {
+  background: var(--primary, #4f46e5);
+  color: #ffffff;
+  padding: 0.75rem;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
 }
 
 .auth-button:hover {
