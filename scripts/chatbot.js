@@ -218,54 +218,52 @@ function initializeChatbot() {
     // MAIN HANDLER (Hybrid: Remote first, then Local)
     // ---------------------------------------------------------
     async function handleUserMessage() {
-        const userInput = chatbotInput.value.trim();
-        if (!userInput) return;
+    const userInput = chatbotInput.value.trim();
 
-        // 1. Display User Message
-        addMessage(userInput, true);
-        chatbotInput.value = "";
+    if (!userInput) return;
 
-        // 2. Show Indicator
-        const typingIndicator = showTypingIndicator();
+    addMessage(userInput, true);
+    chatbotInput.value = "";
 
-        try {
-            // 3. Attempt to fetch from Python Backend
-            const response = await fetch('https://didactic-barnacle-q7gp966g95j924557-5000.app.github.dev/chat', {
+    const typingIndicator = showTypingIndicator();
+
+    try {
+        const response = await fetch(
+            'https://didactic-barnacle-q7gp966g95j924557-5000.app.github.dev/chat',
+            {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ message: userInput })
-            });
-
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
+                body: JSON.stringify({
+                    message: userInput
+                })
             }
+        );
 
-            const data = await response.json();
-            
-            // Success: Remove indicator and show Backend Response
-            removeTypingIndicator(typingIndicator);
-            
-            if (data.error) {
-                // If backend sent a logical error, treat as fallback case
-                throw new Error(data.error);
-            }
-            addMessage(data.response, false);
-
-        } catch (error) {
-            console.log('Backend unreachable or error. Switching to local fallback mode.', error);
-            
-            // 4. FAILSAFE: Use Local Logic
-            const page = getCurrentPage();
-            // Simulate a tiny delay so it feels natural even on fallback
-            setTimeout(() => {
-                const localResponse = getLocalResponse(userInput, page);
-                removeTypingIndicator(typingIndicator);
-                addMessage(localResponse, false);
-            }, 500);
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
         }
+
+        const data = await response.json();
+
+        removeTypingIndicator(typingIndicator);
+
+        if (data.response) {
+            addMessage(data.response, false);
+        } else {
+            addMessage("Error: " + data.error, false);
+        }
+
+    } catch (error) {
+
+        removeTypingIndicator(typingIndicator);
+
+        console.error("Backend Error:", error);
+
+        addMessage("Backend connection failed.", false);
     }
+}
 
     // Toggle chatbot
     chatbotButton.addEventListener("click", () => {
