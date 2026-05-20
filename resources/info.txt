@@ -1,0 +1,127 @@
+## What You'll Learn in Career guidance 
+ Resume Building- Resume Writing Tips, Cover Letter Guide, LinkedIn Profile 
+ Interview Skills- Common Questions, Technical Interviews, Salary Negotiation 
+ Professional Growth- Networking Tips, Career Planning, Industry Trends 
+## Admin Curated Learning in career guidance 
+Career Sprint Planning: level-Beginner, duration-90 minutes, It help learners craft resumes, 
+portfolios, and interview prep plans.  
+## Learning Resources for career guidance 
+1. Documentation & Guides 
+ Resume Writing Guide- Comprehensive guide to creating effective resumes. Learn about 
+formatting, content structure, and keyword optimization for ATS systems. 
+ Interview Handbook- Detailed handbook covering all aspects of job interviews. Includes 
+common questions, best practices, and preparation strategies. 
+ Career Development Guide- Step-by-step guide for career advancement. Learn about skill 
+development, networking, and professional growth strategies. 
+2. Practice Projects 
+ Resume Builder- Create a professional resume using industry best practices. Get feedback 
+and optimize for different job roles. 
+ Mock Interview Simulator- Practice common interview scenarios and receive feedback. 
+Improve your communication and presentation skills. 
+ Career Portfolio- Develop a comprehensive career portfolio showcasing your skills, projects, 
+and achievements. 
+3. Community & Support 
+ LinkedIn Groups- Join professional groups and connect with industry experts. Participate in 
+discussions and stay updated with trends. 
+ Career Forums- Engage with other professionals and get advice on career development. 
+Share experiences and learn from others. 
+ Mentorship Program- Connect with experienced professionals for guidance. Get 
+personalized advice and career direction. 
+## Career Guidance Videos 
+ Job Search Strategies- Finding Tech Jobs, Networking Tips, Remote Work Guide 
+ Interview Preparation- Technical Interviews, Behavioral Interviews, System Design 
+Interviews 
+ Career Growth- Career Planning, Salary Negotiation, Leadership Skills 
+ ## Career Development Quiz- Duration- 30 Minutes, Total Questions- 20 Questions, Passing Score-
+70%  
+ 
+## Featured Courses 
+ Web Development- Master frontend and backend technologies to build modern web 
+applications.  
+ AI & Machine Learning- Dive into artificial intelligence, machine learning, and data science. 
+ Career Guidance- Get expert advice on building a successful career in technology.  
+## Why Choose EduBridge 
+ Expert-Led Learning- Learn from industry professionals with years of experience in their 
+respective fields. Our instructors are dedicated to your success. 
+ Hands-on Projects- Gain practical experience through real-world projects. Build your 
+portfolio while learning industry-relevant skills. 
+ Community Support- Join a vibrant community of learners. Get help, share knowledge, and 
+network with peers and professionals. 
+ Career Ready- Our courses are designed to make you job-ready. Learn the skills employers 
+are looking for in today's market. 
+ 
+## What You'll Learn in AI and ML 
+ Machine Learning -Supervised Learning, Unsupervised Learning, Neural Networks, Model 
+Evaluation 
+ Deep Learning- Neural Networks, Computer Vision, Natural Language Processing, 
+Reinforcement Learning 
+ AI Applications- Image Recognition, Speech Processing, Predictive Analytics, AI Ethics 
+## Admin Curated Learning for AI and ML 
+Intro to Machine Learning: Level- Intermediate, Duration- 3 hours, It Cover supervised learning, 
+model evaluation, and practical examples. 
+##AI and ML Learning Resources –  
+Documentation & Guides 
+ TensorFlow Documentation- Official documentation for TensorFlow, covering everything 
+from basic concepts to advanced deep learning techniques. 
+ PyTorch Tutorials- Comprehensive tutorials for PyTorch, including neural networks, computer 
+vision, and natural language processing. 
+ Scikit-learn Guide- Detailed guide for machine learning with scikit-learn, including data 
+preprocessing, model selection, and evaluation. 
+ Practice Projects 
+ Image Classification- Build a CNN model to classify images using TensorFlow or PyTorch. 
+Learn about data augmentation and transfer learning. 
+ Sentiment Analysis- Create an NLP model to analyze text sentiment. Practice text 
+preprocessing and model training with real-world data. 
+ Time Series Prediction- Develop a model to predict future values in time series data. Learn 
+about LSTM networks and sequence modeling. 
+ Community & Support 
+ Kaggle- Join competitions, share code, and learn from other data scientists. Access datasets 
+and notebooks for practice. 
+ AI Stack Exchange- Get help with AI and ML questions. Connect with experts and find 
+solutions to common problems. 
+ AI Community- Join discussions about AI research and applications. Stay updated with the 
+latest developments in the field. 
+## AI & ML Videos 
+1. Machine Learning- ML Fundamentals, Neural Networks, Feature Engineering 
+2. Deep Learning- CNN Basics, RNN and LSTM, Transfer Learning 
+3. AI Applications -NLP Projects, Computer Vision, Reinforcement Learning 
+## AI & ML Quiz-Duration- 30 Minutes, Total Questions- 20 Questions, Passing Score- 70%  
+## What You'll Learn in web dev 
+ Frontend Development- HTML & CSS Basics, JavaScript Programming, Responsive Web 
+design, Modern Frameworks 
+ Backend Development- Server Programming, Database Management, API Development, 
+Security Basics 
+ Full Stack Development- Complete Web Apps, Version Control, Deployment, Testing 
+## Admin Curated Learning in Web development 
+HTML Foundations: level-Beginner duration-2 hours, It introduce semantic markup, structure, and 
+accessibility fundamentals.  
+## Learning Resources for web dev 
+1. Documentation & Guides 
+ MDN Web Docs- Comprehensive web development documentation covering HTML, CSS, and 
+JavaScript. Includes tutorials, references, and examples for all skill levels. 
+ W3Schools- Interactive tutorials and examples for web development. Great for beginners to 
+learn HTML, CSS, JavaScript, and other web technologies. 
+ freeCodeCamp- Free coding challenges and projects to practice web development skills. 
+Includes certifications and a supportive community. 
+2. Practice Projects 
+ Portfolio Website- Create a personal portfolio website to showcase your skills and projects. 
+Focus on responsive design and modern web technologies. 
+ E-commerce Site- Build a full-featured online store with product listings, shopping cart, and 
+payment integration. Practice both frontend and backend development. 
+ Social Media App- Develop a real-time messaging platform with user authentication, posts, 
+and comments. Learn about real-time updates and database management. 
+3. Community & Support 
+ Stack Overflow- Get help from the developer community. Find solutions to common 
+problems and learn from experienced developers. 
+ GitHub- Collaborate and share your code. Contribute to open-source projects and build your 
+developer portfolio. 
+ DEV Community- Connect with fellow developers. Share knowledge, ask questions, and stay 
+updated with the latest web development trends. 
+## Web Development Videos 
+ Frontend Development- HTML & CSS Crash Course, JavaScript Fundamentals, Responsive 
+Design 
+ Backend Development- Node.js Basics, SQL Tutorial, REST API Development 
+ Full Stack Projects- E-commerce Website, Social Media App, Task Management System 
+## Web Development Quiz- Duration-30 minutes, Total Questions-20 questions, Passing Score-80% 
+to pass 
+ 
