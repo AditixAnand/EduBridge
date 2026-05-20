@@ -229,7 +229,7 @@ function initializeChatbot() {
 
     try {
         const response = await fetch(
-            'https://didactic-barnacle-q7gp966g95j924557-5000.app.github.dev/chat',
+            'http://127.0.0.1:5000/chat',
             {
                 method: 'POST',
                 headers: {

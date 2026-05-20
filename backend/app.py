@@ -1,8 +1,7 @@
 import os
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-# from openai import OpenAI
-from google import genai
+from openai import OpenAI
 from dotenv import load_dotenv
 
 # 1. Load environment variables from .env file
@@ -18,8 +17,7 @@ CORS(app)
 # 3. Initialize the OpenAI client securely
 # It automatically looks for "OPENAI_API_KEY" in your environment variables
 api_key = os.getenv("OPENAI_API_KEY")
-# client = OpenAI(api_key=api_key)
-client=genai.Client(api_key=api_key)
+client = OpenAI(api_key=api_key)
 
 @app.route('/')
 def home():
@@ -35,33 +33,42 @@ def chat():
     data = request.get_json()
     user_message = data.get('message')
     
-    with open("/workspaces/EduBridge/resources/info.txt","r") as file:
+    with open("/EduBridge/resources/info.txt","r") as file:
         context=file.read()
 
     if not user_message:
         return jsonify({"error": "No message provided"}), 400
 
     try:
-        response = client.models.generate_content(
-            model="gemini-3-flash-preview",
-            contents=f"""
-        You are a helpful assistant for EduBridge, an online learning platform.
-        Answer the queries using the context provided.
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {
+                    "role": "system",
+                    "content": """
+                        You are a helpful assistant for EduBridge, an online learning platform.
+                        Answer the queries related to EduBridge using the context provided. Otherwise answer general questions accordingly.
+                        Do not use Markdown formatting. Never use asterisks (*) for bold text or bullet points.
+                        Use standard capital letters for headers, plain numbers for lists, and regular line breaks.
+                        """
+                },
+                {
+                    "role": "user",
+                    "content": f"""
+                        User Question:
+                        {user_message}
 
-        User Question:
-        {user_message}
-
-        Context:
-        {context}
-        """
+                        Context:
+                        {context}
+                        """
+                }
+            ],
+            max_tokens=150,
+            temperature=0.7
         )
 
-        ai_response = response.text
+        ai_response = response.choices[0].message.content.strip()
         return jsonify({"response": ai_response})
-
-    except Exception as e:
-        print(f"Error: {e}")  # Print to console for debugging
-        return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
     app.run(debug=True)
