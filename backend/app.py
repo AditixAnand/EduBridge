@@ -70,5 +70,9 @@ def chat():
         ai_response = response.choices[0].message.content.strip()
         return jsonify({"response": ai_response})
 
+    except Exception as e:
+        print(f"Error: {e}")
+        return jsonify({"error": str(e)}), 500
+
 if __name__ == "__main__":
     app.run(debug=True)
