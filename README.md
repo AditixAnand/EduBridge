@@ -88,27 +88,48 @@ EduBridge/
 
 ## ⚙️ Setup Instructions
 
-1️⃣ Clone the repository
+### 1. Clone the repository
 ```bash
   git clone https://github.com/AditixAnand/EduBridge.git
   cd EduBridge
 ```
-2️⃣ Setup Python Backend
+### 2. Setup Python Backend
+
 ```bash
-  cd backend
-  pip install flask python-dotenv openai
+cd backend
+python -m venv venv
+source venv/bin/activate     # macOS/Linux
+# venv\Scripts\activate      # Windows
+pip install -r requirements.txt
+cp .env.example .env         # then fill in the OPENAI_API_KEY field
 ```
-💡 Recommended: Use a virtual environment:
+
+### 3. Run the Backend
+
 ```bash
-  python -m venv venv
-  venv\Scripts\activate   # Windows
-  source venv/bin/activate # macOS/Linux
+python app.py
 ```
-3️⃣ Run the Backend
+
+The backend runs on `http://127.0.0.1:5000`. The frontend (Live Server on port 5500, or opened directly via `file://`) is whitelisted by default. To allow additional origins, set `CORS_ALLOWED_ORIGINS` in `.env` as a comma-separated list.
+
+### 4. Verify
+
 ```bash
-  python app.py
+# Replace 'curl' with 'curl.exe' in Windows
+# Health check
+curl -i http://127.0.0.1:5000/health
+
+# Chat endpoint (requires a valid OPENAI_API_KEY)
+curl -i -X POST http://127.0.0.1:5000/chat \
+  -H "Content-Type: application/json" \
+  -H "Origin: http://127.0.0.1:5500" \
+  -d '{"message": "Hello"}'
+
+# Run the test suite
+pip install pytest
+pytest backend/tests -q
 ```
-4️⃣ Open the Frontend  
+### 5. Open the Frontend  
   Open index.html in your browser.  
 **✅ Important:**  
 Ensure JavaScript API calls point to:  
