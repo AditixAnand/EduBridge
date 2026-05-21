@@ -50,9 +50,14 @@
                     <input type="email" id="email" name="email" required>
                 </div>
                 <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" required>
+
+    <div style="margin-top:8px;">
+        <input type="checkbox" id="showPassword">
+        <label for="showPassword">Show Password</label>
+    </div>
+</div>
                 <button type="submit" class="auth-button">Login</button>
             </form>
             <div class="auth-links">
@@ -133,6 +138,19 @@
                 }
             });
         }
+        // Show/Hide Password
+const passwordInput = document.getElementById('password');
+const showPasswordCheckbox = document.getElementById('showPassword');
+
+showPasswordCheckbox.addEventListener('change', function () {
+
+    if (this.checked) {
+        passwordInput.type = 'text';
+    } else {
+        passwordInput.type = 'password';
+    }
+
+});
     </script>
 </body>
 </html> 

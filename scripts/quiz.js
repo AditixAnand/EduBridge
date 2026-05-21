@@ -33,6 +33,7 @@ let score = 0;
 let timer = null;
 let timeLeft = 60; // 60 seconds per quiz
 let selectedOption = null;
+let answeredQuestions = [];
 
 // DOM elements
 const courseSelection = document.getElementById('courseSelection');
@@ -79,6 +80,7 @@ function startQuiz(course) {
     score = 0;
     timeLeft = 60;
     selectedOption = null;
+    answeredQuestions = [];
 
     if (courseSelection) courseSelection.style.display = 'none';
     if (quizContainer) quizContainer.style.display = 'block';
@@ -120,16 +122,25 @@ function showQuestion() {
 
 // Select option
 function selectOption(index) {
+
     selectedOption = index;
+
     document.querySelectorAll('.option').forEach(option => {
         option.classList.remove('selected');
     });
-    const el = document.querySelector(`.option[data-index="${index}"]`);
-    if (el) el.classList.add('selected');
 
-    // Update score if correct
-    if (currentQuiz && currentQuiz.questions && currentQuiz.questions[currentQuestionIndex]) {
-        if (index === currentQuiz.questions[currentQuestionIndex].correct) {
+    const el = document.querySelector(`.option[data-index="${index}"]`);
+
+    if (el) {
+        el.classList.add('selected');
+    }
+
+    // Prevent multiple scoring for same question
+    if (answeredQuestions[currentQuestionIndex] === undefined) {
+
+        answeredQuestions[currentQuestionIndex] = index;
+
+        if (currentQuiz.questions[currentQuestionIndex].correct === index) {
             score++;
             updateScore();
         }
