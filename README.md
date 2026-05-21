@@ -97,6 +97,7 @@ cd EduBridge
 ```bash
 python3 -m venv venv
 source venv/bin/activate   # macOS/Linux
+venv\Scripts\activate     # Windows (PowerShell/CMD)
 pip install -r backend/requirements.txt
 ```
 3️⃣ Create your env file
@@ -117,6 +118,8 @@ http://127.0.0.1:8000/index.html
 ```
 
 **✅ Important:**
+Run the remaining backend commands inside the activated virtual environment.
+
 The chatbot frontend will call the backend at `http://127.0.0.1:5000/chat`. If `OPENAI_API_KEY` is not set the backend will return a clear error message and the frontend will fall back to a local response mode.
 
 ---
