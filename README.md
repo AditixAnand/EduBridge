@@ -90,31 +90,34 @@ EduBridge/
 
 1️⃣ Clone the repository
 ```bash
-  git clone https://github.com/AditixAnand/EduBridge.git
-  cd EduBridge
+git clone https://github.com/AditixAnand/EduBridge.git
+cd EduBridge
 ```
-2️⃣ Setup Python Backend
+2️⃣ Setup Python Backend (recommended)
 ```bash
-  cd backend
-  pip install flask python-dotenv openai
+python3 -m venv venv
+source venv/bin/activate   # macOS/Linux
+pip install -r backend/requirements.txt
 ```
-💡 Recommended: Use a virtual environment:
+3️⃣ Create your env file
 ```bash
-  python -m venv venv
-  venv\Scripts\activate   # Windows
-  source venv/bin/activate # macOS/Linux
+cp backend/.env.example backend/.env
+# Edit backend/.env and add your OPENAI_API_KEY
 ```
-3️⃣ Run the Backend
+4️⃣ Run the Backend
 ```bash
-  python app.py
+python backend/app.py
 ```
-4️⃣ Open the Frontend  
-  Open index.html in your browser.  
-**✅ Important:**  
-Ensure JavaScript API calls point to:  
-```bash
-http://127.0.0.1:5000/
+5️⃣ Open the Frontend
+
+Open `index.html` in your browser or serve the project root with a static server (e.g. `python -m http.server 8000`) and navigate to:
+
 ```
+http://127.0.0.1:8000/index.html
+```
+
+**✅ Important:**
+The chatbot frontend will call the backend at `http://127.0.0.1:5000/chat`. If `OPENAI_API_KEY` is not set the backend will return a clear error message and the frontend will fall back to a local response mode.
 
 ---
 
