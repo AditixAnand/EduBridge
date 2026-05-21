@@ -2,7 +2,7 @@ const express = require('express');
 const axios = require('axios');
 const router = express.Router();
 
-// POST /api/chat
+// Mounted at `/api` in `server/index.js` -> POST /api/chat
 router.post('/chat', async (req, res) => {
   const userMessage = req.body.message;
 
@@ -16,11 +16,15 @@ router.post('/chat', async (req, res) => {
   }
 
   try {
+    // Use the chat completions endpoint for chat models like gpt-3.5-turbo / gpt-4
     const response = await axios.post(
-      'https://api.openai.com/v1/completions',
+      'https://api.openai.com/v1/chat/completions',
       {
         model: 'gpt-3.5-turbo',
-        prompt: userMessage,
+        messages: [
+          { role: 'system', content: 'You are a helpful assistant for EduBridge.' },
+          { role: 'user', content: userMessage },
+        ],
         max_tokens: 150,
         temperature: 0.7,
       },
@@ -32,8 +36,8 @@ router.post('/chat', async (req, res) => {
       }
     );
 
-    // Support both completions and chat-style responses
-    const reply = (response.data.choices && response.data.choices[0].text) || response.data.choices[0].message?.content || '';
+    // Parse reply safely with optional chaining
+    const reply = response.data.choices?.[0]?.message?.content || '';
     res.json({ reply: reply.trim() });
   } catch (err) {
     console.error('Error in /api/chat:', err?.response?.data || err.message);
