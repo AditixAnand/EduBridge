@@ -13,16 +13,30 @@ app = Flask(__name__)
 # This allows your frontend (running on a different port/Live Server) to talk to this backend
 CORS(app)
 
-# 3. Initialize the OpenAI client securely
-# It automatically looks for "OPENAI_API_KEY" in your environment variables
-api_key = os.getenv("OPENAI_API_KEY")
-client = OpenAI(api_key=api_key)
+# Lazy singleton for OpenAI client to avoid per-request allocations but still
+# allow the server to start when the API key is not yet configured.
+_openai_client = None
+
+def get_openai_client():
+    global _openai_client
+    if _openai_client is not None:
+        return _openai_client
+
+    api_key = os.getenv("OPENAI_API_KEY")
+    if not api_key:
+        return None
+
+    _openai_client = OpenAI(api_key=api_key)
+    return _openai_client
 
 @app.route('/chat', methods=['POST'])
 def chat():
-    # Security check: Ensure API key is loaded
-    if not api_key:
-        return jsonify({"error": "OpenAI API key is missing. Check your .env file."}), 500
+    # Obtain a client (lazy). If missing, return a generic service-unavailable error.
+    client = get_openai_client()
+    if client is None:
+        # Log a helpful message server-side (do not expose file paths to clients)
+        print("OpenAI API key is not configured. Set OPENAI_API_KEY in backend/.env or environment to enable AI features.")
+        return jsonify({"error": "AI service not configured"}), 503
 
     # Get the message from the frontend
     data = request.get_json()
