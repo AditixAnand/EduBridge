@@ -1024,7 +1024,7 @@ ul li i.fa-check {
 
 .profile-dropdown a:hover {
     color: var(--secondary-color);
-    background: rgba(0, 0, 0, 0.05);
+    background: rgba(131, 125, 125, 0.05);
 }
 
 .profile-dropdown i {
@@ -1145,3 +1145,214 @@ ul li i.fa-check {
         margin: 10% auto;
     }
 } 
+/* =========================
+   FIXED DARK MODE SECTION
+   ========================= */
+
+[data-theme="dark"] {
+
+    /* Main Colors */
+    --primary-color: #0f172a;
+    --secondary-color: #38bdf8;
+    --accent-color: #f87171;
+
+    /* Backgrounds */
+    --background-color: #0b1120;
+    --card-background: #111827;
+    --hover-bg: #1e293b;
+
+    /* Text Colors */
+    --text-color: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --light-text: #ffffff;
+
+    /* Borders & Shadows */
+    --border-color: #334155;
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+
+/* =========================
+   GLOBAL DARK MODE FIXES
+   ========================= */
+
+[data-theme="dark"] body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+/* Section Headings */
+[data-theme="dark"] .section h2,
+[data-theme="dark"] .card-content h3,
+[data-theme="dark"] .video-category h3,
+[data-theme="dark"] .quiz-stats span,
+[data-theme="dark"] .stat-item span,
+[data-theme="dark"] .box-header h3 {
+    color: var(--text-color);
+}
+
+/* Paragraphs & Descriptions */
+[data-theme="dark"] p,
+[data-theme="dark"] .content-description,
+[data-theme="dark"] .resource-desc,
+[data-theme="dark"] .quiz-stats p,
+[data-theme="dark"] .duration,
+[data-theme="dark"] .section-intro,
+[data-theme="dark"] .video-info p,
+[data-theme="dark"] .box-footer .duration {
+    color: var(--text-secondary);
+}
+
+/* Cards */
+[data-theme="dark"] .card,
+[data-theme="dark"] .resource-card,
+[data-theme="dark"] .journey-box,
+[data-theme="dark"] .quiz-card,
+[data-theme="dark"] .video-category,
+[data-theme="dark"] .stat-item {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+/* Learning Resource Links */
+[data-theme="dark"] .resource-list a,
+[data-theme="dark"] .video-link,
+[data-theme="dark"] .profile-dropdown a {
+    color: var(--text-color);
+}
+
+/* Hover States */
+[data-theme="dark"] .resource-list a:hover,
+[data-theme="dark"] .video-item:hover,
+[data-theme="dark"] .profile-dropdown a:hover {
+    background-color: var(--hover-bg);
+    color: var(--light-text);
+}
+
+/* Admin Curated Tags */
+[data-theme="dark"] .content-tag {
+    background: rgba(56, 189, 248, 0.15);
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    color: #7dd3fc;
+}
+
+/* Buttons */
+[data-theme="dark"] .btn {
+    background-color: var(--secondary-color);
+    color: #ffffff;
+}
+
+[data-theme="dark"] .btn:hover {
+    background-color: #0284c7;
+}
+
+[data-theme="dark"] .btn-outline {
+    border: 2px solid var(--secondary-color);
+    color: var(--secondary-color);
+}
+
+[data-theme="dark"] .btn-outline:hover {
+    background-color: var(--secondary-color);
+    color: #ffffff;
+}
+
+/* Video Items */
+[data-theme="dark"] .video-item {
+    background-color: #1e293b;
+}
+
+/* Modal */
+[data-theme="dark"] .modal-content {
+    background-color: var(--card-background);
+    color: var(--text-color);
+}
+
+/* Dropdown */
+[data-theme="dark"] .theme-selector-dropdown,
+[data-theme="dark"] .profile-dropdown {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+}
+
+/* Icons */
+[data-theme="dark"] .resource-list i,
+[data-theme="dark"] .quiz-stats i,
+[data-theme="dark"] .box-content li i,
+[data-theme="dark"] .video-link i {
+    color: var(--secondary-color);
+}
+
+/* Borders */
+[data-theme="dark"] .card-footer,
+[data-theme="dark"] .box-footer,
+[data-theme="dark"] .profile-dropdown .divider {
+    border-color: var(--border-color);
+}
+
+/* Fix Invisible Admin Curated Learning Title */
+[data-theme="dark"] .section h2,
+[data-theme="dark"] .content-card h3 {
+    color: #f8fafc !important;
+}
+
+/* Fix Invisible Resource Cards */
+[data-theme="dark"] .resource-card,
+[data-theme="dark"] .content-card,
+[data-theme="dark"] .quiz-card {
+    background: #111827;
+}
+
+/* Improve Contrast */
+[data-theme="dark"] .card-content p,
+[data-theme="dark"] .video-info p,
+[data-theme="dark"] .resource-desc {
+    color: #d1d5db;
+}
+/* =========================
+   LOGIN BUTTON FIX
+   ========================= */
+
+[data-theme="dark"] .auth-buttons .btn,
+[data-theme="dark"] .login-btn {
+    background-color: var(--secondary-color);
+    color: #ffffff !important;
+    border: 1px solid transparent;
+}
+
+[data-theme="dark"] .auth-buttons .btn:hover,
+[data-theme="dark"] .login-btn:hover {
+    background-color: #0ea5e9;
+    color: #ffffff !important;
+}
+
+
+/* =========================
+   OPEN RESOURCE BUTTON FIX
+   ========================= */
+
+[data-theme="dark"] .btn-outline,
+[data-theme="dark"] .content-actions .btn,
+[data-theme="dark"] .open-resource-btn {
+    background-color: transparent;
+    color: #38bdf8 !important;
+    border: 2px solid #38bdf8;
+}
+
+[data-theme="dark"] .btn-outline:hover,
+[data-theme="dark"] .content-actions .btn:hover,
+[data-theme="dark"] .open-resource-btn:hover {
+    background-color: #38bdf8;
+    color: #ffffff !important;
+}
+
+
+/* =========================
+   FIX INVISIBLE TEXT INSIDE BUTTONS
+   ========================= */
+
+[data-theme="dark"] button,
+[data-theme="dark"] .btn,
+[data-theme="dark"] a.btn {
+    color: #ffffff;
+}
