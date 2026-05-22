@@ -61,6 +61,7 @@ EduBridge/
 1️⃣ Clone the Repository
 git clone https://github.com/AditixAnand/EduBridge.git
 cd EduBridge
+
 2️⃣ Create Virtual Environment (Recommended)
 Windows
 python -m venv venv
@@ -68,11 +69,14 @@ venv\Scripts\activate
 macOS/Linux
 python3 -m venv venv
 source venv/bin/activate
+
 3️⃣ Install Dependencies
 cd backend
 pip install flask python-dotenv openai
+
 4️⃣ Run the Backend Server
 python app.py
+
 5️⃣ Launch the Frontend
 
 Open index.html in your browser.
@@ -80,6 +84,7 @@ Open index.html in your browser.
 ✅ Ensure frontend API calls point to:
 
 http://127.0.0.1:5000/
+
 🤝 Contribution Guidelines
 
 We welcome contributions from the community 🎉
@@ -132,6 +137,7 @@ See the LICENSE file for more details.
 LinkedIn: Aditi Anand
 
 Email: aditianand09tkp@gmail.com
+
 ⭐ Support the Project
 
 If you like this project:
