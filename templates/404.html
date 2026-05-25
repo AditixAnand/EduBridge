@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body{
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color:white;
+            overflow:hidden;
+        }
+
+        .container{
+            text-align:center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h1{
+            font-size:120px;
+            margin-bottom:10px;
+        }
+
+        h2{
+            font-size:32px;
+            margin-bottom:15px;
+        }
+
+        p{
+            font-size:18px;
+            margin-bottom:30px;
+            opacity:0.9;
+        }
+
+        .btn{
+            text-decoration:none;
+            background:white;
+            color:#2575fc;
+            padding:14px 28px;
+            border-radius:30px;
+            font-weight:bold;
+            transition:0.3s;
+        }
+
+        .btn:hover{
+            background:#f1f1f1;
+            transform:scale(1.05);
+        }
+
+        @keyframes fadeIn{
+            from{
+                opacity:0;
+                transform:translateY(20px);
+            }
+
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
+        }
+
+        @media(max-width:768px){
+            h1{
+                font-size:80px;
+            }
+
+            h2{
+                font-size:24px;
+            }
+
+            p{
+                font-size:16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>404</h1>
+        <h2>Oops! Page Not Found</h2>
+
+        <p>
+            The page you are looking for doesn't exist or has been moved.
+        </p>
+
+        <a href="../index.html" class="btn">
+            Back to Homepage
+        </a>
+    </div>
+
+</body>
+</html>
