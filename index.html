@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>EduBridge - Learn Tech Skills</title>
   <!-- CSS Dependencies -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
-  <link rel="stylesheet" href="Styles/main.css"/>
-  <link rel="stylesheet" href="Styles/chat.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <link rel="stylesheet" href="Styles/main.css" />
+  <link rel="stylesheet" href="Styles/chat.css" />
   <script src="scripts/main.js"></script>
 </head>
+
 <body>
   <!-- Header -->
   <header>
     <nav class="navbar">
       <a href="index.html" class="logo">EduBridge</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primaryNavigation">
+      <button class="nav-toggle" id="navToggle" aria-label="Open navigation menu" aria-expanded="false"
+        aria-controls="primaryNavigation">
         <i class="fas fa-bars"></i>
       </button>
       <ul class="nav-links" id="primaryNavigation">
@@ -25,22 +28,10 @@
         <li><a href="ai.html">AI & ML</a></li>
         <li><a href="career.html">Career</a></li>
         <li>
-          <div class="theme-selector" id="themeSelector">
-            <button class="theme-selector-btn" id="themeButton">
-              <i class="fas fa-palette"></i>
-              Theme
-            </button>
-            <div class="theme-selector-dropdown">
-              <div class="theme-option" data-theme="light">
-                <i class="fas fa-sun"></i>
-                Light Mode
-              </div>
-              <div class="theme-option" data-theme="dark">
-                <i class="fas fa-moon"></i>
-                Dark Mode
-              </div>
-            </div>
-          </div>
+          <button class="theme-selector-btn" id="themeButton">
+            <i class="fas fa-moon" id="themeIcon"></i>
+          </button>
+        </li>
         </li>
         <li class="auth-buttons" id="authButtons">
           <a href="login.html" class="btn btn-outline">Login</a>
@@ -66,7 +57,8 @@
         <!-- Web Development Card -->
         <div class="card">
           <div class="card-image">
-            <img src="images/webdev.jpg" alt="Web Development Course" onerror="this.src='https://via.placeholder.com/400x250/2c3e50/ffffff?text=Web+Development'">
+            <img src="images/webdev.jpg" alt="Web Development Course"
+              onerror="this.src='https://via.placeholder.com/400x250/2c3e50/ffffff?text=Web+Development'">
           </div>
           <div class="card-content">
             <h3>Web Development</h3>
@@ -78,7 +70,8 @@
         <!-- AI & ML Card -->
         <div class="card">
           <div class="card-image">
-            <img src="images/ai.jpg" alt="AI & Machine Learning Course" onerror="this.src='https://via.placeholder.com/400x250/3498db/ffffff?text=AI+%26+ML'">
+            <img src="images/ai.jpg" alt="AI & Machine Learning Course"
+              onerror="this.src='https://via.placeholder.com/400x250/3498db/ffffff?text=AI+%26+ML'">
           </div>
           <div class="card-content">
             <h3>AI & Machine Learning</h3>
@@ -90,7 +83,8 @@
         <!-- Career Guidance Card -->
         <div class="card">
           <div class="card-image">
-            <img src="images/career.jpg" alt="Career Guidance Course" onerror="this.src='https://via.placeholder.com/400x250/e74c3c/ffffff?text=Career+Guidance'">
+            <img src="images/career.jpg" alt="Career Guidance Course"
+              onerror="this.src='https://via.placeholder.com/400x250/e74c3c/ffffff?text=Career+Guidance'">
           </div>
           <div class="card-content">
             <h3>Career Guidance</h3>
@@ -108,66 +102,72 @@
         <div class="card">
           <div class="card-content">
             <h3><i class="fas fa-graduation-cap"></i> Expert-Led Learning</h3>
-            <p>Learn from industry professionals with years of experience in their respective fields. Our instructors are dedicated to your success.</p>
+            <p>Learn from industry professionals with years of experience in their respective fields. Our instructors
+              are dedicated to your success.</p>
           </div>
         </div>
         <div class="card">
           <div class="card-content">
             <h3><i class="fas fa-laptop-code"></i> Hands-on Projects</h3>
-            <p>Gain practical experience through real-world projects. Build your portfolio while learning industry-relevant skills.</p>
+            <p>Gain practical experience through real-world projects. Build your portfolio while learning
+              industry-relevant skills.</p>
           </div>
         </div>
         <div class="card">
           <div class="card-content">
             <h3><i class="fas fa-users"></i> Community Support</h3>
-            <p>Join a vibrant community of learners. Get help, share knowledge, and network with peers and professionals.</p>
+            <p>Join a vibrant community of learners. Get help, share knowledge, and network with peers and
+              professionals.</p>
           </div>
         </div>
         <div class="card">
           <div class="card-content">
             <h3><i class="fas fa-certificate"></i> Career Ready</h3>
-            <p>Our courses are designed to make you job-ready. Learn the skills employers are looking for in today's market.</p>
+            <p>Our courses are designed to make you job-ready. Learn the skills employers are looking for in today's
+              market.</p>
           </div>
         </div>
       </div>
     </section>
   </main>
 
- <footer>
-  <div class="footer-content">
-    <!-- Quick Links Section -->
-    <div class="footer-section">
-      <h3>Quick Links</h3>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="webdev.html">Web Development</a></li>
-        <li><a href="ai.html">AI & ML</a></li>
-        <li><a href="career.html">Career</a></li>
-      </ul>
-    </div>
+  <footer>
+    <div class="footer-content">
+      <!-- Quick Links Section -->
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="webdev.html">Web Development</a></li>
+          <li><a href="ai.html">AI & ML</a></li>
+          <li><a href="career.html">Career</a></li>
+        </ul>
+      </div>
 
-    <!-- Social Section -->
-    <div class="footer-section">
-      <h3>Follow Us</h3>
-      <div class="social-buttons">
-        <a href="https://www.instagram.com/wtf_adiiiii_" target="_blank" class="social-button" title="Follow us on Instagram">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/aditi-anand-745458318/" target="_blank" class="social-button" title="Connect on LinkedIn">
-          <i class="fab fa-linkedin"></i>
-        </a>
-        <a href="mailto:aditianand09tkp@gmail.com" class="social-button" title="Send us an Email">
-          <i class="fas fa-envelope"></i>
-        </a>
+      <!-- Social Section -->
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <div class="social-buttons">
+          <a href="https://www.instagram.com/wtf_adiiiii_" target="_blank" class="social-button"
+            title="Follow us on Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/aditi-anand-745458318/" target="_blank" class="social-button"
+            title="Connect on LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="mailto:aditianand09tkp@gmail.com" class="social-button" title="Send us an Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Footer Bottom -->
-  <div class="footer-bottom">
-    <p>&copy; 2025 EduBridge. All rights reserved.</p>
-  </div>
-</footer>
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <p>&copy; 2025 EduBridge. All rights reserved.</p>
+    </div>
+  </footer>
   <!-- Chatbot Template -->
   <div id="chatbotTemplate"></div>
 
@@ -180,11 +180,31 @@
     AOS.init();
 
     // Theme Selection
-    const themeSelector = document.getElementById('themeSelector');
     const themeButton = document.getElementById('themeButton');
-    const themeOptions = document.querySelectorAll('.theme-option');
-    const currentTheme = localStorage.getItem('theme') || 'light';
+    const themeIcon = document.getElementById('themeIcon');
 
+    let currentTheme = localStorage.getItem('theme') || 'light';
+
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    updateThemeIcon();
+
+    themeButton.addEventListener('click', () => {
+      currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+      document.documentElement.setAttribute('data-theme', currentTheme);
+
+      localStorage.setItem('theme', currentTheme);
+
+      updateThemeIcon();
+    });
+
+    function updateThemeIcon() {
+      if (currentTheme === 'dark') {
+        themeIcon.className = 'fas fa-sun';
+      } else {
+        themeIcon.className = 'fas fa-moon';
+      }
+    }
     // Set initial theme
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateActiveThemeOption(currentTheme);
@@ -214,6 +234,14 @@
     });
 
     function updateActiveThemeOption(theme) {
+      const themeIcon = document.getElementById('themeIcon');
+
+      if (theme === 'dark') {
+        themeIcon.textContent = '☀️';
+      } else {
+        themeIcon.textContent = '🌙';
+      }
+
       themeOptions.forEach(option => {
         if (option.getAttribute('data-theme') === theme) {
           option.classList.add('active');
@@ -245,5 +273,5 @@
     document.addEventListener('DOMContentLoaded', loadChatbot);
   </script>
 </body>
-</html>
 
+</html>
