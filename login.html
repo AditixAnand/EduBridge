@@ -4,12 +4,217 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - EduBridge</title>
-    <link rel="stylesheet" href="Styles/main.css">
-    <link rel="stylesheet" href="Styles/auth.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
+    <link rel="stylesheet" href="Styles/main.css">
+    <link rel="stylesheet" href="Styles/chat.css">
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/main.js"></script>
+
+    <style>
+        
+        /* Force Body to be a perfect Viewport Flex Context */
+        body {
+            background-color: var(--background-color, #f8f9fa);
+            display: flex !important;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* NAVBAR RESET FOR FULL PAGE CONTEXT */
+        .navbar {
+            position: relative;
+            z-index: 9999 !important;
+        }
+
+        /* Drodown Fixes (Fully visible above hero) */
+        .theme-selector-dropdown {
+            position: absolute;
+            top: 100% !important;
+            right: 0 !important;
+            background-color: var(--card-background, #ffffff) !important;
+            border-radius: var(--border-radius, 8px) !important;
+            box-shadow: var(--box-shadow, 0 4px 12px rgba(0,0,0,0.15)) !important;
+            padding: 0.5rem !important;
+            min-width: 160px !important;
+            display: none;
+        }
+        .theme-selector.active .theme-selector-dropdown { display: block !important; }
+
+        /* ====== MAIN AUTNENTICATION WRAPPER ====== */
+        /* Immersive Centering Logic Handle */
+        .auth-master-wrapper {
+            flex: 1; /* Grow to fill available viewport space */
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            padding: 2.5rem 1.5rem !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+        }
+
+        /* ====== MODERN PREMIUM LOGIN CARD ====== */
+        .auth-card-modern {
+            max-width: 460px;
+            width: 100%;
+            background-color: var(--card-background, #ffffff) !important;
+            border-radius: 20px !important;
+            padding: 3rem 2.5rem !important;
+            box-shadow: var(--box-shadow, 0 10px 40px rgba(0,0,0,0.06)) !important;
+            border: 1px solid var(--border-color, #ddd) !important;
+            transition: var(--transition-smooth);
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+
+        .auth-card-modern:hover {
+            box-shadow: var(--box-shadow-premium) !important;
+            transform: translateY(-2px);
+        }
+
+        /* Card Icon Metrics */
+        .auth-feature-icon {
+            margin: 0 auto 1.5rem;
+            background: rgba(52, 152, 219, 0.08) !important;
+            color: var(--secondary-color, #3498db) !important;
+            width: 65px;
+            height: 65px;
+            font-size: 1.8rem;
+            border-radius: 50%;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+
+        .auth-card-modern h2 {
+            font-size: 2rem !important;
+            font-weight: 700 !important;
+            margin-bottom: 0.8rem !important;
+            color: var(--text-color, #333) !important;
+            text-align: center;
+        }
+
+        .auth-card-modern p {
+            font-size: 0.95rem !important;
+            opacity: 0.75 !important;
+            margin-bottom: 2.5rem !important;
+            color: var(--text-color, #333) !important;
+            text-align: center;
+        }
+
+        /* Form Controls Optimization */
+        .auth-form-modern {
+            width: 100% !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 1.5rem !important;
+        }
+
+        .form-group {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 0.6rem !important;
+        }
+
+        .form-group label {
+            font-size: 0.92rem !important;
+            font-weight: 600 !important;
+            color: var(--text-color, #333) !important;
+        }
+
+        /* Premium Input Fields Wrapper */
+        .input-w-icon {
+            position: relative;
+            display: flex !important;
+            align-items: center !important;
+        }
+
+        .input-w-icon i {
+            position: absolute;
+            left: 16px;
+            color: var(--secondary-color, #3498db) !important;
+            opacity: 0.7;
+            font-size: 1rem;
+        }
+
+        .auth-input-premium {
+            width: 100% !important;
+            padding: 0.85rem 1.2rem 0.85rem 45px !important;
+            border-radius: 12px !important;
+            border: 2px solid var(--border-color, #ddd) !important;
+            background-color: var(--background-color, #f8f9fa) !important;
+            color: var(--text-color, #333) !important;
+            font-size: 1rem !important;
+            transition: var(--transition-smooth) !important;
+            outline: none;
+        }
+
+        .auth-input-premium:focus {
+            border-color: var(--secondary-color, #3498db) !important;
+            background-color: var(--card-background, #ffffff) !important;
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.1) !important;
+        }
+
+        /* Action Buttons Overrides Context */
+        .auth-submit-btn-modern {
+            width: 100% !important;
+            padding: 0.9rem !important;
+            font-size: 1.1rem !important;
+            font-weight: 600 !important;
+            margin-top: 1rem !important;
+            border-radius: 12px !important;
+            border: none;
+            background-color: var(--secondary-color, #3498db);
+            color: #ffffff;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+        .auth-submit-btn-modern:hover {
+            opacity: 0.9;
+        }
+
+        /* Bottom Action Anchors Context wrapper */
+        .auth-links-refinded {
+            margin-top: 2rem;
+            text-align: center;
+            width: 100%;
+        }
+
+        .auth-links-refinded p {
+            margin: 0.5rem 0 !important;
+            opacity: 1 !important;
+            font-size: 0.95rem !important;
+            color: var(--text-color, #333) !important;
+        }
+
+        .auth-links-refinded a {
+            color: var(--secondary-color, #3498db) !important;
+            text-decoration: none !important;
+            font-weight: 600 !important;
+        }
+
+        /* Legacy Footer Cleared Removal context rules */
+        footer {
+            margin-top: auto; /* Push footer to very bottom */
+        }
+
+        /* COMPATIBLE RESPONSIVE OVERRIDES (No corner movement) */
+        @media (max-width: 768px) {
+            .auth-card-modern {
+                padding: 2rem 1.5rem !important;
+                border-radius: 16px !important;
+            }
+            .auth-submit-btn-modern {
+                padding: 0.8rem !important;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <nav class="navbar">
             <a href="index.html" class="logo">EduBridge</a>
@@ -30,7 +235,7 @@
                                 Light Mode
                             </div>
                             <div class="theme-option" data-theme="dark">
-                                <i class="fas fa-moon"></i>
+                                <i class="fas fa-moon ="></i>
                                 Dark Mode
                             </div>
                         </div>
@@ -40,35 +245,45 @@
         </nav>
     </header>
 
-    <!-- Main Content -->
-    <main class="auth-container">
-        <div class="auth-card">
-            <h2>Login to EduBridge</h2>
-            <form id="loginForm" class="auth-form">
+    <main class="auth-master-wrapper">
+        <div class="auth-card-modern" data-aos="fade-up">
+            <div class="auth-feature-icon">
+                <i class="fas fa-user-shield"></i>
+            </div>
+            <h2>Welcome Back</h2>
+            <p>Login to access your personalized dynamic learning track flawlessly.</p>
+
+            <form id="loginForm" class="auth-form-modern">
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
+                    <label for="email">Email Address</label>
+                    <div class="input-w-icon">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="email" name="email" required placeholder="name@example.com" class="auth-input-premium">
+                    </div>
                 </div>
+
                 <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <label for="password">Password</label>
+                        <a href="forgot-password.html" style="font-size: 0.85rem; color: var(--secondary-color, #3498db); text-decoration: none;">Forgot?</a>
+                    </div>
+                    <div class="input-w-icon">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" name="password" required placeholder="Enter password" class="auth-input-premium">
+                    </div>
                 </div>
-                <button type="submit" class="auth-button">Login</button>
+
+                <button type="submit" class="auth-submit-btn-modern">Sign In</button>
             </form>
-            <div class="auth-links">
+
+            <div class="auth-links-refinded">
                 <p>Don't have an account? <a href="register.html">Register here</a></p>
-                <p><a href="forgot-password.html">Forgot Password?</a></p>
             </div>
         </div>
     </main>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <div class="footer-section">
-                <h3>About Us</h3>
-                <p>EduBridge is dedicated to providing quality education in technology fields.</p>
-            </div>
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <ul>
@@ -78,61 +293,75 @@
                     <li><a href="career.html">Career</a></li>
                 </ul>
             </div>
+
             <div class="footer-section">
                 <h3>Follow Us</h3>
-                <a href="https://x.com/shivam98997467" target="_blank" class="social-button" title="Follow us on Twitter">
-                    <i class="fab fa-twitter"></i>
-                </a>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/wtf_adiiiii_" target="_blank" class="social-button" title="Follow us on Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/aditi-anand-745458318/" target="_blank" class="social-button" title="Connect on LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="mailto:aditianand09tkp@gmail.com" class="social-button" title="Send us an Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
             </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 EduBridge. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="scripts/auth.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
-        // Theme Selection
-        const themeSelector = document.getElementById('themeSelector');
-        const themeButton = document.getElementById('themeButton');
-        const themeOptions = document.querySelectorAll('.theme-option');
-        const currentTheme = localStorage.getItem('theme') || 'light';
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize AOS context context context context context rules context context context context rules context context context context context context context rules context context context context rules context
+            AOS.init({ duration: 800, once: true });
 
-        // Set initial theme
-        document.documentElement.setAttribute('data-theme', currentTheme);
-        updateActiveThemeOption(currentTheme);
+            // Theme Selection context context context context rules context context rules context context rules context context context context rules context context rules context context context context context context rules context context rules context context
+            const themeSelector = document.getElementById('themeSelector');
+            const themeButton = document.getElementById('themeButton');
+            const themeOptions = document.querySelectorAll('.theme-option');
+            const currentTheme = localStorage.getItem('theme') || 'light';
 
-        // Toggle dropdown on button click
-        themeButton.addEventListener('click', (e) => {
-            e.stopPropagation();
-            themeSelector.classList.toggle('active');
-        });
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            updateActiveThemeOption(currentTheme);
 
-        // Close dropdown when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!themeSelector.contains(e.target)) {
-                themeSelector.classList.remove('active');
-            }
-        });
-
-        // Handle theme selection
-        themeOptions.forEach(option => {
-            option.addEventListener('click', () => {
-                const theme = option.getAttribute('data-theme');
-                document.documentElement.setAttribute('data-theme', theme);
-                localStorage.setItem('theme', theme);
-                updateActiveThemeOption(theme);
-                themeSelector.classList.remove('active');
+            themeButton.addEventListener('click', (e) => {
+                e.stopPropagation();
+                themeSelector.classList.toggle('active');
             });
-        });
 
-        function updateActiveThemeOption(theme) {
-            themeOptions.forEach(option => {
-                if (option.getAttribute('data-theme') === theme) {
-                    option.classList.add('active');
-                } else {
-                    option.classList.remove('active');
+            document.addEventListener('click', (e) => {
+                if (!themeSelector.contains(e.target)) {
+                    themeSelector.classList.remove('active');
                 }
             });
-        }
+
+            themeOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    const theme = option.getAttribute('data-theme');
+                    document.documentElement.setAttribute('data-theme', theme);
+                    localStorage.setItem('theme', theme);
+                    updateActiveThemeOption(theme);
+                    themeSelector.classList.remove('active');
+                });
+            });
+
+            function updateActiveThemeOption(theme) {
+                themeOptions.forEach(option => {
+                    if (option.getAttribute('data-theme') === theme) {
+                        option.classList.add('active');
+                    } else {
+                        option.classList.remove('active');
+                    }
+                });
+            }
+        });
     </script>
 </body>
-</html> 
+</html>
