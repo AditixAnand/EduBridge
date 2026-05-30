@@ -1,111 +1,30 @@
-// Quiz data for different courses
-const quizData = {
-    'webdev': {
-        title: 'Web Development Quiz',
-        questions: [
-            {
-                question: 'What does HTML stand for?',
-                options: [
-                    'Hyper Text Markup Language',
-                    'High Tech Modern Language',
-                    'Hyper Transfer Markup Language',
-                    'Home Tool Markup Language'
-                ],
-                correct: 0
-            },
-            {
-                question: 'Which of these is not a JavaScript framework?',
-                options: [
-                    'React',
-                    'Angular',
-                    'Vue',
-                    'Django'
-                ],
-                correct: 3
-            },
-            {
-                question: 'What is the purpose of CSS?',
-                options: [
-                    'To create dynamic web pages',
-                    'To style and layout web pages',
-                    'To handle server-side operations',
-                    'To manage databases'
-                ],
-                correct: 1
-            }
-        ]
-    },
-    'ai': {
-        title: 'AI & ML Quiz',
-        questions: [
-            {
-                question: 'What is Machine Learning?',
-                options: [
-                    'A type of computer hardware',
-                    'A programming language',
-                    'A subset of AI that enables systems to learn from data',
-                    'A database management system'
-                ],
-                correct: 2
-            },
-            {
-                question: 'Which of these is not a type of machine learning?',
-                options: [
-                    'Supervised Learning',
-                    'Unsupervised Learning',
-                    'Reinforcement Learning',
-                    'Static Learning'
-                ],
-                correct: 3
-            },
-            {
-                question: 'What is the purpose of neural networks?',
-                options: [
-                    'To store data',
-                    'To process and analyze complex patterns',
-                    'To create web pages',
-                    'To manage databases'
-                ],
-                correct: 1
-            }
-        ]
-    },
-    'career': {
-        title: 'Career Development Quiz',
-        questions: [
-            {
-                question: 'What is the first step in career planning?',
-                options: [
-                    'Applying for jobs',
-                    'Self-assessment',
-                    'Writing a resume',
-                    'Networking'
-                ],
-                correct: 1
-            },
-            {
-                question: 'Which of these is not a soft skill?',
-                options: [
-                    'Communication',
-                    'Teamwork',
-                    'Programming',
-                    'Problem-solving'
-                ],
-                correct: 2
-            },
-            {
-                question: 'What is the purpose of a cover letter?',
-                options: [
-                    'To list all your skills',
-                    'To introduce yourself and explain why you\'re a good fit',
-                    'To provide references',
-                    'To request a salary'
-                ],
-                correct: 1
-            }
-        ]
+// Quiz data for different courses (load safely from localStorage)
+let quizData = {};
+const storedQuizData = localStorage.getItem('adminQuizzes');
+if (storedQuizData) {
+    try {
+        const parsed = JSON.parse(storedQuizData);
+        if (parsed && typeof parsed === 'object') {
+            quizData = parsed;
+        } else {
+            throw new Error('invalid quiz data');
+        }
+    } catch (error) {
+        if (typeof defaultQuizData !== 'undefined') {
+            quizData = JSON.parse(JSON.stringify(defaultQuizData));
+            try { localStorage.setItem('adminQuizzes', JSON.stringify(quizData)); } catch (e) {}
+        } else {
+            quizData = {};
+        }
     }
-};
+} else {
+    if (typeof defaultQuizData !== 'undefined') {
+        quizData = JSON.parse(JSON.stringify(defaultQuizData));
+        try { localStorage.setItem('adminQuizzes', JSON.stringify(quizData)); } catch (e) {}
+    } else {
+        quizData = {};
+    }
+}
 
 // Quiz state variables
 let currentQuiz = null;
@@ -141,16 +60,16 @@ document.querySelectorAll('.start-quiz').forEach(button => {
     });
 });
 
-nextButton.addEventListener('click', nextQuestion);
-prevButton.addEventListener('click', previousQuestion);
-submitButton.addEventListener('click', submitQuiz);
-retryButton.addEventListener('click', () => {
-    resultsContainer.style.display = 'none';
-    courseSelection.style.display = 'block';
+if (nextButton) nextButton.addEventListener('click', nextQuestion);
+if (prevButton) prevButton.addEventListener('click', previousQuestion);
+if (submitButton) submitButton.addEventListener('click', submitQuiz);
+if (retryButton) retryButton.addEventListener('click', () => {
+    if (resultsContainer) resultsContainer.style.display = 'none';
+    if (courseSelection) courseSelection.style.display = 'block';
 });
-backButton.addEventListener('click', () => {
-    resultsContainer.style.display = 'none';
-    courseSelection.style.display = 'block';
+if (backButton) backButton.addEventListener('click', () => {
+    if (resultsContainer) resultsContainer.style.display = 'none';
+    if (courseSelection) courseSelection.style.display = 'block';
 });
 
 // Start quiz function
@@ -161,11 +80,12 @@ function startQuiz(course) {
     timeLeft = 60;
     selectedOption = null;
 
-    courseSelection.style.display = 'none';
-    quizContainer.style.display = 'block';
-    resultsContainer.style.display = 'none';
+    if (courseSelection) courseSelection.style.display = 'none';
+    if (quizContainer) quizContainer.style.display = 'block';
+    if (resultsContainer) resultsContainer.style.display = 'none';
 
-    document.getElementById('quizTitle').textContent = currentQuiz.title;
+    const quizTitleEl = document.getElementById('quizTitle');
+    if (quizTitleEl && currentQuiz && currentQuiz.title) quizTitleEl.textContent = currentQuiz.title;
     updateTimer();
     updateScore();
     showQuestion();
@@ -174,23 +94,28 @@ function startQuiz(course) {
 
 // Show current question
 function showQuestion() {
+    if (!currentQuiz || !Array.isArray(currentQuiz.questions)) {
+        return;
+    }
     const question = currentQuiz.questions[currentQuestionIndex];
-    questionText.textContent = question.question;
+    if (questionText) questionText.textContent = question.question || '';
 
-    optionsContainer.innerHTML = '';
-    question.options.forEach((option, index) => {
-        const optionElement = document.createElement('div');
-        optionElement.className = 'option';
-        optionElement.textContent = option;
-        optionElement.dataset.index = index;
-        optionElement.addEventListener('click', () => selectOption(index));
-        optionsContainer.appendChild(optionElement);
-    });
+    if (optionsContainer) {
+        optionsContainer.innerHTML = '';
+        (question.options || []).forEach((option, index) => {
+            const optionElement = document.createElement('div');
+            optionElement.className = 'option';
+            optionElement.textContent = option;
+            optionElement.dataset.index = index;
+            optionElement.addEventListener('click', () => selectOption(index));
+            optionsContainer.appendChild(optionElement);
+        });
+    }
 
     // Update navigation buttons
-    prevButton.disabled = currentQuestionIndex === 0;
-    nextButton.disabled = currentQuestionIndex === currentQuiz.questions.length - 1;
-    submitButton.style.display = currentQuestionIndex === currentQuiz.questions.length - 1 ? 'block' : 'none';
+    if (prevButton) prevButton.disabled = currentQuestionIndex === 0;
+    if (nextButton) nextButton.disabled = currentQuestionIndex === currentQuiz.questions.length - 1;
+    if (submitButton) submitButton.style.display = currentQuestionIndex === currentQuiz.questions.length - 1 ? 'block' : 'none';
 }
 
 // Select option
@@ -199,12 +124,15 @@ function selectOption(index) {
     document.querySelectorAll('.option').forEach(option => {
         option.classList.remove('selected');
     });
-    document.querySelector(`.option[data-index="${index}"]`).classList.add('selected');
-    
+    const el = document.querySelector(`.option[data-index="${index}"]`);
+    if (el) el.classList.add('selected');
+
     // Update score if correct
-    if (index === currentQuiz.questions[currentQuestionIndex].correct) {
-        score++;
-        updateScore();
+    if (currentQuiz && currentQuiz.questions && currentQuiz.questions[currentQuestionIndex]) {
+        if (index === currentQuiz.questions[currentQuestionIndex].correct) {
+            score++;
+            updateScore();
+        }
     }
 }
 
