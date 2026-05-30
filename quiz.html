@@ -8,11 +8,8 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
     <link rel="stylesheet" href="Styles/main.css"/>
     <link rel="stylesheet" href="Styles/quiz.css"/>
-    <script src="scripts/auth.js"></script>
-    <script src="scripts/main.js"></script>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <nav class="navbar">
             <a href="index.html" class="logo">EduBridge</a>
@@ -40,112 +37,133 @@
                     </div>
                 </li>
                 <li class="auth-buttons" id="authButtons">
-                    <a href="login.html" class="btn btn-outline">Login</a>
+                    <a href="login.html" class="btn btn-outline" style="color: var(--light-text) !important;">Login</a>
                     <a href="register.html" class="btn">Register</a>
                 </li>
             </ul>
         </nav>
     </header>
 
-    <!-- Main Content -->
-    <main>
-        <!-- Course Selection -->
-        <section id="courseSelection" class="section">
-            <h2>Choose Your Course Quiz</h2>
+    <main style="background-color: var(--background-color); min-height: 85vh; padding-top: 2rem;">
+        <section id="courseSelection" class="section" data-aos="fade-up">
+            <h2 class="section-title" style="margin-bottom: 2.5rem;">Choose Your Course Quiz</h2>
             <div class="course-cards">
-                <div class="card">
+                <div class="card premium-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="card-image">
                         <img src="images/webdev.jpg" alt="Web Development Course" onerror="this.src='https://via.placeholder.com/400x250/2c3e50/ffffff?text=Web+Development'">
                     </div>
                     <div class="card-content">
                         <h3>Web Development Quiz</h3>
-                        <p>Test your knowledge of HTML, CSS, and JavaScript.</p>
-                        <button class="btn start-quiz" data-course="webdev">Start Quiz</button>
+                        <p>Test your knowledge of HTML, CSS, and JavaScript with interactive dynamic loops.</p>
+                        <button class="btn start-quiz" data-course="webdev" style="width:100%; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                            <span>Start Quiz</span>
+                            <i class="fas fa-play"></i>
+                        </button>
                     </div>
                 </div>
 
-                <div class="card">
+                <div class="card premium-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="card-image">
                         <img src="images/ai.jpg" alt="AI & Machine Learning Course" onerror="this.src='https://via.placeholder.com/400x250/3498db/ffffff?text=AI+%26+ML'">
                     </div>
                     <div class="card-content">
                         <h3>AI & ML Quiz</h3>
-                        <p>Challenge yourself with AI and Machine Learning concepts.</p>
-                        <button class="btn start-quiz" data-course="ai">Start Quiz</button>
+                        <p>Challenge yourself with massive AI neural network principles, model tracking, and ML parameters.</p>
+                        <button class="btn start-quiz" data-course="ai" style="width:100%; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                            <span>Start Quiz</span>
+                            <i class="fas fa-play"></i>
+                        </button>
                     </div>
                 </div>
 
-                <div class="card">
+                <div class="card premium-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="card-image">
                         <img src="images/career.jpg" alt="Career Guidance Course" onerror="this.src='https://via.placeholder.com/400x250/e74c3c/ffffff?text=Career+Guidance'">
                     </div>
                     <div class="card-content">
                         <h3>Career Quiz</h3>
-                        <p>Assess your career planning and job search skills.</p>
-                        <button class="btn start-quiz" data-course="career">Start Quiz</button>
+                        <p>Assess your career planning strategy, resume metrics, and job-ready interview skills accurately.</p>
+                        <button class="btn start-quiz" data-course="career" style="width:100%; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                            <span>Start Quiz</span>
+                            <i class="fas fa-play"></i>
+                        </button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Quiz Section -->
         <section id="quizContainer" class="section" style="display: none;">
-            <div class="quiz-container">
-                <div class="quiz-header">
-                    <h2 id="quizTitle">Course Quiz</h2>
-                    <div class="quiz-info">
-                        <span id="timer">Time: 10:00</span>
-                        <span id="score">Score: 0</span>
+            <div class="quiz-card" style="max-width: 750px; padding: 2.5rem; border-radius: 20px; background: var(--card-background); box-shadow: var(--box-shadow); margin: 0 auto;">
+                <div class="quiz-header" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem; margin-bottom: 1.5rem;">
+                    <h2 id="quizTitle" style="text-align: left; margin-bottom: 1rem; font-size: 1.8rem; font-weight: 700; color: var(--text-color);">Course Quiz</h2>
+                    <div class="quiz-stats-premium" style="display: flex; gap: 20px;">
+                        <div class="stat-bubble" style="background: rgba(52, 152, 219, 0.1); padding: 8px 16px; border-radius: 8px; display: flex; align-items: center; gap: 8px;">
+                            <i class="fas fa-clock" style="color: var(--secondary-color);"></i>
+                            <span id="timer" style="font-weight: 600; font-size: 0.95rem; color: var(--text-color);">Time: 10:00</span>
+                        </div>
+                        <div class="stat-bubble" style="background: rgba(16, 185, 129, 0.1); padding: 8px 16px; border-radius: 8px; display: flex; align-items: center; gap: 8px;">
+                            <i class="fas fa-star" style="color: #10b981;"></i>
+                            <span id="score" style="font-weight: 600; font-size: 0.95rem; color: var(--text-color);">Score: 0</span>
+                        </div>
                     </div>
                 </div>
-                <div class="progress-bar">
-                    <div class="progress"></div>
+                
+                <div class="progress-bar" style="height: 8px; background: var(--border-color); border-radius: 4px; overflow: hidden; margin-bottom: 2rem;">
+                    <div class="progress" style="height: 100%; background: var(--secondary-color); width: 0%; transition: var(--transition-smooth);"></div>
                 </div>
+
                 <div class="question-container">
-                    <h3 id="questionText">Question goes here</h3>
-                    <div class="options" id="options">
-                        <!-- Options will be dynamically added here -->
-                    </div>
+                    <h3 id="questionText" style="font-size: 1.4rem; font-weight: 600; margin-bottom: 1.5rem; color: var(--text-color);">Question goes here</h3>
+                    <div class="options" id="options" style="display: flex; flex-direction: column; gap: 1rem;">
+                        </div>
                 </div>
-                <div class="quiz-controls">
-                    <button id="prevBtn" class="btn btn-outline">Previous</button>
-                    <button id="nextBtn" class="btn">Next</button>
-                    <button id="submitBtn" class="btn" style="display: none;">Submit Quiz</button>
+
+                <div class="quiz-controls" style="display: flex; justify-content: space-between; gap: 1rem; margin-top: 2.5rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem;">
+                    <button id="prevBtn" class="btn" style="background-color: transparent; border: 2px solid var(--secondary-color); color: var(--secondary-color); padding: 0.6rem 1.8rem;">Previous</button>
+                    <div style="display: flex; gap: 1rem;">
+                        <button id="nextBtn" class="btn" style="padding: 0.6rem 1.8rem; background-color: var(--secondary-color); color: white;">Next</button>
+                        <button id="submitBtn" class="btn" style="display: none; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; padding: 0.6rem 1.8rem;">Submit Quiz</button>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Results Section -->
         <section id="resultsContainer" class="section" style="display: none;">
-            <div class="results-container">
-                <h2>Quiz Results</h2>
-                <div class="results-content">
-                    <div class="result-item">
-                        <span class="result-label">Final Score:</span>
-                        <span id="finalScore" class="result-value">0/10</span>
+            <div class="quiz-card" style="max-width: 600px; text-align: center; padding: 2rem; border-top: 6px solid #10b981; border-radius: 20px; background: var(--card-background); box-shadow: var(--box-shadow); margin: 0 auto;">
+                <div class="card-content" style="padding: 1rem 0;">
+                    <div class="feature-icon" style="margin: 0 auto 1.5rem; background: rgba(16, 185, 129, 0.1); color: #10b981; width: 65px; height: 65px; font-size: 1.8rem; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-check-double"></i>
                     </div>
-                    <div class="result-item">
-                        <span class="result-label">Time Taken:</span>
-                        <span id="timeTaken" class="result-value">00:00</span>
+                    <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 2rem; color: var(--text-color); text-align: center;">Quiz Results</h2>
+                    
+                    <div class="results-content" style="display: flex; flex-direction: column; gap: 14px; margin-bottom: 2.5rem;">
+                        <div class="video-item-modern" style="cursor: default; justify-content: space-between; padding: 14px 20px; background: var(--background-color); border-radius: 10px; display: flex;">
+                            <span style="font-weight: 600; color: var(--text-color);"><i class="fas fa-award" style="color: #f59e0b; margin-right: 8px;"></i> Final Score:</span>
+                            <strong id="finalScore" style="font-size: 1.1rem; color: var(--secondary-color);">0/10</strong>
+                        </div>
+                        <div class="video-item-modern" style="cursor: default; justify-content: space-between; padding: 14px 20px; background: var(--background-color); border-radius: 10px; display: flex;">
+                            <span style="font-weight: 600; color: var(--text-color);"><i class="fas fa-hourglass-half" style="color: var(--secondary-color); margin-right: 8px;"></i> Time Taken:</span>
+                            <strong id="timeTaken" style="font-size: 1.1rem; color: var(--text-color);">00:00</strong>
+                        </div>
+                        <div class="video-item-modern" style="cursor: default; justify-content: space-between; padding: 14px 20px; background: var(--background-color); border-radius: 10px; display: flex;">
+                            <span style="font-weight: 600; color: var(--text-color);"><i class="fas fa-check-circle" style="color: #10b981; margin-right: 8px;"></i> Correct Answers:</span>
+                            <strong id="correctAnswers" style="font-size: 1.1rem; color: #10b981;">0</strong>
+                        </div>
+                        <div class="video-item-modern" style="cursor: default; justify-content: space-between; padding: 14px 20px; background: var(--background-color); border-radius: 10px; display: flex;">
+                            <span style="font-weight: 600; color: var(--text-color);"><i class="fas fa-times-circle" style="color: var(--accent-color); margin-right: 8px;"></i> Incorrect Answers:</span>
+                            <strong id="incorrectAnswers" style="font-size: 1.1rem; color: var(--accent-color);">0</strong>
+                        </div>
                     </div>
-                    <div class="result-item">
-                        <span class="result-label">Correct Answers:</span>
-                        <span id="correctAnswers" class="result-value">0</span>
+
+                    <div class="results-actions" style="display: flex; gap: 1rem; justify-content: center; width: 100%;">
+                        <button id="retryBtn" class="btn" style="flex: 1; background-color: transparent; border: 2px solid var(--secondary-color); color: var(--secondary-color);">Try Again</button>
+                        <button id="backToCoursesBtn" class="btn" style="flex: 1; background-color: var(--secondary-color); color: white;">Back to Courses</button>
                     </div>
-                    <div class="result-item">
-                        <span class="result-label">Incorrect Answers:</span>
-                        <span id="incorrectAnswers" class="result-value">0</span>
-                    </div>
-                </div>
-                <div class="results-actions">
-                    <button id="retryBtn" class="btn btn-outline">Try Again</button>
-                    <button id="backToCoursesBtn" class="btn">Back to Courses</button>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-section">
@@ -157,45 +175,54 @@
                     <li><a href="career.html">Career</a></li>
                 </ul>
             </div>
+
             <div class="footer-section">
                 <h3>Follow Us</h3>
-                <a href="https://x.com/shivam98997467" target="_blank" class="social-button" title="Follow us on Twitter">
-                    <i class="fab fa-twitter"></i>
-                </a>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/wtf_adiiiii_" target="_blank" class="social-button" title="Follow us on Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/aditi-anand-745458318/" target="_blank" class="social-button" title="Connect on LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="mailto:aditianand09tkp@gmail.com" class="social-button" title="Send us an Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
             </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 EduBridge. All rights reserved.</p>
         </div>
     </footer>
 
     <!-- JavaScript -->
     <script src="scripts/quiz-data.js"></script>
     <script src="scripts/quiz.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
-        // Initialize quiz when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
-            // Initialize theme
+            AOS.init({ duration: 800, once: true });
+
             const themeSelector = document.getElementById('themeSelector');
             const themeButton = document.getElementById('themeButton');
             const themeOptions = document.querySelectorAll('.theme-option');
             const currentTheme = localStorage.getItem('theme') || 'light';
 
-            // Set initial theme
             document.documentElement.setAttribute('data-theme', currentTheme);
             updateActiveThemeOption(currentTheme);
 
-            // Toggle dropdown on button click
             themeButton.addEventListener('click', (e) => {
                 e.stopPropagation();
                 themeSelector.classList.toggle('active');
             });
 
-            // Close dropdown when clicking outside
             document.addEventListener('click', (e) => {
                 if (!themeSelector.contains(e.target)) {
                     themeSelector.classList.remove('active');
                 }
             });
 
-            // Handle theme selection
             themeOptions.forEach(option => {
                 option.addEventListener('click', () => {
                     const theme = option.getAttribute('data-theme');
@@ -216,7 +243,6 @@
                 });
             }
 
-            // Handle user authentication state
             const auth = new Auth();
             const currentUser = auth.getCurrentUser();
             const authButtons = document.getElementById('authButtons');
@@ -229,4 +255,4 @@
         });
     </script>
 </body>
-</html> 
+</html>
