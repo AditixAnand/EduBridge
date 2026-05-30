@@ -14,7 +14,10 @@
   <header>
     <nav class="navbar">
       <a href="index.html" class="logo">EduBridge</a>
-      <ul class="nav-links">
+      <button class="nav-toggle" id="navToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primaryNavigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul class="nav-links" id="primaryNavigation">
         <li><a href="index.html">Home</a></li>
         <li><a href="webdev.html">Web Development</a></li>
         <li><a href="ai.html">AI & ML</a></li>
@@ -222,7 +225,6 @@
         .then(response => response.text())
         .then(html => {
           document.getElementById('chatbotTemplate').innerHTML = html;
-          // Initialize chatbot after template is loaded
           if (typeof initializeChatbot === 'function') {
             initializeChatbot();
           } else {
@@ -234,7 +236,6 @@
         });
     }
 
-    // Load chatbot when the page is ready
     document.addEventListener('DOMContentLoaded', loadChatbot);
   </script>
 </body>

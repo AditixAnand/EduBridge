@@ -401,10 +401,30 @@
             min-width: 180px !important;
         }
 
+        .cta-premium-btn {
+            background: var(--accent-gradient);
+            color: #ffffff !important;
+            padding: 14px 28px !important;
+            border-radius: 12px !important;
+            font-weight: 600 !important;
+            text-decoration: none !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 10px !important;
+            box-shadow: 0 4px 14px rgba(52, 152, 219, 0.3) !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .cta-premium-btn:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4) !important;
+        }
+
         /* Responsive Breakpoints */
         @media (max-width: 992px) {
             .quiz-banner-premium { padding: 30px !important; flex-direction: column !important; align-items: flex-start !important; }
             .quiz-banner-action { justify-content: flex-start !important; width: 100% !important; }
+            .cta-premium-btn { width: 100% !important; justify-content: center !important; }
         }
 
         @media (max-width: 768px) {
@@ -543,6 +563,13 @@
                     </div>
                 </div>
             </div>
+        </section>
+
+        <section class="section" data-aos="fade-up">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 12px; font-weight: 700;">Admin Curated Learning</h2>
+            <p class="section-intro" style="text-align: center; max-width: 720px; margin: 0 auto 2rem; opacity: 0.8;">Updated learning items from the Project Admin to keep your path current.</p>
+            <div class="course-cards content-grid" data-content-category="career"></div>
+            <p class="content-empty" data-content-empty style="text-align: center; margin: 1rem 0 0; opacity: 0.7; display: none;">No curated content yet. Check back soon.</p>
         </section>
 
         <section class="section-container alternate-bg">
@@ -743,13 +770,14 @@
                 </div>
             </div>
         </div>
-
         <div class="footer-bottom">
             <p>&copy; 2025 EduBridge. All rights reserved.</p>
         </div>
     </footer>
 
     <script src="scripts/theme.js"></script>
+    <script src="scripts/content-data.js"></script>
+    <script src="scripts/content.js"></script>
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
         // Theme Dropdown Toggle
