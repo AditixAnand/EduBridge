@@ -11,6 +11,7 @@ Please read the guidelines below carefully before contributing.
 
 1. Fork the repository to your GitHub account
 2. Clone your fork locally:
+
 ```bash
 git clone https://github.com/your-username/EduBridge.git
 Create a new branch for your work:
@@ -91,3 +92,4 @@ All contributors are expected to maintain respectful and professional communicat
 Harassment, discrimination, or unethical behavior will not be tolerated.
 
 Thank you for contributing and helping improve EduBridge! 🚀
+```
