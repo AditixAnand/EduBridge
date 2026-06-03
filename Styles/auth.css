@@ -125,3 +125,282 @@
         padding: 1rem;
     }
 } 
+
+/* ── Accessibility & Validation Styles ─────────── */
+
+.field-hint {
+    display: block;
+    font-size: 0.78rem;
+    color: #888;
+    margin-top: 4px;
+}
+
+.field-error {
+    display: block;
+    font-size: 0.78rem;
+    color: #e53e3e;
+    margin-top: 2px;
+    min-height: 1rem;
+}
+
+.auth-form input:focus:valid {
+    border-color: #38a169;
+    box-shadow: 0 0 0 2px rgba(56, 161, 105, 0.20);
+}
+
+.auth-form input:focus:invalid {
+    border-color: #e53e3e;
+    box-shadow: 0 0 0 2px rgba(229, 62, 62, 0.20);
+}
+
+.auth-form input:not(:placeholder-shown):invalid {
+    border-color: #e53e3e;
+    box-shadow: 0 0 0 2px rgba(229, 62, 62, 0.15);
+}
+
+.auth-form input:not(:placeholder-shown):valid {
+    border-color: #38a169;
+    box-shadow: 0 0 0 2px rgba(56, 161, 105, 0.15);
+}
+
+/* Fix button visibility */
+.auth-form .auth-button {
+    margin-top: 1rem;
+    width: 100%;
+    display: block;
+}
+
+/* Fix card height so button doesn't get cut */
+.auth-card {
+    max-width: 420px;
+    padding: 2rem;
+    overflow: visible;
+}
+
+/* Card upgrade */
+.auth-card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.10);
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 460px;
+    border: 1px solid #e8edf2;
+}
+
+/* Title */
+.auth-card h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 1.8rem;
+    text-align: center;
+    letter-spacing: -0.3px;
+}
+
+/* Label */
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #4a5568;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Input fields */
+.form-group input,
+.form-group select {
+    padding: 0.80rem 1rem;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 8px;
+    background: #f8fafc;
+    color: #1a202c;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+.form-group input::placeholder {
+    color: #a0aec0;
+    font-size: 0.9rem;
+}
+
+/* Hint text */
+.field-hint {
+    font-size: 0.75rem;
+    color: #a0aec0;
+    margin-top: 3px;
+}
+
+/* Select multiple */
+.form-group select[multiple] {
+    height: 110px;
+    padding: 0.5rem;
+    border-radius: 8px;
+}
+
+/* Register / Login button */
+.auth-button {
+    background: linear-gradient(135deg, #1da1f2 0%, #0d8ecf 100%) !important;
+    color: #ffffff !important;
+    border: none;
+    border-radius: 8px;
+    padding: 0.85rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    display: block;
+    margin-top: 0.75rem;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 14px rgba(29, 161, 242, 0.35);
+}
+
+.auth-button:hover {
+    background: linear-gradient(135deg, #0d8ecf 0%, #0a7ab8 100%) !important;
+    box-shadow: 0 6px 20px rgba(29, 161, 242, 0.45);
+    transform: translateY(-1px);
+}
+
+/* Auth links */
+.auth-links {
+    margin-top: 1.2rem;
+    text-align: center;
+}
+
+.auth-links p {
+    font-size: 0.9rem;
+    color: #718096;
+}
+
+.auth-links a {
+    color: #1da1f2;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.auth-links a:hover {
+    text-decoration: underline;
+}
+
+/* Divider line above links */
+.auth-links {
+    border-top: 1px solid #e2e8f0;
+    padding-top: 1.2rem;
+}
+
+/* Validation — green */
+.auth-form input:focus:valid {
+    border-color: #38a169 !important;
+    box-shadow: 0 0 0 3px rgba(56, 161, 105, 0.15) !important;
+    background: #f0fff4;
+}
+
+/* Validation — red */
+.auth-form input:focus:invalid {
+    border-color: #e53e3e !important;
+    box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.15) !important;
+    background: #fff5f5;
+}
+
+.auth-form input:not(:placeholder-shown):valid {
+    border-color: #38a169 !important;
+    background: #f0fff4;
+}
+
+.auth-form input:not(:placeholder-shown):invalid {
+    border-color: #e53e3e !important;
+    background: #fff5f5;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .auth-card {
+        padding: 1.5rem;
+        border-radius: 12px;
+    }
+}
+/* ── Checkbox Interest Options ──────────────────── */
+.interest-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+}
+
+.checkbox-option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.65rem 1rem;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: #f8fafc;
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 400;
+}
+
+.checkbox-option:hover {
+    border-color: #1da1f2;
+    background: #ebf8ff;
+}
+
+/* Hide default checkbox */
+.checkbox-option input[type="checkbox"] {
+    display: none;
+}
+
+/* Custom checkbox box */
+.checkbox-box {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #cbd5e0;
+    border-radius: 4px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+}
+
+/* Checked state */
+.checkbox-option input[type="checkbox"]:checked ~ .checkbox-box {
+    background: #1da1f2;
+    border-color: #1da1f2;
+}
+
+.checkbox-option input[type="checkbox"]:checked ~ .checkbox-box::after {
+    content: "✓";
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+/* Highlight whole row when checked */
+.checkbox-option:has(input:checked) {
+    border-color: #1da1f2;
+    background: #ebf8ff;
+}
+
+.checkbox-label {
+    font-size: 0.95rem;
+    color: #2d3748;
+    font-weight: 500;
+}
+/* Fix checkbox label uppercase issue */
+.checkbox-label {
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #2d3748;
+}
+
+.checkbox-option {
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+}

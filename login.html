@@ -42,25 +42,50 @@
 
     <!-- Main Content -->
     <main class="auth-container">
-        <div class="auth-card">
-            <h2>Login to EduBridge</h2>
-            <form id="loginForm" class="auth-form">
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <button type="submit" class="auth-button">Login</button>
-            </form>
-            <div class="auth-links">
-                <p>Don't have an account? <a href="register.html">Register here</a></p>
-                <p><a href="forgot-password.html">Forgot Password?</a></p>
-            </div>
-        </div>
-    </main>
+  <div class="auth-card">
+    <h2>Login to EduBridge</h2>
+    <form id="loginForm" class="auth-form" novalidate>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          aria-required="true"
+          autocomplete="email"
+          placeholder="you@example.com"
+          aria-describedby="email-hint"
+        />
+        <span class="field-hint" id="email-hint">Enter a valid email address</span>
+        <span class="field-error" id="email-error" role="alert" aria-live="polite"></span>
+      </div>
+
+      <div class="form-group">
+        <input
+  type="password"
+  id="password"
+  name="password"
+  required
+  aria-required="true"
+  autocomplete="current-password"
+  minlength="8"
+  placeholder="Enter your password"
+  aria-describedby="password-hint"
+/>
+<span class="field-hint" id="password-hint">Minimum 8 characters</span>
+        <span class="field-error" id="password-error" role="alert" aria-live="polite"></span>
+      </div>
+
+      <button type="submit" class="auth-button">Login</button>
+    </form>
+    <div class="auth-links">
+      <p>Don't have an account? <a href="register.html">Register here</a></p>
+      <p><a href="forgot-password.html">Forgot Password?</a></p>
+    </div>
+  </div>
+</main>
 
     <!-- Footer -->
     <footer>

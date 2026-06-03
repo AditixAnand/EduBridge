@@ -42,40 +42,106 @@
 
     <!-- Main Content -->
     <main class="auth-container">
-        <div class="auth-card">
-            <h2>Create an Account</h2>
-            <form id="registerForm" class="auth-form">
-                <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <div class="form-group">
-                    <label for="confirmPassword">Confirm Password</label>
-                    <input type="password" id="confirmPassword" name="confirmPassword" required>
-                </div>
-                <div class="form-group">
-                    <label for="interests">Areas of Interest</label>
-                    <select id="interests" name="interests" multiple>
-                        <option value="webdev">Web Development</option>
-                        <option value="ai">AI & ML</option>
-                        <option value="career">Career Development</option>
-                    </select>
-                </div>
-                <button type="submit" class="auth-button">Register</button>
-            </form>
-            <div class="auth-links">
-                <p>Already have an account? <a href="login.html">Login here</a></p>
-            </div>
-        </div>
-    </main>
+  <div class="auth-card">
+    <h2>Create an Account</h2>
+    <form id="registerForm" class="auth-form" novalidate>
+
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          required
+          aria-required="true"
+          autocomplete="name"
+          placeholder="John Doe"
+          minlength="2"
+          aria-describedby="name-hint"
+        />
+        <span class="field-hint" id="name-hint">Enter your full name</span>
+        <span class="field-error" id="name-error" role="alert" aria-live="polite"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          aria-required="true"
+          autocomplete="email"
+          placeholder="you@example.com"
+          aria-describedby="email-hint"
+        />
+        <span class="field-hint" id="email-hint">Enter a valid email address</span>
+        <span class="field-error" id="email-error" role="alert" aria-live="polite"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          required
+          aria-required="true"
+          autocomplete="new-password"
+          minlength="8"
+          placeholder="Minimum 8 characters"
+          aria-describedby="password-hint"
+        />
+        <span class="field-hint" id="password-hint">Minimum 8 characters</span>
+        <span class="field-error" id="password-error" role="alert" aria-live="polite"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          required
+          aria-required="true"
+          autocomplete="new-password"
+          minlength="8"
+          placeholder="Repeat your password"
+          aria-describedby="confirm-hint"
+        />
+        <span class="field-hint" id="confirm-hint">Must match your password above</span>
+        <span class="field-error" id="confirm-error" role="alert" aria-live="polite"></span>
+      </div>
+
+      <div class="form-group">
+  <label>Areas of Interest</label>
+  <div class="interest-options" aria-describedby="interests-hint">
+    <label class="checkbox-option">
+      <input type="checkbox" name="interests" value="webdev" />
+      <span class="checkbox-box"></span>
+      <span class="checkbox-label">Web Development</span>
+    </label>
+    <label class="checkbox-option">
+      <input type="checkbox" name="interests" value="ai" />
+      <span class="checkbox-box"></span>
+      <span class="checkbox-label">AI & ML</span>
+    </label>
+    <label class="checkbox-option">
+      <input type="checkbox" name="interests" value="career" />
+      <span class="checkbox-box"></span>
+      <span class="checkbox-label">Career Development</span>
+    </label>
+  </div>
+  <span class="field-hint" id="interests-hint">Select all that apply</span>
+</div>
+
+      <button type="submit" class="auth-button">Register</button>
+    </form>
+    <div class="auth-links">
+      <p>Already have an account? <a href="login.html">Login here</a></p>
+    </div>
+  </div>
+</main>
 
     <!-- Footer -->
     <footer>
