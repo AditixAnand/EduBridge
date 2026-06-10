@@ -44,11 +44,16 @@
 .form-group input,
 .form-group select {
     padding: 0.75rem;
-    border: 1px solid var(--border);
+    border: 2px solid #666;
     border-radius: 5px;
-    background: var(--input-bg);
-    color: var(--text);
+    background-color: #f9f9f9;
+    color: #000;
     font-size: 1rem;
+    width: 100%;
+}
+
+.form-group input::placeholder {
+    color: #666;
 }
 
 .form-group input:focus,
@@ -65,7 +70,7 @@
 
 /* Authentication Button */
 .auth-button {
-    background: var(--accent);
+    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
@@ -73,7 +78,6 @@
     font-size: 1rem;
     font-weight: 500;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
 .auth-button:hover {
