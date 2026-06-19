@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Profile - EduBridge</title>
+    <title>My Profile & Dashboard - EduBridge</title>
     <link rel="stylesheet" href="Styles/main.css">
     <link rel="stylesheet" href="Styles/profile.css">
     <link rel="stylesheet" href="Styles/chat.css">
@@ -51,69 +51,151 @@
         <section class="profile-section">
             <div class="profile-header">
                 <div class="profile-avatar">
-                    <img src="images/avatar.jpg" alt="Profile Picture" onerror="this.src='https://via.placeholder.com/150/2c3e50/ffffff?text=User'">
-                    <button class="edit-avatar-btn">
-                        <i class="fas fa-camera"></i>
-                    </button>
+                    <i class="fas fa-user-gradient" style="font-size: 4.5rem; color: white;"></i>
                 </div>
                 <div class="profile-info">
-                    <h1 id="userName"></h1>
-                    <p id="userEmail"></p>
+                    <h1 id="userName">Student</h1>
+                    <p id="userEmail">student@edubridge.com</p>
                 </div>
+            </div>
+
+            <!-- Tab Navigation -->
+            <div class="profile-tabs">
+                <button class="tab-btn active" data-tab="dashboard">
+                    <i class="fas fa-chart-pie"></i> Analytics Dashboard
+                </button>
+                <button class="tab-btn" data-tab="settings">
+                    <i class="fas fa-user-cog"></i> Profile Settings
+                </button>
             </div>
 
             <!-- Profile Content -->
             <div class="profile-content">
-                <!-- Personal Information -->
-                <div class="profile-card">
-                    <h2><i class="fas fa-user"></i> Personal Information</h2>
-                    <form id="personalInfoForm">
-                        <div class="form-group">
-                            <label for="fullName">Full Name</label>
-                            <input type="text" id="fullName" name="fullName">
+                <!-- Tab Panel 1: Dashboard -->
+                <div class="tab-panel" id="dashboardTab">
+                    <!-- Overview Stats -->
+                    <div class="dashboard-stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon bg-primary"><i class="fas fa-clipboard-check"></i></div>
+                            <div class="stat-info">
+                                <h3 id="statQuizzes">0</h3>
+                                <p>Quizzes Completed</p>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email">
+                        <div class="stat-card">
+                            <div class="stat-icon bg-secondary"><i class="fas fa-bullseye"></i></div>
+                            <div class="stat-info">
+                                <h3 id="statAccuracy">0%</h3>
+                                <p>Avg. Accuracy</p>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="phone">Phone</label>
-                            <input type="tel" id="phone" name="phone">
+                        <div class="stat-card">
+                            <div class="stat-icon bg-success"><i class="fas fa-award"></i></div>
+                            <div class="stat-info">
+                                <h3 id="statMastery">0</h3>
+                                <p>High Mastery Topics</p>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="location">Location</label>
-                            <input type="text" id="location" name="location">
+                        <div class="stat-card">
+                            <div class="stat-icon bg-info"><i class="fas fa-tasks"></i></div>
+                            <div class="stat-info">
+                                <h3 id="statProgress">0%</h3>
+                                <p>Overall Course Progress</p>
+                            </div>
                         </div>
-                        <button type="submit" class="btn">Save Changes</button>
-                    </form>
-                </div>
+                    </div>
 
-                <!-- Course Progress -->
-                <div class="profile-card">
-                    <h2><i class="fas fa-chart-line"></i> Course Progress</h2>
-                    <div class="progress-list" id="progressList">
-                        <!-- Progress items will be dynamically added here -->
+                    <div class="dashboard-main-grid">
+                        <!-- Left Column: Topic Mastery Analysis -->
+                        <div class="dashboard-column profile-card">
+                            <h2><i class="fas fa-chart-bar"></i> Topic-wise Difficulty Analysis</h2>
+                            <p class="card-intro">Analyzing your correct answer ratios per subject area to determine learning gaps.</p>
+                            <div class="mastery-list" id="masteryList">
+                                <p class="no-data">Take some quizzes to generate topic analytics!</p>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: AI Recommendations & Insights -->
+                        <div class="dashboard-column profile-card">
+                            <h2><i class="fas fa-robot"></i> AI Study Advisor Insights</h2>
+                            <div class="ai-advisor-container">
+                                <div class="ai-advisor-box" id="aiAdvisorBox">
+                                    <div class="advisor-welcome">
+                                        <i class="fas fa-user-astronaut"></i>
+                                        <p>Hello! I am your AI Learning Advisor. Click below to generate explainable recommendations based on your performance.</p>
+                                    </div>
+                                </div>
+                                <button class="btn btn-block" id="generateAiInsightsBtn">
+                                    <i class="fas fa-wand-magic-sparkles"></i> Generate AI Study Insights
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Enrolled Courses Progress (expanded) -->
+                    <div class="profile-card dashboard-full-width">
+                        <h2><i class="fas fa-spinner"></i> Active Course Progress</h2>
+                        <div class="progress-list" id="progressList">
+                            <!-- Progress items dynamically added -->
+                        </div>
+                    </div>
+
+                    <!-- Study Recommendations Section -->
+                    <div class="profile-card dashboard-full-width">
+                        <h2><i class="fas fa-lightbulb"></i> Personalized Study Recommendations</h2>
+                        <div class="recommendations-container" id="recommendationsContainer">
+                            <!-- Dynamic recommendations go here -->
+                        </div>
                     </div>
                 </div>
 
-                <!-- Account Settings -->
-                <div class="profile-card">
-                    <h2><i class="fas fa-cog"></i> Account Settings</h2>
-                    <form id="accountSettingsForm">
-                        <div class="form-group">
-                            <label for="currentPassword">Current Password</label>
-                            <input type="password" id="currentPassword" name="currentPassword">
+                <!-- Tab Panel 2: Settings -->
+                <div class="tab-panel" id="settingsTab" style="display: none;">
+                    <div class="settings-grid">
+                        <!-- Personal Information -->
+                        <div class="profile-card">
+                            <h2><i class="fas fa-user"></i> Personal Information</h2>
+                            <form id="personalInfoForm">
+                                <div class="form-group">
+                                    <label for="fullName">Full Name</label>
+                                    <input type="text" id="fullName" name="fullName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone</label>
+                                    <input type="tel" id="phone" name="phone">
+                                </div>
+                                <div class="form-group">
+                                    <label for="location">Location</label>
+                                    <input type="text" id="location" name="location">
+                                </div>
+                                <button type="submit" class="btn">Save Changes</button>
+                            </form>
                         </div>
-                        <div class="form-group">
-                            <label for="newPassword">New Password</label>
-                            <input type="password" id="newPassword" name="newPassword">
+
+                        <!-- Account Settings -->
+                        <div class="profile-card">
+                            <h2><i class="fas fa-cog"></i> Account Settings</h2>
+                            <form id="accountSettingsForm">
+                                <div class="form-group">
+                                    <label for="currentPassword">Current Password</label>
+                                    <input type="password" id="currentPassword" name="currentPassword" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="newPassword">New Password</label>
+                                    <input type="password" id="newPassword" name="newPassword" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirmPassword">Confirm New Password</label>
+                                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                                </div>
+                                <button type="submit" class="btn">Update Password</button>
+                            </form>
                         </div>
-                        <div class="form-group">
-                            <label for="confirmPassword">Confirm New Password</label>
-                            <input type="password" id="confirmPassword" name="confirmPassword">
-                        </div>
-                        <button type="submit" class="btn">Update Password</button>
-                    </form>
+                    </div>
                 </div>
             </div>
         </section>
@@ -189,15 +271,15 @@
 
         // Profile Management
         document.addEventListener('DOMContentLoaded', () => {
-            const auth = new Auth();
-            const currentUser = auth.getCurrentUser();
+            const authInstance = new Auth();
+            const currentUser = authInstance.getCurrentUser();
 
             if (!currentUser) {
                 window.location.href = 'login.html';
                 return;
             }
 
-            // Update profile information
+            // Set user name and email in header
             const userName = document.getElementById('userName');
             const userEmail = document.getElementById('userEmail');
             const fullName = document.getElementById('fullName');
@@ -205,62 +287,30 @@
             const phone = document.getElementById('phone');
             const location = document.getElementById('location');
 
-            // Set user information
-            userName.textContent = currentUser.name;
-            userEmail.textContent = currentUser.email;
-            fullName.value = currentUser.name;
-            email.value = currentUser.email;
+            userName.textContent = currentUser.name || 'Student';
+            userEmail.textContent = currentUser.email || '';
+            fullName.value = currentUser.name || '';
+            email.value = currentUser.email || '';
             phone.value = currentUser.phone || '';
             location.value = currentUser.location || '';
 
-            // Update course progress
-            const progressList = document.getElementById('progressList');
-            const courses = currentUser.courses || [];
-            
-            if (courses.length === 0) {
-                progressList.innerHTML = '<p class="no-data">No courses enrolled yet.</p>';
-            } else {
-                progressList.innerHTML = courses.map(course => `
-                    <div class="progress-item">
-                        <h3>${course.name}</h3>
-                        <div class="progress-bar">
-                            <div class="progress" style="width: ${course.progress || 0}%"></div>
-                        </div>
-                        <span>${course.progress || 0}% Complete</span>
-                    </div>
-                `).join('');
-            }
-
-            // Handle profile update
+            // Handle Profile updates
             document.getElementById('personalInfoForm').addEventListener('submit', (e) => {
                 e.preventDefault();
-                
-                // Get form values
-                const newName = fullName.value.trim();
-                const newEmail = email.value.trim();
-                const newPhone = phone.value.trim();
-                const newLocation = location.value.trim();
+                currentUser.name = fullName.value.trim();
+                currentUser.email = email.value.trim();
+                currentUser.phone = phone.value.trim();
+                currentUser.location = location.value.trim();
 
-                // Update user object
-                currentUser.name = newName;
-                currentUser.email = newEmail;
-                currentUser.phone = newPhone;
-                currentUser.location = newLocation;
-
-                // Save changes
-                auth.updateUser(currentUser);
-
-                // Update display
+                authInstance.updateUser(currentUser);
                 userName.textContent = currentUser.name;
                 userEmail.textContent = currentUser.email;
-
                 showMessage('Profile updated successfully!', 'success');
             });
 
-            // Handle password update
+            // Handle Password updates
             document.getElementById('accountSettingsForm').addEventListener('submit', (e) => {
                 e.preventDefault();
-                
                 const currentPassword = document.getElementById('currentPassword').value;
                 const newPassword = document.getElementById('newPassword').value;
                 const confirmPassword = document.getElementById('confirmPassword').value;
@@ -276,14 +326,337 @@
                 }
 
                 currentUser.password = newPassword;
-                auth.updateUser(currentUser);
+                authInstance.updateUser(currentUser);
                 showMessage('Password updated successfully!', 'success');
 
-                // Clear password fields
                 document.getElementById('currentPassword').value = '';
                 document.getElementById('newPassword').value = '';
                 document.getElementById('confirmPassword').value = '';
             });
+
+            // -----------------------------------------------------------------
+            // Tab Switcher Logic
+            // -----------------------------------------------------------------
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const dashboardTab = document.getElementById('dashboardTab');
+            const settingsTab = document.getElementById('settingsTab');
+
+            tabButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    tabButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const tab = btn.dataset.tab;
+                    if (tab === 'dashboard') {
+                        dashboardTab.style.display = 'block';
+                        settingsTab.style.display = 'none';
+                    } else {
+                        dashboardTab.style.display = 'none';
+                        settingsTab.style.display = 'block';
+                    }
+                });
+            });
+
+            // -----------------------------------------------------------------
+            // Learning Analytics Calculation
+            // -----------------------------------------------------------------
+            const history = currentUser.quizHistory || [];
+            const courses = currentUser.courses || [];
+
+            // 1. Quizzes Completed count
+            const quizCount = history.length;
+            document.getElementById('statQuizzes').textContent = quizCount;
+
+            // 2. Average Accuracy calculation & topic breakdown data
+            let totalCorrect = 0;
+            let totalQuestions = 0;
+            const topicScores = {}; // Map of topic -> {correct, total}
+
+            history.forEach(quiz => {
+                totalCorrect += quiz.score || 0;
+                totalQuestions += quiz.total || 0;
+
+                const answers = quiz.answers || [];
+                answers.forEach(ans => {
+                    const topic = ans.topic || 'General';
+                    if (!topicScores[topic]) {
+                        topicScores[topic] = { correct: 0, total: 0 };
+                    }
+                    topicScores[topic].total++;
+                    if (ans.isCorrect) {
+                        topicScores[topic].correct++;
+                    }
+                });
+            });
+
+            const avgAccuracy = totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 100) : 0;
+            document.getElementById('statAccuracy').textContent = `${avgAccuracy}%`;
+
+            // 3. Topic Mastery Matrix & High Mastery count
+            let highMasteryCount = 0;
+            const masteryList = document.getElementById('masteryList');
+            const weakTopics = [];
+            const mediumTopics = [];
+
+            if (Object.keys(topicScores).length === 0) {
+                masteryList.innerHTML = '<p class="no-data">Complete some course quizzes to populate your topic analytics!</p>';
+            } else {
+                masteryList.innerHTML = Object.entries(topicScores).map(([topic, stats]) => {
+                    const pct = Math.round((stats.correct / stats.total) * 100);
+                    let badgeClass = 'badge-low';
+                    let badgeText = 'Low Mastery';
+                    
+                    if (pct >= 80) {
+                        badgeClass = 'badge-high';
+                        badgeText = 'High Mastery';
+                        highMasteryCount++;
+                    } else if (pct >= 50) {
+                        badgeClass = 'badge-medium';
+                        badgeText = 'Medium Mastery';
+                        mediumTopics.push(topic);
+                    } else {
+                        badgeClass = 'badge-low';
+                        badgeText = 'Low Mastery';
+                        weakTopics.push(topic);
+                    }
+
+                    return `
+                        <div class="mastery-item">
+                            <div class="mastery-info">
+                                <span class="mastery-topic">${topic}</span>
+                                <span class="mastery-badge ${badgeClass}">${badgeText}</span>
+                            </div>
+                            <div class="mastery-progress-wrapper">
+                                <div class="mastery-progress-bar">
+                                    <div class="mastery-progress-fill ${badgeClass}" style="width: ${pct}%"></div>
+                                </div>
+                                <span class="mastery-pct">${pct}% (${stats.correct}/${stats.total})</span>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+            document.getElementById('statMastery').textContent = highMasteryCount;
+
+            // 4. Overall Progress percentage
+            const avgProgress = courses.length > 0 ? Math.round(courses.reduce((sum, c) => sum + (c.progress || 0), 0) / courses.length) : 0;
+            document.getElementById('statProgress').textContent = `${avgProgress}%`;
+
+            // 5. Active Course Progress list rendering
+            const progressList = document.getElementById('progressList');
+            if (courses.length === 0) {
+                progressList.innerHTML = '<p class="no-data">No active courses. Start learning and taking quizzes today!</p>';
+            } else {
+                progressList.innerHTML = courses.map(course => `
+                    <div class="course-item-dashboard">
+                        <div class="course-info-wrapper">
+                            <span class="course-name-dashboard">${course.name}</span>
+                            <div class="course-progress-bar-wrapper">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: ${course.progress || 0}%"></div>
+                                </div>
+                                <span class="progress-value">${course.progress || 0}% Complete</span>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // 6. Study Recommendations List
+            const recommendationsContainer = document.getElementById('recommendationsContainer');
+            const recommendations = [];
+
+            if (weakTopics.length > 0 || mediumTopics.length > 0) {
+                const allWeak = [...weakTopics, ...mediumTopics];
+                const webdevTopics = ['HTML', 'CSS', 'JavaScript'];
+                const aiTopics = ['Machine Learning', 'Deep Learning'];
+                const careerTopics = ['Career Planning', 'Soft Skills', 'Job Search'];
+
+                const hasWebdevWeak = allWeak.some(t => webdevTopics.includes(t));
+                const hasAiWeak = allWeak.some(t => aiTopics.includes(t));
+                const hasCareerWeak = allWeak.some(t => careerTopics.includes(t));
+
+                if (hasWebdevWeak) {
+                    const list = allWeak.filter(t => webdevTopics.includes(t)).join(', ');
+                    recommendations.push(`
+                        <div class="recommendation-card">
+                            <div class="rec-icon text-primary"><i class="fas fa-laptop-code"></i></div>
+                            <div class="rec-details">
+                                <h3>Strengthen Web Development Foundations</h3>
+                                <p>We identified concepts to improve in <strong>${list}</strong>. Review selectors, box layouts, or asynchronous DOM programming.</p>
+                                <a href="webdev.html" class="btn btn-sm btn-outline">Explore Web Dev Resources</a>
+                            </div>
+                        </div>
+                    `);
+                }
+
+                if (hasAiWeak) {
+                    const list = allWeak.filter(t => aiTopics.includes(t)).join(', ');
+                    recommendations.push(`
+                        <div class="recommendation-card">
+                            <div class="rec-icon text-secondary"><i class="fas fa-brain"></i></div>
+                            <div class="rec-details">
+                                <h3>Enhance AI & Machine Learning Concepts</h3>
+                                <p>Your mastery in <strong>${list}</strong> is below 80%. Review neural network weights, supervised logic, and predictive metrics.</p>
+                                <a href="ai.html" class="btn btn-sm btn-outline">Explore AI & ML Resources</a>
+                            </div>
+                        </div>
+                    `);
+                }
+
+                if (hasCareerWeak) {
+                    const list = allWeak.filter(t => careerTopics.includes(t)).join(', ');
+                    recommendations.push(`
+                        <div class="recommendation-card text-success"><div class="rec-icon text-success"><i class="fas fa-user-tie"></i></div></div>
+                        <div class="recommendation-card">
+                            <div class="rec-icon text-success"><i class="fas fa-user-tie"></i></div>
+                            <div class="rec-details">
+                                <h3>Level Up Career Skills & Job Prep</h3>
+                                <p>Work on <strong>${list}</strong>. Study cover letter drafts, active listening soft skills, and professional resume design.</p>
+                                <a href="career.html" class="btn btn-sm btn-outline">Explore Career Resources</a>
+                            </div>
+                        </div>
+                    `);
+                }
+            }
+
+            if (recommendations.length === 0) {
+                if (quizCount === 0) {
+                    recommendationsContainer.innerHTML = `
+                        <div class="recommendation-card info-card">
+                            <div class="rec-icon text-info"><i class="fas fa-info-circle"></i></div>
+                            <div class="rec-details">
+                                <h3>Start Your Learning Journey</h3>
+                                <p>Take your first course quiz! Once finished, we will evaluate your score and list customized study suggestions here.</p>
+                                <a href="quiz.html" class="btn btn-sm">Take a Quiz Now</a>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    recommendationsContainer.innerHTML = `
+                        <div class="recommendation-card success-card">
+                            <div class="rec-icon text-success"><i class="fas fa-check-double"></i></div>
+                            <div class="rec-details">
+                                <h3>Superb Mastery Achieved!</h3>
+                                <p>You scored High Mastery in all attempted categories. Keep up the amazing work and proceed to advanced projects!</p>
+                                <a href="quiz.html" class="btn btn-sm">Take Another Quiz</a>
+                            </div>
+                        </div>
+                    `;
+                }
+            } else {
+                recommendationsContainer.innerHTML = recommendations.join('');
+            }
+
+            // 7. AI Advisor Generation
+            const generateAiInsightsBtn = document.getElementById('generateAiInsightsBtn');
+            const aiAdvisorBox = document.getElementById('aiAdvisorBox');
+
+            if (generateAiInsightsBtn) {
+                generateAiInsightsBtn.addEventListener('click', async () => {
+                    if (history.length === 0) {
+                        aiAdvisorBox.innerHTML = `
+                            <div class="advisor-welcome">
+                                <i class="fas fa-exclamation-triangle" style="color: var(--secondary-color); font-size: 2rem;"></i>
+                                <p>Please take at least one course quiz to enable AI Advisor Diagnostics.</p>
+                            </div>
+                        `;
+                        return;
+                    }
+
+                    // Loading State
+                    aiAdvisorBox.innerHTML = `
+                        <div class="advisor-loading">
+                            <div class="pulse-loader"></div>
+                            <p>Analyzing quiz metrics and generating explainable insights...</p>
+                        </div>
+                    `;
+                    generateAiInsightsBtn.disabled = true;
+
+                    try {
+                        const response = await fetch('http://127.0.0.1:5000/insights', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ quizHistory: history })
+                        });
+
+                        if (!response.ok) {
+                            throw new Error('Backend API unavailable');
+                        }
+
+                        const data = await response.json();
+                        if (data.error) {
+                            throw new Error(data.error);
+                        }
+
+                        renderAiInsights(data.insights);
+
+                    } catch (error) {
+                        console.log('OpenAI Backend unreachable. Engaging local rule-based advisor...', error);
+                        setTimeout(() => {
+                            const localInsights = generateLocalInsights(weakTopics, mediumTopics, topicScores);
+                            renderAiInsights(localInsights);
+                        }, 1200);
+                    } finally {
+                        generateAiInsightsBtn.disabled = false;
+                    }
+                });
+            }
+
+            function renderAiInsights(markdownText) {
+                // Convert simple markdown back into beautiful HTML (bold, lists, headers)
+                let html = markdownText
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                    .replace(/^### (.*?)$/gm, '<h4>$1</h4>')
+                    .replace(/^## (.*?)$/gm, '<h4>$1</h4>')
+                    .replace(/^- (.*?)$/gm, '<li>$1</li>')
+                    .replace(/\n\n/g, '<br><br>')
+                    .replace(/\n/g, '<br>');
+
+                // Wrap list items in ul blocks
+                if (html.includes('<li>')) {
+                    html = html.replace(/(<li>.*?<\/li>)+/s, (match) => `<ul>${match}</ul>`);
+                }
+
+                aiAdvisorBox.innerHTML = `
+                    <div class="advisor-response">
+                        <div class="advisor-header">
+                            <i class="fas fa-robot"></i>
+                            <span>AI Learning Advisor Diagnostic</span>
+                        </div>
+                        <div class="advisor-text">${html}</div>
+                    </div>
+                `;
+            }
+
+            function generateLocalInsights(weaks, mediums, scores) {
+                let text = "### **Learning Analysis Report (Local Advisor)**\n\n";
+                text += "I have analyzed your accuracy indices across all completed course modules.\n\n";
+                
+                if (weaks.length > 0) {
+                    text += `**Immediate Study Recommendations:** We identified low mastery in **${weaks.join(', ')}**. `;
+                    if (weaks.includes('JavaScript') && scores['HTML'] && (scores['HTML'].correct / scores['HTML'].total >= 0.8)) {
+                        text += "Specifically, while your declarative markup (HTML) accuracy is outstanding, programmatic scripting logic (JavaScript) presents difficulties. This is typical because JS introduces variables, function scopes, and loops. Focus on basic array methods and logic operators before building interactive components. ";
+                    }
+                    if (weaks.includes('Deep Learning') && weaks.includes('Machine Learning')) {
+                        text += "Since deep neural network structures depend on mathematical gradients and regressions, review basic supervised training models first to secure a solid foundation. ";
+                    }
+                    text += "\n\n";
+                } else if (mediums.length > 0) {
+                    text += `**Polishing Recommendations:** Your topic accuracy in **${mediums.join(', ')}** is in the moderate range (50% - 79%). You understand the theoretical frameworks, but need coding drills to cement these skills.\n\n`;
+                } else {
+                    text += "**Excellent Cognitive Integration!** You scored above 80% on all topics. You possess a strong theoretical foundation. We suggest building portfolio applications or writing explanations to help peers.\n\n";
+                }
+
+                text += "### **Recommended Strategy Plan**\n";
+                text += "- Review the PDF notes matching your weaker topics under our Course pages.\n";
+                text += "- Construct 1 minor project from the 'Practice Projects' descriptions.\n";
+                text += "- Repeat the quiz module in 48 hours to assess learning curve optimization.";
+
+                return text;
+            }
         });
 
         function showMessage(message, type) {
@@ -298,4 +671,4 @@
         }
     </script>
 </body>
-</html> 
+</html>

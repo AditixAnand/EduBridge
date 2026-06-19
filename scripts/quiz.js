@@ -28,11 +28,11 @@ if (storedQuizData) {
 
 // Quiz state variables
 let currentQuiz = null;
+let currentCourseKey = null;
 let currentQuestionIndex = 0;
-let score = 0;
+let userAnswers = []; // Array to store user's selected options: [null, 1, 0, ...]
 let timer = null;
 let timeLeft = 60; // 60 seconds per quiz
-let selectedOption = null;
 
 // DOM elements
 const courseSelection = document.getElementById('courseSelection');
@@ -75,10 +75,12 @@ if (backButton) backButton.addEventListener('click', () => {
 // Start quiz function
 function startQuiz(course) {
     currentQuiz = quizData[course];
+    currentCourseKey = course;
     currentQuestionIndex = 0;
-    score = 0;
     timeLeft = 60;
-    selectedOption = null;
+    
+    // Initialize user answers array with nulls
+    userAnswers = new Array(currentQuiz.questions.length).fill(null);
 
     if (courseSelection) courseSelection.style.display = 'none';
     if (quizContainer) quizContainer.style.display = 'block';
@@ -100,11 +102,24 @@ function showQuestion() {
     const question = currentQuiz.questions[currentQuestionIndex];
     if (questionText) questionText.textContent = question.question || '';
 
+    // Update progress bar
+    const progressFill = document.querySelector('.progress-bar .progress');
+    if (progressFill) {
+        const percent = ((currentQuestionIndex + 1) / currentQuiz.questions.length) * 100;
+        progressFill.style.width = `${percent}%`;
+    }
+
     if (optionsContainer) {
         optionsContainer.innerHTML = '';
         (question.options || []).forEach((option, index) => {
             const optionElement = document.createElement('div');
             optionElement.className = 'option';
+            
+            // Check if this option was previously selected
+            if (userAnswers[currentQuestionIndex] === index) {
+                optionElement.classList.add('selected');
+            }
+            
             optionElement.textContent = option;
             optionElement.dataset.index = index;
             optionElement.addEventListener('click', () => selectOption(index));
@@ -114,33 +129,34 @@ function showQuestion() {
 
     // Update navigation buttons
     if (prevButton) prevButton.disabled = currentQuestionIndex === 0;
-    if (nextButton) nextButton.disabled = currentQuestionIndex === currentQuiz.questions.length - 1;
-    if (submitButton) submitButton.style.display = currentQuestionIndex === currentQuiz.questions.length - 1 ? 'block' : 'none';
+    
+    const isLastQuestion = currentQuestionIndex === currentQuiz.questions.length - 1;
+    if (nextButton) {
+        nextButton.style.display = isLastQuestion ? 'none' : 'block';
+    }
+    if (submitButton) {
+        submitButton.style.display = isLastQuestion ? 'block' : 'none';
+    }
 }
 
 // Select option
 function selectOption(index) {
-    selectedOption = index;
+    userAnswers[currentQuestionIndex] = index;
+    
     document.querySelectorAll('.option').forEach(option => {
         option.classList.remove('selected');
     });
     const el = document.querySelector(`.option[data-index="${index}"]`);
     if (el) el.classList.add('selected');
 
-    // Update score if correct
-    if (currentQuiz && currentQuiz.questions && currentQuiz.questions[currentQuestionIndex]) {
-        if (index === currentQuiz.questions[currentQuestionIndex].correct) {
-            score++;
-            updateScore();
-        }
-    }
+    // Update the running score
+    updateScore();
 }
 
 // Next question
 function nextQuestion() {
     if (currentQuestionIndex < currentQuiz.questions.length - 1) {
         currentQuestionIndex++;
-        selectedOption = null;
         showQuestion();
     }
 }
@@ -149,29 +165,92 @@ function nextQuestion() {
 function previousQuestion() {
     if (currentQuestionIndex > 0) {
         currentQuestionIndex--;
-        selectedOption = null;
         showQuestion();
     }
+}
+
+// Calculate score based on current userAnswers
+function calculateScore() {
+    let runScore = 0;
+    if (!currentQuiz || !currentQuiz.questions) return 0;
+    currentQuiz.questions.forEach((q, idx) => {
+        if (userAnswers[idx] !== null && userAnswers[idx] === q.correct) {
+            runScore++;
+        }
+    });
+    return runScore;
 }
 
 // Submit quiz
 function submitQuiz() {
     clearInterval(timer);
-    quizContainer.style.display = 'none';
-    resultsContainer.style.display = 'block';
+    if (quizContainer) quizContainer.style.display = 'none';
+    if (resultsContainer) resultsContainer.style.display = 'block';
 
     const totalQuestions = currentQuiz.questions.length;
-    const correctCount = score;
+    const correctCount = calculateScore();
     const incorrectCount = totalQuestions - correctCount;
 
-    finalScore.textContent = `${score}/${totalQuestions}`;
-    timeTaken.textContent = `${60 - timeLeft} seconds`;
-    correctAnswers.textContent = correctCount;
-    incorrectAnswers.textContent = incorrectCount;
+    if (finalScore) finalScore.textContent = `${correctCount}/${totalQuestions}`;
+    if (timeTaken) timeTaken.textContent = `${60 - timeLeft} seconds`;
+    if (correctAnswers) correctAnswers.textContent = correctCount;
+    if (incorrectAnswers) incorrectAnswers.textContent = incorrectCount;
+
+    // Save results to user profile
+    const authInstance = new Auth();
+    const currentUser = authInstance.getCurrentUser();
+    if (currentUser) {
+        // Construct detailed answer analysis
+        const answerDetails = [];
+        currentQuiz.questions.forEach((q, idx) => {
+            const selected = userAnswers[idx];
+            const isCorrect = (selected !== null && selected === q.correct);
+            answerDetails.push({
+                question: q.question,
+                topic: q.topic || 'General',
+                selected: selected !== null ? q.options[selected] : 'No Answer',
+                correctAnswer: q.options[q.correct],
+                isCorrect: isCorrect
+            });
+        });
+
+        if (!currentUser.quizHistory) {
+            currentUser.quizHistory = [];
+        }
+        currentUser.quizHistory.push({
+            course: currentCourseKey,
+            courseTitle: currentQuiz.title,
+            score: correctCount,
+            total: totalQuestions,
+            timeTaken: 60 - timeLeft,
+            date: new Date().toISOString(),
+            answers: answerDetails
+        });
+
+        // Update user courses progress (if higher or new)
+        if (!currentUser.courses) {
+            currentUser.courses = [];
+        }
+        const progressPercentage = Math.round((correctCount / totalQuestions) * 100);
+        const courseIdx = currentUser.courses.findIndex(c => c.id === currentCourseKey);
+        if (courseIdx > -1) {
+            currentUser.courses[courseIdx].progress = Math.max(currentUser.courses[courseIdx].progress || 0, progressPercentage);
+        } else {
+            currentUser.courses.push({
+                id: currentCourseKey,
+                name: currentQuiz.title,
+                progress: progressPercentage
+            });
+        }
+
+        // Save changes to localStorage
+        authInstance.updateUser(currentUser);
+    }
 }
 
 // Update timer
 function updateTimer() {
+    if (!timerDisplay) return;
     const minutes = Math.floor(timeLeft / 60);
     const seconds = timeLeft % 60;
     timerDisplay.textContent = `Time: ${minutes}:${seconds.toString().padStart(2, '0')}`;
@@ -190,7 +269,8 @@ function startTimer() {
     }, 1000);
 }
 
-// Update score
+// Update score display
 function updateScore() {
-    scoreDisplay.textContent = `Score: ${score}`;
-} 
+    if (!scoreDisplay) return;
+    scoreDisplay.textContent = `Score: ${calculateScore()}`;
+}

@@ -66,6 +66,15 @@ class Auth {
     getCurrentUser() {
         return this.currentUser;
     }
+
+    // Update user data in localStorage
+    updateUser(updatedUser) {
+        this.currentUser = updatedUser;
+        localStorage.setItem('currentUser', JSON.stringify(updatedUser));
+        
+        this.users = this.users.map(u => u.id === updatedUser.id ? updatedUser : u);
+        localStorage.setItem('users', JSON.stringify(this.users));
+    }
 }
 
 // Initialize auth instance
