@@ -70,7 +70,7 @@
     padding: 2rem;
     background-color: var(--card-background);
     border-radius: 8px;
-    box-shadow: var(--shadow);
+    box-shadow: var(--box-shadow);
 }
 
 .quiz-header {
@@ -126,6 +126,7 @@
     border-radius: 4px;
     cursor: pointer;
     transition: var(--transition);
+    color: var(--text-color);
 }
 
 .option:hover {
@@ -149,12 +150,12 @@
 
 /* Results Section */
 .results-container {
-    max-width: 600px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 2rem;
     background-color: var(--card-background);
     border-radius: 8px;
-    box-shadow: var(--shadow);
+    box-shadow: var(--box-shadow);
     text-align: center;
 }
 
@@ -178,8 +179,190 @@
 }
 
 .result-value {
-    color: var(--primary-color);
+    color: var(--text-color);
     font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.report-progress,
+.personalized-report,
+.course-save-panel,
+.schedule-panel {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    text-align: left;
+}
+
+.report-progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-color);
+}
+
+.personalized-report h3,
+.course-save-panel h3,
+.schedule-panel h3 {
+    color: var(--secondary-color);
+    margin-bottom: 0.75rem;
+}
+
+.report-summary,
+.course-save-panel p {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.improvement-topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+}
+
+.topic-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 0.75rem;
+    border-radius: 999px;
+    background: rgba(52, 152, 219, 0.16);
+    color: var(--secondary-color);
+    border: 1px solid rgba(52, 152, 219, 0.35);
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.question-report {
+    display: grid;
+    gap: 1rem;
+}
+
+.question-review {
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-left: 5px solid var(--secondary-color);
+    border-radius: 8px;
+    background: var(--card-background);
+}
+
+.question-review.correct {
+    border-left-color: #22c55e;
+}
+
+.question-review.incorrect {
+    border-left-color: #ef4444;
+}
+
+.question-review h4 {
+    color: var(--text-color);
+    margin-bottom: 0.75rem;
+}
+
+.question-review p {
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+.question-review strong {
+    color: var(--secondary-color);
+}
+
+.saved-courses {
+    margin-top: 1.25rem;
+}
+
+.saved-courses h4 {
+    color: var(--text-color);
+    margin-bottom: 0.75rem;
+}
+
+.saved-courses-list,
+.scheduled-classes {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.saved-course-item,
+.scheduled-class-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.85rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--card-background);
+    color: var(--text-color);
+}
+
+.saved-course-item span,
+.scheduled-class-item span {
+    display: block;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.empty-state {
+    color: var(--text-color);
+    opacity: 0.75;
+    font-style: italic;
+}
+
+.schedule-form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem;
+    margin-bottom: 1rem;
+}
+
+.schedule-form label {
+    color: var(--text-color);
+    font-weight: 700;
+}
+
+.schedule-form input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: var(--card-background);
+    color: var(--text-color);
+}
+
+.schedule-form button,
+.schedule-form label[for="classTopic"],
+.schedule-form #classTopic {
+    grid-column: 1 / -1;
+}
+
+[data-theme="dark"] .quiz-header h2,
+[data-theme="dark"] .course-selection h1,
+[data-theme="dark"] .question-container h3 {
+    color: #7dd3fc;
+}
+
+[data-theme="dark"] .results-container h2,
+[data-theme="dark"] .personalized-report h3,
+[data-theme="dark"] .course-save-panel h3,
+[data-theme="dark"] .schedule-panel h3 {
+    color: #fde047;
+}
+
+[data-theme="dark"] .result-label,
+[data-theme="dark"] .question-review strong {
+    color: #f9a8d4;
+}
+
+[data-theme="dark"] footer,
+[data-theme="dark"] footer a,
+[data-theme="dark"] .footer-section h3 {
+    color: #ffffff;
 }
 
 .results-actions {
@@ -217,6 +400,16 @@
     .results-actions {
         flex-direction: column;
     }
+
+    .schedule-form {
+        grid-template-columns: 1fr;
+    }
+
+    .saved-course-item,
+    .scheduled-class-item {
+        align-items: flex-start;
+        flex-direction: column;
+    }
 }
 
 /* Animations */
@@ -239,7 +432,7 @@
 /* Footer Styles */
 footer {
     background-color: var(--primary-color);
-    color: var(--text-color-light);
+    color: var(--light-text);
     padding: 2rem 0;
     margin-top: 3rem;
 }
@@ -254,7 +447,7 @@ footer {
 }
 
 .footer-section h3 {
-    color: var(--text-color-light);
+    color: var(--light-text);
     margin-bottom: 1rem;
     font-size: 1.2rem;
 }
@@ -269,7 +462,7 @@ footer {
 }
 
 .footer-section ul li a {
-    color: var(--text-color-light);
+    color: var(--light-text);
     text-decoration: none;
     transition: color 0.3s ease;
 }
@@ -290,7 +483,7 @@ footer {
     width: 40px;
     height: 40px;
     background-color: var(--secondary-color);
-    color: var(--text-color-light);
+    color: var(--light-text);
     border-radius: 50%;
     transition: all 0.3s ease;
 }
@@ -309,4 +502,4 @@ footer {
     .social-links {
         justify-content: center;
     }
-} 
+}
