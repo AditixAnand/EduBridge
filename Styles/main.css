@@ -27,6 +27,42 @@
     --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
+[data-theme="dark"] .section h2,
+[data-theme="dark"] .card-content h3,
+[data-theme="dark"] .course-card h2,
+[data-theme="dark"] .profile-header h1,
+[data-theme="dark"] .profile-card h2 {
+    color: #7dd3fc;
+}
+
+[data-theme="dark"] .section:nth-of-type(even) h2 {
+    color: #fde047;
+}
+
+[data-theme="dark"] .card-content h3 i,
+[data-theme="dark"] .footer-section h3 {
+    color: #f9a8d4;
+}
+
+[data-theme="dark"] .card-content p,
+[data-theme="dark"] .course-card p,
+[data-theme="dark"] .footer-section,
+[data-theme="dark"] .footer-section a,
+[data-theme="dark"] .footer-bottom p {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .theme-option {
+    color: #ffffff;
+}
+
+footer,
+footer a,
+.footer-section h3,
+.footer-bottom p {
+    color: #ffffff;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -175,8 +211,18 @@ body {
 }
 
 .card-content p {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     color: var(--text-color);
+}
+
+.card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.card-actions .btn {
+    flex: 1;
 }
 
 /* Hero Section */
@@ -717,6 +763,168 @@ footer {
     font-size: 0.9rem;
 }
 
+/* Learning Hub Tabs */
+.tab-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.tab-button {
+    border: 2px solid var(--secondary-color);
+    background: transparent;
+    color: var(--secondary-color);
+    padding: 0.8rem 1.25rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.tab-button.active,
+.tab-button:hover {
+    background: var(--secondary-color);
+    color: var(--light-text);
+}
+
+.tab-content {
+    display: none;
+    background: var(--card-background);
+    border-radius: 1rem;
+    padding: 1.75rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tab-note {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.current-session {
+    background: rgba(46, 134, 222, 0.08);
+    border: 1px solid rgba(46, 134, 222, 0.2);
+    border-radius: 1rem;
+    padding: 1rem 1.2rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.form-row.full-width {
+    grid-column: 1 / -1;
+}
+
+.calendar-events {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.calendar-event-item {
+    background: var(--background-color);
+    border-radius: 1rem;
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.calendar-event-item div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.calendar-event-item strong {
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+.calendar-event-item span {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.calendar-event-item .remove-event {
+    align-self: flex-end;
+}
+
+.scheduler-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.scheduler-header h3 {
+    margin: 0;
+}
+
+.scheduled-count {
+    background: var(--secondary-color);
+    color: var(--light-text);
+    padding: 0.75rem 1rem;
+    border-radius: 999px;
+    font-weight: 600;
+}
+
+.calendar-panel .calendar-form {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    align-items: end;
+}
+
+.calendar-panel .form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.calendar-panel .calendar-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.calendar-panel .calendar-form input {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background: var(--background-color);
+    color: var(--text-color);
+}
+
+    .calendar-event-item strong {
+        display: block;
+        font-size: 1rem;
+        color: var(--text-color);
+    }
+
+    .calendar-event-item span {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.empty-state {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    padding: 1rem 0;
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
     /* Tablet Layout */
@@ -1144,4 +1352,4 @@ ul li i.fa-check {
         width: 95%;
         margin: 10% auto;
     }
-} 
+}

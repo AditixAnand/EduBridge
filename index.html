@@ -71,7 +71,10 @@
           <div class="card-content">
             <h3>Web Development</h3>
             <p>Master frontend and backend technologies to build modern web applications.</p>
-            <a href="webdev.html" class="btn btn-outline">Learn More</a>
+            <div class="card-actions">
+              <a href="webdev.html" class="btn btn-outline">Learn More</a>
+              <button class="btn btn-outline schedule-course-btn" type="button" data-topic="Web Development">Schedule Session</button>
+            </div>
           </div>
         </div>
 
@@ -83,7 +86,10 @@
           <div class="card-content">
             <h3>AI & Machine Learning</h3>
             <p>Dive into artificial intelligence, machine learning, and data science.</p>
-            <a href="ai.html" class="btn btn-outline">Learn More</a>
+            <div class="card-actions">
+              <a href="ai.html" class="btn btn-outline">Learn More</a>
+              <button class="btn btn-outline schedule-course-btn" type="button" data-topic="AI & Machine Learning">Schedule Session</button>
+            </div>
           </div>
         </div>
 
@@ -95,8 +101,62 @@
           <div class="card-content">
             <h3>Career Guidance</h3>
             <p>Get expert advice on building a successful career in technology.</p>
-            <a href="career.html" class="btn btn-outline">Learn More</a>
+            <div class="card-actions">
+              <a href="career.html" class="btn btn-outline">Learn More</a>
+              <button class="btn btn-outline schedule-course-btn" type="button" data-topic="Career Guidance">Schedule Session</button>
+            </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Learning Hub -->
+    <section id="learningHub" class="section">
+      <h2>My Learning Hub</h2>
+      <div class="tab-menu" role="tablist" aria-label="Learning hub tabs">
+        <button class="tab-button active" type="button" data-tab="coursesTab">Courses</button>
+        <button class="tab-button" type="button" data-tab="calendarTab">Scheduler</button>
+      </div>
+      <div class="tab-content active" id="coursesTab" role="tabpanel" aria-labelledby="coursesTab">
+        <p class="tab-note">Browse courses above, then use the Scheduler tab to add study sessions directly.</p>
+      </div>
+      <div class="tab-content" id="calendarTab" role="tabpanel" aria-labelledby="calendarTab">
+        <div class="calendar-panel">
+          <div class="scheduler-header">
+            <div>
+              <h3>Class Scheduler</h3>
+              <p class="tab-note">Schedule your own sessions and manage upcoming study events in one screen.</p>
+            </div>
+            <span id="scheduledCount" class="scheduled-count">0 sessions scheduled</span>
+          </div>
+          <div id="currentSessionPanel" class="current-session">No current session selected.</div>
+          <form id="calendarForm" class="calendar-form">
+            <div class="form-row">
+              <label for="calendarStartDate">Start Date</label>
+              <input type="date" id="calendarStartDate" required>
+            </div>
+            <div class="form-row">
+              <label for="calendarEndDate">End Date</label>
+              <input type="date" id="calendarEndDate" required>
+            </div>
+            <div class="form-row">
+              <label for="calendarStartTime">From Time</label>
+              <input type="time" id="calendarStartTime" required>
+            </div>
+            <div class="form-row">
+              <label for="calendarEndTime">To Time</label>
+              <input type="time" id="calendarEndTime" required>
+            </div>
+            <div class="form-row full-width">
+              <label for="calendarTopic">Topic</label>
+              <input type="text" id="calendarTopic" placeholder="Example: JavaScript review" required>
+            </div>
+            <div class="form-actions">
+              <button class="btn btn-outline" type="submit">Add Session</button>
+              <button type="button" id="clearAllEventsBtn" class="btn btn-outline">Clear All</button>
+            </div>
+          </form>
+          <div id="calendarEvents" class="calendar-events"></div>
         </div>
       </div>
     </section>
