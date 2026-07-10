@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduBridge | 404 - Page Not Found</title>
+  <link rel="stylesheet" href="Styles/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    .error-page {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: calc(100vh - 200px);
+      padding: 2rem;
+      text-align: center;
+    }
+    .error-content {
+      max-width: 500px;
+    }
+    .error-code {
+      font-size: 8rem;
+      font-weight: 700;
+      color: var(--secondary-color);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .error-content h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+    .error-content p {
+      font-size: 1.1rem;
+      color: var(--text-color);
+      margin-bottom: 2rem;
+      opacity: 0.8;
+    }
+    .error-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <a href="index.html" class="logo">EduBridge</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="webdev.html">Web Development</a></li>
+        <li><a href="ai.html">AI & ML</a></li>
+        <li><a href="career.html">Career</a></li>
+        <li class="auth-buttons" id="authButtons">
+          <a href="login.html" class="btn btn-outline">Login</a>
+          <a href="register.html" class="btn">Register</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="error-page">
+    <div class="error-content">
+      <div class="error-code">404</div>
+      <h1>Page Not Found</h1>
+      <p>Sorry, the page you are looking for does not exist or has been moved.</p>
+      <div class="error-actions">
+        <a href="index.html" class="btn"><i class="fas fa-home"></i> Go Home</a>
+        <a href="javascript:history.back()" class="btn btn-outline"><i class="fas fa-arrow-left"></i> Go Back</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="webdev.html">Web Development</a></li>
+          <li><a href="ai.html">AI & ML</a></li>
+          <li><a href="career.html">Career</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <a href="https://x.com/shivam98997467" target="_blank" class="social-button" title="Follow us on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
