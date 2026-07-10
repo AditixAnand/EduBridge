@@ -25,7 +25,7 @@ app.post('/chat', async (req, res) => {
       temperature: 0.7
     }, {
       headers: {
-        'Authorization': `Bearer YOUR_OPENAI_API_KEY` // Replace with your actual OpenAI API Key
+        'Authorization': `Bearer ${OPENAI_API_KEY}`
       }
     });
 
