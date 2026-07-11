@@ -33,6 +33,7 @@ let score = 0;
 let timer = null;
 let timeLeft = 60; // 60 seconds per quiz
 let selectedOption = null;
+let isPaused = false;
 
 // DOM elements
 const courseSelection = document.getElementById('courseSelection');
@@ -45,6 +46,7 @@ const optionsContainer = document.getElementById('options');
 const nextButton = document.getElementById('nextBtn');
 const prevButton = document.getElementById('prevBtn');
 const submitButton = document.getElementById('submitBtn');
+const pauseButton = document.getElementById('pauseBtn');
 const retryButton = document.getElementById('retryBtn');
 const backButton = document.getElementById('backToCoursesBtn');
 const finalScore = document.getElementById('finalScore');
@@ -63,6 +65,7 @@ document.querySelectorAll('.start-quiz').forEach(button => {
 if (nextButton) nextButton.addEventListener('click', nextQuestion);
 if (prevButton) prevButton.addEventListener('click', previousQuestion);
 if (submitButton) submitButton.addEventListener('click', submitQuiz);
+if (pauseButton) pauseButton.addEventListener('click', togglePause);
 if (retryButton) retryButton.addEventListener('click', () => {
     if (resultsContainer) resultsContainer.style.display = 'none';
     if (courseSelection) courseSelection.style.display = 'block';
@@ -180,6 +183,8 @@ function updateTimer() {
 // Start timer
 function startTimer() {
     clearInterval(timer);
+    isPaused = false;
+    if (pauseButton) pauseButton.textContent = 'Pause';
     timer = setInterval(() => {
         timeLeft--;
         updateTimer();
@@ -188,6 +193,26 @@ function startTimer() {
             submitQuiz();
         }
     }, 1000);
+}
+
+// Toggle pause/resume
+function togglePause() {
+    if (isPaused) {
+        timer = setInterval(() => {
+            timeLeft--;
+            updateTimer();
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                submitQuiz();
+            }
+        }, 1000);
+        isPaused = false;
+        pauseButton.textContent = 'Pause';
+    } else {
+        clearInterval(timer);
+        isPaused = true;
+        pauseButton.textContent = 'Resume';
+    }
 }
 
 // Update score

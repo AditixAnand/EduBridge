@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduBridge - Course Quizzes</title>
+    <title>EduBridge | Quiz</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
     <link rel="stylesheet" href="Styles/main.css"/>
@@ -96,6 +96,7 @@
                     <div class="quiz-info">
                         <span id="timer">Time: 10:00</span>
                         <span id="score">Score: 0</span>
+                        <button id="pauseBtn" class="btn btn-outline" style="padding:0.25rem 0.75rem;font-size:0.875rem;">Pause</button>
                     </div>
                 </div>
                 <div class="progress-bar">
@@ -227,6 +228,21 @@
                 authButtons.style.display = 'block';
             }
         });
+
+        // Scroll to Top
+        const scrollBtn = document.getElementById('scrollToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollBtn.classList.add('visible');
+            } else {
+                scrollBtn.classList.remove('visible');
+            }
+        });
+        scrollBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
     </script>
+
+    <button id="scrollToTop" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
 </body>
 </html> 
