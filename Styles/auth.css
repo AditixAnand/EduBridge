@@ -157,3 +157,11 @@
         padding: 1rem;
     }
 } 
+/* Fix invisible form fields on dark backgrounds */
+.auth-form input,
+.auth-form select,
+.auth-form textarea {
+  background-color: #ffffff;
+  color: #1a1a2e;
+  border: 1px solid #ccc;
+}
