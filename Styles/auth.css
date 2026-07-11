@@ -115,6 +115,38 @@
     margin-top: 0.25rem;
 }
 
+/* Password Visibility Toggle */
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-wrapper input {
+    width: 100%;
+    padding-right: 2.5rem;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 0.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text);
+    padding: 0.25rem;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.password-toggle:hover {
+    opacity: 1;
+}
+
 /* Responsive Design */
 @media (max-width: 480px) {
     .auth-card {
@@ -125,3 +157,11 @@
         padding: 1rem;
     }
 } 
+/* Fix invisible form fields on dark backgrounds */
+.auth-form input,
+.auth-form select,
+.auth-form textarea {
+  background-color: #ffffff;
+  color: #1a1a2e;
+  border: 1px solid #ccc;
+}
