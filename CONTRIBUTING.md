@@ -1,93 +1,32 @@
 # Contributing to EduBridge
 
-Thank you for your interest in contributing to EduBridge! 🎉  
-We welcome meaningful contributions that improve the quality and usability of the project.
+Thank you for your interest in contributing to EduBridge! We welcome contributions that improve the quality and usability of the project.
 
-Please read the guidelines below carefully before contributing.
+## Table of Contents
+- [Code of Conduct](#code-of-conduct)
+- [How to Contribute](#how-to-contribute)
+- [Development Setup](#development-setup)
+- [Pull Request Guidelines](#pull-request-guidelines)
+- [Reporting Issues](#reporting-issues)
 
----
+## Code of Conduct
+Please read and follow our Code of Conduct to foster an inclusive community.
 
-## 📌 Getting Started
+## How to Contribute
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
 
-1. Fork the repository to your GitHub account
-2. Clone your fork locally:
-```bash
-git clone https://github.com/your-username/EduBridge.git
-Create a new branch for your work:
+## Development Setup
+1. Clone the repository
+2. Open `index.html` in your browser for frontend changes
+3. For backend changes, ensure Python and Flask are installed
 
-git checkout -b feature/your-feature-name
-🏷 Issue Selection
-All issues are created and managed by the Project Admin
+## Pull Request Guidelines
+- Keep PRs focused on a single change
+- Include a clear description
+- Reference related issues
 
-Contributors must request assignment before starting work
-
-Do NOT work on unassigned issues
-
-Only one contributor will be assigned per issue
-
-Choose issues based on your skill level:
-
-easy
-
-medium
-
-hard
-
-good first issue
-
-💻 Development Guidelines
-Follow clean coding practices
-
-Write readable and well-structured code
-
-Comment your code where necessary
-
-Ensure your changes do not break existing functionality
-
-Test your changes before submitting
-
-🔍 Pull Request Guidelines
-PRs must be linked to an assigned issue
-
-Clearly describe what your PR does
-
-Keep PRs focused (one issue per PR)
-
-Avoid unnecessary or unrelated changes
-
-Plagiarized or copied code will be rejected
-
-📝 Commit Message Guidelines
-Use clear and meaningful commit messages. Examples:
-
-Added quiz scoring functionality
-Fixed authentication validation bug
-Improved UI responsiveness
-Avoid vague messages like:
-
-fix
-update
-changes
-❌ What Not to Do
-Do not submit spam or low-effort PRs
-
-Do not copy code from other repositories
-
-Do not create issues without admin permission
-
-Do not submit incomplete or broken features
-
-✅ Review Process
-All Pull Requests are reviewed by the Project Admin
-
-Changes may be requested before approval
-
-Only approved and merged PRs are considered valid contributions
-
-Admin decisions are final
-
-🤝 Code of Conduct
-All contributors are expected to maintain respectful and professional communication.
-Harassment, discrimination, or unethical behavior will not be tolerated.
-
-Thank you for contributing and helping improve EduBridge! 🚀
+## Reporting Issues
+Use the GitHub issue tracker to report bugs or request features.
