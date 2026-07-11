@@ -1,29 +1,9 @@
-# Python
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
-.venv/
-env/
+*.py[cod]
+*$py.class
+.env
+.venv
 venv/
-*.env
-
-# Node
 node_modules/
-
-# Logs
 *.log
-
-# OS files
 .DS_Store
-Thumbs.db
-
-# IDE files
-.vscode/
-*.code-workspace
-
-# MacOS specific
-*.swp
-
-# Python cache
-*.pytest_cache/
