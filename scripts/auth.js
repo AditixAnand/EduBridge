@@ -66,6 +66,21 @@ class Auth {
     getCurrentUser() {
         return this.currentUser;
     }
+
+    // Update user data
+    updateUser(userId, updates) {
+        const index = this.users.findIndex(user => user.id === userId);
+        if (index === -1) {
+            return { success: false, message: 'User not found' };
+        }
+        this.users[index] = { ...this.users[index], ...updates };
+        localStorage.setItem('users', JSON.stringify(this.users));
+        if (this.currentUser && this.currentUser.id === userId) {
+            this.currentUser = this.users[index];
+            localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+        }
+        return { success: true, message: 'User updated successfully' };
+    }
 }
 
 // Initialize auth instance

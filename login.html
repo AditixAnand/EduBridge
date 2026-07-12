@@ -156,16 +156,18 @@
 
         // Scroll to Top
         const scrollBtn = document.getElementById('scrollToTop');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                scrollBtn.classList.add('visible');
-            } else {
-                scrollBtn.classList.remove('visible');
-            }
-        });
-        scrollBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+        if (scrollBtn) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    scrollBtn.classList.add('visible');
+                } else {
+                    scrollBtn.classList.remove('visible');
+                }
+            });
+            scrollBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
     </script>
 
     <button id="scrollToTop" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
