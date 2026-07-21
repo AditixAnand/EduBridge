@@ -18,19 +18,19 @@ app.post('/chat', async (req, res) => {
   
   try {
     // Call an AI API (e.g., OpenAI GPT-3/4) for chatbot response
-    const response = await axios.post('https://api.openai.com/v1/completions', {
+    const response = await axios.post('https://api.openai.com/v1/chat/completions', {
       model: 'gpt-4', // You can use GPT-3 or GPT-4
-      prompt: userMessage,
+      messages: [{ role: 'user', content: userMessage }],
       max_tokens: 150,
       temperature: 0.7
     }, {
       headers: {
-        'Authorization': `Bearer YOUR_OPENAI_API_KEY` // Replace with your actual OpenAI API Key
+        'Authorization': `Bearer ${OPENAI_API_KEY}`
       }
     });
 
     // Send back the response from OpenAI to the client
-    res.json({ reply: response.data.choices[0].text.trim() });
+    res.json({ reply: response.data.choices[0].message.content.trim() });
   } catch (error) {
     console.error('Error fetching response from AI:', error);
     res.status(500).send('Error processing your request');

@@ -2,7 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const path = require('path');
-const chatbotRouter = require('./chatbot');
 
 // Load environment variables
 dotenv.config();
@@ -15,7 +14,6 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '..')));
 
 // Routes
-app.use('/api', chatbotRouter);
 
 // Start server
 app.listen(PORT, () => {
