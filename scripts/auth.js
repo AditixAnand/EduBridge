@@ -121,7 +121,11 @@ function showMessage(type, message) {
     messageDiv.textContent = message;
 
     const form = document.querySelector('.auth-form');
-    form.insertAdjacentElement('beforebegin', messageDiv);
+    if (form) {
+        form.insertAdjacentElement('beforebegin', messageDiv);
+    } else {
+        document.body.appendChild(messageDiv);
+    }
 
     setTimeout(() => {
         messageDiv.remove();

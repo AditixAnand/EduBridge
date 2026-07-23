@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const path = require('path');
-const chatbotRouter = require('./chatbot');
+const chatbotRouter = require('./server');
 
 // Load environment variables
 dotenv.config();
