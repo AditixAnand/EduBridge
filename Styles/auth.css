@@ -65,19 +65,27 @@
 
 /* Authentication Button */
 .auth-button {
-    background: var(--accent);
+    width: 100%;
+    background-color: #2563eb;
     color: white;
+
     border: none;
-    border-radius: 5px;
-    padding: 0.75rem;
-    font-size: 1rem;
-    font-weight: 500;
+
+    padding: 12px;
+
+    margin-top: 20px;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+
     cursor: pointer;
-    transition: background-color 0.3s ease;
+
+    display: block;
 }
 
 .auth-button:hover {
-    background: var(--hover);
+    background-color: #1d4ed8;
 }
 
 /* Authentication Links */
