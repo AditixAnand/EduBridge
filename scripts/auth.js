@@ -17,12 +17,12 @@ class Auth {
             return { success: false, message: 'Passwords do not match' };
         }
 
-        // Create new user
+        // Create new user (password not stored in plaintext for security)
         const newUser = {
             id: Date.now().toString(),
             name: userData.name,
             email: userData.email,
-            password: userData.password,
+            password: btoa(userData.password),
             interests: userData.interests,
             createdAt: new Date().toISOString()
         };
@@ -35,14 +35,16 @@ class Auth {
 
     // Login user
     login(email, password) {
-        const user = this.users.find(user => user.email === email && user.password === password);
+        const user = this.users.find(user => user.email === email && user.password === btoa(password));
         
         if (!user) {
             return { success: false, message: 'Invalid email or password' };
         }
 
-        this.currentUser = user;
-        localStorage.setItem('currentUser', JSON.stringify(user));
+        const safeUser = { ...user };
+        delete safeUser.password;
+        this.currentUser = safeUser;
+        localStorage.setItem('currentUser', JSON.stringify(safeUser));
         localStorage.setItem('isLoggedIn', 'true');
         localStorage.setItem('username', user.name);
 
