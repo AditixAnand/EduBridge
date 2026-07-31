@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
   <link rel="stylesheet" href="Styles/main.css"/>
   <link rel="stylesheet" href="Styles/chat.css"/>
-  <script src="scripts/main.js"></script>
+
 </head>
 <body>
   <!-- Header -->
@@ -161,6 +161,8 @@
 
   <!-- JavaScript Dependencies -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <!-- Fix: Moved main.js from <head> to bottom of <body> to prevent render blocking -->
+  <script src="scripts/main.js"></script>
   <script src="scripts/chatbot.js"></script>
   <script src="scripts/auth.js"></script>
   <script>
