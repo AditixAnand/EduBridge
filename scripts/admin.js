@@ -532,7 +532,7 @@ function bindQuizForm() {
                 document.getElementById('optionC').value.trim(),
                 document.getElementById('optionD').value.trim()
             ],
-            correct: Number.parseInt(document.getElementById('correctOption').value, 10)
+            correct: Number.parseInt(document.getElementById('correctOption', 10).value, 10)
         };
 
         const quizTitle = quizTitleInput.value.trim();
