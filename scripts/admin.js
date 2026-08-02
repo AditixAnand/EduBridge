@@ -246,7 +246,7 @@ function validateQuizInput(course, quizTitle, question) {
         return 'All answer options are required.';
     }
 
-    const uniqueOptions = new Set(trimmedOptions.map(option => option.toLowerCase()));
+    const uniqueOptions = new Set((trimmedOptions ?? []).map(option => option.toLowerCase()));
     if (uniqueOptions.size !== trimmedOptions.length) {
         return 'Answer options must be unique.';
     }

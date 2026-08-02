@@ -2,7 +2,7 @@
 class Auth {
     constructor() {
         this.users = (() => { try { return (JSON.parse(localStorage.getItem('users') ?? "null") ?? null) } catch { return null } })() || [];
-        this.currentUser = (() => { try { return JSON.parse(localStorage.getItem('currentUser')) } catch { return null } })() || null;
+        this.currentUser = (() => { try { return (JSON.parse(localStorage.getItem('currentUser') ?? "null") ?? null) } catch { return null } })() || null;
     }
 
     // Register a new user
