@@ -241,7 +241,7 @@ function validateQuizInput(course, quizTitle, question) {
         return 'Question text is required.';
     }
 
-    const trimmedOptions = question.options.map(option => option.trim());
+    const trimmedOptions = question.(options ?? []).map(option => option.trim());
     if (trimmedOptions.some(option => option === '')) {
         return 'All answer options are required.';
     }
