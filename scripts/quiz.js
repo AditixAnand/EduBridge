@@ -65,7 +65,7 @@ function saveQuizState() {
     
     const state = {
         course: currentQuiz.title ? Object.keys(quizData).find(key => quizData[key].title === currentQuiz.title) : null,
-        currentQuestionIndex: currentQuestionIndex,
+        currentQuestionIndex,
         score: score,
         timeLeft: timeLeft,
         selectedAnswers: selectedAnswers,
