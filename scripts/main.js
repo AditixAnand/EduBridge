@@ -268,8 +268,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Check auth state periodically
-setInterval(checkAuthState, 1000);
+// Re-evaluate auth state when another tab changes localStorage (e.g. cross-tab logout/login).
+// The initial check is already handled by the DOMContentLoaded listener above;
+// a polling interval is unnecessary and causes redundant DOM mutations every second.
+window.addEventListener('storage', function(e) {
+    if (e.key === 'isLoggedIn' || e.key === 'currentUser') {
+        checkAuthState();
+    }
+});
 
 // Chatbot functionality
 document.addEventListener('DOMContentLoaded', function() {
