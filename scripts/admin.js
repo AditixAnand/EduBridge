@@ -241,7 +241,7 @@ function validateQuizInput(course, quizTitle, question) {
         return 'Question text is required.';
     }
 
-    const trimmedOptions = question.options.map(option => option.trim());
+    const trimmedOptions = question.(options ?? []).map(option => option.trim());
     if (trimmedOptions.some(option => option === '')) {
         return 'All answer options are required.';
     }
@@ -532,7 +532,7 @@ function bindQuizForm() {
                 document.getElementById('optionC').value.trim(),
                 document.getElementById('optionD').value.trim()
             ],
-            correct: Number.parseInt(document.getElementById('correctOption').value, 10)
+            correct: Number.parseInt(document.getElementById('correctOption', 10).value, 10)
         };
 
         const quizTitle = quizTitleInput.value.trim();
