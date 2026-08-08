@@ -238,49 +238,61 @@ Course Selection
 
 /* Footer Styles */
 footer {
-    background-color: var(--primary-color);
-    color: var(--text-color-light);
+    background-color: var(--primary-color, #2c3e50);
+    color: #f0f0f0;
     padding: 2rem 0;
     margin-top: 3rem;
+    width: 100%;
 }
 
 .footer-content {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0 2rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 2rem;
+    align-items: start;
 }
 
 .footer-section h3 {
-    color: var(--text-color-light);
+    color: #ffffff;
     margin-bottom: 1rem;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 0.5rem;
 }
 
 .footer-section ul {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
 .footer-section ul li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.6rem;
 }
 
 .footer-section ul li a {
-    color: var(--text-color-light);
+    color: #d0d0d0;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+    font-size: 0.95rem;
+    display: inline-block;
 }
 
 .footer-section ul li a:hover {
-    color: var(--secondary-color);
+    color: #ffffff;
+    padding-left: 4px;
 }
 
 .social-links {
     display: flex;
     gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
 }
 
 .social-button {
@@ -289,24 +301,46 @@ footer {
     justify-content: center;
     width: 40px;
     height: 40px;
-    background-color: var(--secondary-color);
-    color: var(--text-color-light);
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
     border-radius: 50%;
-    transition: all 0.3s ease;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 .social-button:hover {
-    background-color: var(--accent-color);
+    background-color: var(--secondary-color, #3498db);
     transform: translateY(-3px);
+    border-color: transparent;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    color: #b0b0b0;
+    font-size: 0.85rem;
 }
 
 @media (max-width: 768px) {
     .footer-content {
         grid-template-columns: 1fr;
         text-align: center;
+        padding: 0 1rem;
+    }
+
+    .footer-section h3 {
+        border-bottom-color: rgba(255, 255, 255, 0.15);
     }
 
     .social-links {
         justify-content: center;
     }
-} 
+
+    .footer-section ul li a:hover {
+        padding-left: 0;
+    }
+}
