@@ -1,255 +1,210 @@
 # 🚀 EduBridge
 
-EduBridge is a **full-stack web application** that provides interactive learning resources, quizzes, and AI-driven guidance for students. It is designed to help learners explore web development, AI & ML concepts, and career opportunities through a modern, user-friendly platform.
+EduBridge is a **full-stack web application** that provides interactive learning resources, quizzes, and AI-driven guidance for students. It helps learners explore **Web Development, AI/ML concepts, and career opportunities** through a modern and user-friendly platform.
 
 ---
 
-## 📌 Project Overview
+# 📌 Project Overview
 
-EduBridge bridges the gap between learning and career guidance by combining structured educational content with AI-powered assistance. Students can:
-- Learn technical topics  
-- Test their knowledge through quizzes  
-- Receive AI-powered career and learning suggestions  
+EduBridge bridges the gap between learning and career guidance by combining structured educational content with AI-powered assistance.
 
----
+Users can:
 
-## ✨ Features
-
-- 🔐 **User Authentication** – Secure login and registration system  
-- 👤 **Personalized Profiles** – Users can manage and update their profiles  
-- 🧠 **Quizzes** – Assess knowledge on various technical topics  
-- 🤖 **AI Assistance** – AI-powered learning and guidance  
-- 🎯 **Career Guidance** – Resources and career advice  
-- 📱 **Responsive Design** – Works across desktops, tablets, and mobile devices  
+- 📚 Learn technical topics
+- 📝 Test their knowledge through quizzes
+- 🤖 Receive AI-powered learning assistance
+- 🎯 Explore career guidance resources
 
 ---
 
-## 🛠 Technologies Used
+# ✨ Features
 
-### 🌐 Frontend
-- **HTML:** Semantic structure and accessibility 
-- **CSS:** Styling, layout, and responsiveness  
-- **JavaScript:** Interactivity and API handling  
-
-### ⚙️ Backend
-- **Python:** Core backend language 
-- **Flask:** Lightweight web framework  
-
-### 🤖 APIs
-- **OpenAI API:** AI-driven features
-
-### 🔧 Tools
-- **Git:** Version control 
-- **GitHub:** Collaboration and project hosting  
+- 🔐 Secure User Authentication
+- 👤 Personalized User Profiles
+- 🧠 Interactive Technical Quizzes
+- 🤖 AI-powered Learning Assistance
+- 🎯 Career Guidance Resources
+- 📱 Fully Responsive Design
 
 ---
 
-## 📂 Folder Structure
-EduBridge/  
-├── backend/  
-│ └── app.py  
-├── assets/  
-├── styles/  
-├── templates/  
-├── auth/  
-├── scripts/  
-├── server/  
-├── images/  
-├── index.html  
-├── login.html  
-├── profile.html  
-├── quiz.html  
-├── ai.html  
-├── webdev.html  
-├── career.html  
+# 🛠️ Tech Stack
+
+## 🌐 Frontend
+
+- HTML
+- CSS
+- JavaScript
+
+## ⚙️ Backend
+
+- Python
+- Flask
+
+## 🤖 APIs
+
+- OpenAI API
+
+## 🔧 Tools
+
+- Git
+- GitHub
+
+---
+
+# 📂 Project Structure
 
 ```text
 EduBridge/
 ├── backend/
-│ └── app.py
+│   └── app.py
 ├── assets/
-├── Styles/
-├── templates/
 ├── auth/
+├── images/
 ├── scripts/
 ├── server/
-├── images/
+├── styles/
+├── templates/
+├── ai.html
+├── career.html
 ├── index.html
 ├── login.html
 ├── profile.html
 ├── quiz.html
-├── ai.html
-├── webdev.html
-├── career.html
-└── register.html
+├── register.html
+└── webdev.html
 ```
 
 ---
 
-## ⚙️ Setup Instructions
+# ⚙️ Installation & Setup
 
-1️⃣ Clone the repository
+## 1. Clone the Repository
+
 ```bash
-  git clone https://github.com/AditixAnand/EduBridge.git
-  cd EduBridge
-```
-2️⃣ Setup Python Backend
-```bash
-  cd backend
-  pip install flask python-dotenv openai
-```
-💡 Recommended: Use a virtual environment:
-```bash
-  python -m venv venv
-  venv\Scripts\activate   # Windows
-  source venv/bin/activate # macOS/Linux
-```
-3️⃣ Run the Backend
-```bash
-  python app.py
-```
-4️⃣ Open the Frontend  
-  Open index.html in your browser.  
-**✅ Important:**  
-Ensure JavaScript API calls point to:  
-```bash
-http://127.0.0.1:5000/
-```
-
----
-
-## 🤝 Contribution Guidelines
-1️⃣ Fork the repository  
-2️⃣ Create a new branch for your feature or fix  
-3️⃣ Work only on admin-approved issues  
-4️⃣ Write clean, readable, and well-documented code  
-5️⃣ Make meaningful commit messages  
-6️⃣ Submit a Pull Request with a clear description  
-7️⃣ Wait for Project Admin review before merge
-
----
-
-## 🏷 Issue Management
-1️⃣ Issues are created and managed by the Project Admin  
-2️⃣ Contributors must request issue assignment before starting work  
-3️⃣ One issue is assigned to one contributor at a time  
-4️⃣ Inactive contributors may be unassigned  
-5️⃣ Issues are clearly defined and achievable
-
-**Issue Labels Used**
-- easy
-- medium
-- hard
-- good first issue
-- bug
-- feature
-- documentation
-- help wanted
-
----
-
-## 🔍 Pull Request Rules
-1️⃣ PRs must be linked to an assigned issue  
-2️⃣ Code must be original and plagiarism-free  
-3️⃣ Low-effort, spam, or duplicate PRs will be rejected  
-4️⃣ Admin may request changes before approval  
-5️⃣ Only merged PRs are considered valid contributions
-### 1. Clone the repository
-
-`git clone <your-repo-url>`
-
+git clone https://github.com/AditixAnand/EduBridge.git
 cd EduBridge
+```
 
-### 2. Setup Python Backend
+---
 
+## 2. Create a Virtual Environment (Recommended)
+
+### Windows
+
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
+### macOS/Linux
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+---
+
+## 3. Install Dependencies
+
+```bash
 cd backend
-
 pip install flask python-dotenv openai
+```
 
-### 3. Run the Backend
+---
 
+## 4. Run the Backend
+
+```bash
 python app.py
+```
 
-### 4. Open Frontend
+The Flask server will start at:
 
-Open index.html in your browser
-
-### Ensure JavaScript API calls point to:
-
+```
 http://127.0.0.1:5000/
+```
 
 ---
 
-## 🤝 Contribution Guidelines
-- Fork the repository
-- Create a new branch for your feature or fix
-- Work only on admin-approved issues
-- Write clean, readable, and well-documented code
-- Make meaningful commit messages
-- Submit a Pull Request with a clear description
-- Wait for Project Admin review before merge
+## 5. Open the Frontend
+
+Open **index.html** in your browser.
+
+Make sure all JavaScript API requests point to:
+
+```text
+http://127.0.0.1:5000/
+```
 
 ---
 
-## 🏷 Issue Management
-Issues are created and managed by the Project admin
+# 🤝 Contribution Guidelines
 
-Contributors must request issue assignment before starting work
+Please follow these guidelines before contributing:
 
-One issue is assigned to one contributor at a time
+1. Fork the repository.
+2. Create a new branch.
+3. Work only on issues assigned by the project admin.
+4. Write clean, readable, and well-documented code.
+5. Use meaningful commit messages.
+6. Submit a Pull Request with a clear description.
+7. Wait for project admin review before merging.
 
-Inactive contributors may be unassigned
+---
 
-Issues are clearly defined and achievable
+# 🏷️ Issue Management
 
-### Issue Labels Used
+- Issues are managed by the Project Admin.
+- Contributors must request assignment before starting work.
+- Only one contributor is assigned per issue.
+- Inactive contributors may be unassigned.
+- Issues are designed to be beginner-friendly and well-defined.
+
+## Available Labels
+
+- good first issue
+- documentation
+- bug
+- feature
+- enhancement
+- help wanted
 - easy
 - medium
 - hard
-- good first issue
-- bug
-- feature
-- documentation
-- help wanted
 
 ---
 
-## 🔍 Pull Request Rules
-- PRs must be linked to an assigned issue
-- Code must be original and plagiarism-free
-- Low-effort, spam, or duplicate PRs will be rejected
-- Admin may request changes before approval
-- Only merged PRs are considered valid contributions
+# 🔍 Pull Request Guidelines
+
+- PRs must be linked to an assigned issue.
+- Code must be original and plagiarism-free.
+- Low-quality, spam, or duplicate PRs will be rejected.
+- Requested changes should be addressed before approval.
+- Only merged PRs count as valid contributions.
 
 ---
 
-## 🚀 Future Enhancements
-Leaderboard system
+# 🚀 Future Enhancements
+
+- 🏆 Leaderboard System
+- 📊 Advanced Learning Analytics
+- 🤖 Enhanced AI Personalization
+- 📱 Mobile Application Support
 
 ---
 
-## 🚀 Future Enhancements
-- Leaderboard system
-- Advanced learning analytics
-- Enhanced AI personalization
-- Mobile application support
+# 📜 License
+
+This project is licensed under the **MIT License**.
+
+See the **LICENSE** file for more information.
 
 ---
 
----
+# 📬 Contact
 
-## 📜 License
-This project is licensed under the MIT License. See the LICENSE file for details.
-
----
-
-## 📬 Contact
 - LinkedIn: Aditi Anand
 - Email: aditianand09tkp@gmail.com
-
-## 📬 Contact
-LinkedIn: Aditi Anand
-
-Email: aditianand09tkp@gmail.com
-
----
