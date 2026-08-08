@@ -2,6 +2,8 @@
 
 EduBridge is a **full-stack web application** that provides interactive learning resources, quizzes, and AI-driven guidance for students. It is designed to help learners explore web development, AI & ML concepts, and career opportunities through a modern, user-friendly platform.
 
+> 🏗️ **New contributor?** See [`PROJECT_ARCHITECTURE.md`](PROJECT_ARCHITECTURE.md) for the project overview, repository structure, architecture diagram, data flow, and module responsibilities.
+
 ---
 
 ## 📌 Project Overview
