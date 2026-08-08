@@ -1,8 +1,8 @@
 // User Authentication Functions
 class Auth {
     constructor() {
-        this.users = JSON.parse(localStorage.getItem('users')) || [];
-        this.currentUser = JSON.parse(localStorage.getItem('currentUser')) || null;
+        this.users = (() => { try { return (JSON.parse(localStorage.getItem('users') ?? "null") ?? null) } catch { return null } })() || [];
+        this.currentUser = (() => { try { return (JSON.parse(localStorage.getItem('currentUser') ?? "null") ?? null) } catch { return null } })() || null;
     }
 
     // Register a new user
