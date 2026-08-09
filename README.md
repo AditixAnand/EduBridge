@@ -224,11 +224,6 @@ Issues are clearly defined and achievable
 ---
 
 ## 🚀 Future Enhancements
-Leaderboard system
-
----
-
-## 🚀 Future Enhancements
 - Leaderboard system
 - Advanced learning analytics
 - Enhanced AI personalization
