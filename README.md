@@ -33,7 +33,7 @@ EduBridge bridges the gap between learning and career guidance by combining stru
 
 ### ⚙️ Backend
 - **Python:** Core backend language 
-- **Flask:** Lightweight web framework  
+- **FastAPI / Flask:** Web frameworks  
 
 ### 🤖 APIs
 - **OpenAI API:** AI-driven features
@@ -45,28 +45,11 @@ EduBridge bridges the gap between learning and career guidance by combining stru
 ---
 
 ## 📂 Folder Structure
-EduBridge/  
-├── backend/  
-│ └── app.py  
-├── assets/  
-├── styles/  
-├── templates/  
-├── auth/  
-├── scripts/  
-├── server/  
-├── images/  
-├── index.html  
-├── login.html  
-├── profile.html  
-├── quiz.html  
-├── ai.html  
-├── webdev.html  
-├── career.html  
 
 ```text
 EduBridge/
 ├── backend/
-│ └── app.py
+│   └── app/
 ├── assets/
 ├── Styles/
 ├── templates/
@@ -76,12 +59,12 @@ EduBridge/
 ├── images/
 ├── index.html
 ├── login.html
+├── register.html
 ├── profile.html
 ├── quiz.html
 ├── ai.html
 ├── webdev.html
-├── career.html
-└── register.html
+└── career.html
 ```
 
 ---
@@ -90,29 +73,30 @@ EduBridge/
 
 1️⃣ Clone the repository
 ```bash
-  git clone https://github.com/AditixAnand/EduBridge.git
-  cd EduBridge
+git clone https://github.com/AditixAnand/EduBridge.git
+cd EduBridge
 ```
 2️⃣ Setup Python Backend
 ```bash
-  cd backend
-  pip install flask python-dotenv openai
+cd backend
+pip install -r requirements.txt
+# (or individually: pip install fastapi uvicorn python-dotenv openai sqlalchemy pydantic-settings)
 ```
 💡 Recommended: Use a virtual environment:
 ```bash
-  python -m venv venv
-  venv\Scripts\activate   # Windows
-  source venv/bin/activate # macOS/Linux
+python -m venv venv
+venv\Scripts\activate   # Windows
+source venv/bin/activate # macOS/Linux
 ```
 3️⃣ Run the Backend
 ```bash
-  python app.py
+uvicorn app.main:app --reload --port 5000
 ```
 4️⃣ Open the Frontend  
-  Open index.html in your browser.  
+Open `index.html` in your browser.  
 **✅ Important:**  
 Ensure JavaScript API calls point to:  
-```bash
+```text
 http://127.0.0.1:5000/
 ```
 
@@ -154,77 +138,6 @@ http://127.0.0.1:5000/
 3️⃣ Low-effort, spam, or duplicate PRs will be rejected  
 4️⃣ Admin may request changes before approval  
 5️⃣ Only merged PRs are considered valid contributions
-### 1. Clone the repository
-
-`git clone <your-repo-url>`
-
-cd EduBridge
-
-### 2. Setup Python Backend
-
-cd backend
-
-pip install flask python-dotenv openai
-
-### 3. Run the Backend
-
-python app.py
-
-### 4. Open Frontend
-
-Open index.html in your browser
-
-### Ensure JavaScript API calls point to:
-
-http://127.0.0.1:5000/
-
----
-
-## 🤝 Contribution Guidelines
-- Fork the repository
-- Create a new branch for your feature or fix
-- Work only on admin-approved issues
-- Write clean, readable, and well-documented code
-- Make meaningful commit messages
-- Submit a Pull Request with a clear description
-- Wait for Project Admin review before merge
-
----
-
-## 🏷 Issue Management
-Issues are created and managed by the Project admin
-
-Contributors must request issue assignment before starting work
-
-One issue is assigned to one contributor at a time
-
-Inactive contributors may be unassigned
-
-Issues are clearly defined and achievable
-
-### Issue Labels Used
-- easy
-- medium
-- hard
-- good first issue
-- bug
-- feature
-- documentation
-- help wanted
-
----
-
-## 🔍 Pull Request Rules
-- PRs must be linked to an assigned issue
-- Code must be original and plagiarism-free
-- Low-effort, spam, or duplicate PRs will be rejected
-- Admin may request changes before approval
-- Only merged PRs are considered valid contributions
-
----
-
-## 🚀 Future Enhancements
-Leaderboard system
 
 ---
 
@@ -236,8 +149,6 @@ Leaderboard system
 
 ---
 
----
-
 ## 📜 License
 This project is licensed under the MIT License. See the LICENSE file for details.
 
@@ -246,10 +157,3 @@ This project is licensed under the MIT License. See the LICENSE file for details
 ## 📬 Contact
 - LinkedIn: Aditi Anand
 - Email: aditianand09tkp@gmail.com
-
-## 📬 Contact
-LinkedIn: Aditi Anand
-
-Email: aditianand09tkp@gmail.com
-
----
